@@ -113,7 +113,7 @@ async def run_def(username):
     async with aiohttp.ClientSession() as session:
         print(await veltpvp(username, session))
 
-if __name__ == "__main__"
+if __name__ == "__main__":
     loop = asyncio.get_event_loop()
     loop.run_until_complete(run_def("DISSTRACKS"))
     loop.close()
