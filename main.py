@@ -20,7 +20,7 @@ async def get_json(url):
     else:
         return False
 
-async def hypixelHungerGames(username,key):
+async def hypixelGameStats(username,key):
     url = f"https://api.hypixel.net/player?key={key}&name={username}"
     json_data = await get_json(url)
     str_json = json.dumps(json_data)
@@ -154,7 +154,7 @@ async def veltpvp(username, session):
         print(await veltpvp(username, session))"""
 
 async def run_def(username):
-    await hypixelHungerGames(username, "218c4847-450e-4218-aa99-bcc08c7a6595")
+    await hypixelGameStats(username, "218c4847-450e-4218-aa99-bcc08c7a6595")
 
 
 if __name__ == "__main__":
