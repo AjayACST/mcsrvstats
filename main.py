@@ -49,7 +49,36 @@ async def hypixelPetConsumables(username,key):
             data["pet_consumables"].append({pet: hypixelPets})
     print(data)
 
-            
+
+async def hypixelVoting(username,key):
+    url = f"https://api.hypixel.net/player?key={key}&name={username}"
+    json_data = await get_json(url)
+    str_json = json.dumps(json_data)
+    json_new = json.loads(str_json)
+    data = {"votesData": []}
+    if json_new['player'] is None:
+        return False
+    else:
+        for votes in json_new['player']['voting']:
+            hypixelVotes = json_new['player']['voting'][votes] if votes in json_new['player']['voting'] else 0
+            data['votesData'].append({votes: hypixelVotes})
+    return data
+
+
+async def hypxielPetStats(username,key):
+    url = f"https://api.hypixel.net/player?key={key}&name={username}"
+    json_data = await get_json(url)
+    str_json = json.dumps(json_data)
+    json_new = json.loads(str_json)
+    data = {"petStats": []}
+    if json_new['player'] is None:
+        return False
+    else:
+        for petStats in json_new['player']['petStats']:
+            hypixelPetStat = json_new['player']['petStats'][petStats] if petStats in json_new['player']['petStats'] else 0
+            data['petStats'].append({petStats: hypixelPetStat})
+    return data
+
 
 
 async def hypxielAllAchievements(username,key):
@@ -162,10 +191,10 @@ async def veltpvp(username, session):
         print(await veltpvp(username, session))"""
 
 async def run_def(username):
-    await hypixelPetConsumables(username, "218c4847-450e-4218-aa99-bcc08c7a6595")
+    await hypxielPetStats(username, "218c4847-450e-4218-aa99-bcc08c7a6595")
 
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_def("Darkflame72"))
+    loop.run_until_complete(run_def(""))
     loop.close()
