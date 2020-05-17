@@ -35,6 +35,23 @@ async def hypixelGameStats(username,key):
     return data
 
 
+async def hypixelPetConsumables(username,key):
+    url = f"https://api.hypixel.net/player?key={key}&name={username}"
+    json_data = await get_json(url)
+    str_json = json.dumps(json_data)
+    json_new = json.loads(str_json)
+    data = {"pet_consumables": []}
+    if json_new['player'] is None:
+        return False
+    else:
+        for pet in json_new['player']['petConsumables']:
+            hypixelPets = json_new['player']['petConsumables'][pet] if pet in json_new['player']['petConsumables'] else 0
+            data["pet_consumables"].append({pet: hypixelPets})
+    print(data)
+
+            
+
+
 async def hypxielAllAchievements(username,key):
     url = f"https://api.hypixel.net/player?key={key}&name={username}"
     json_data = await get_json(url)
@@ -145,10 +162,10 @@ async def veltpvp(username, session):
         print(await veltpvp(username, session))"""
 
 async def run_def(username):
-    await hypxielAllAchievements(username, "218c4847-450e-4218-aa99-bcc08c7a6595")
+    await hypixelPetConsumables(username, "218c4847-450e-4218-aa99-bcc08c7a6595")
 
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_def(""))
+    loop.run_until_complete(run_def("Darkflame72"))
     loop.close()
