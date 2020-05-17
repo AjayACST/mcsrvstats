@@ -33,6 +33,20 @@ async def hypixelGameStats(username,key):
             hypixelGames = json_new['player']['stats'][game] if game in json_new['player']['stats'] else 0
             data["game_stats"].append({game: hypixelGames})
     return data
+
+
+async def hypxielAllAchievements(username,key):
+    url = f"https://api.hypixel.net/player?key={key}&name={username}"
+    json_data = await get_json(url)
+    str_json = json.dumps(json_data)
+    json_new = json.loads(str_json)
+    data = {"all_achievements": []}
+    if json_new['player'] is None:
+        return False
+    else:
+        for ach in json_new['player']['achievementsOneTime']:
+            data["all_achievements"].append(ach)
+    print(data)
     
 
 async def blocksmc(username, session):
@@ -131,7 +145,7 @@ async def veltpvp(username, session):
         print(await veltpvp(username, session))"""
 
 async def run_def(username):
-    await hypixelGameStats(username, "218c4847-450e-4218-aa99-bcc08c7a6595")
+    await hypxielAllAchievements(username, "218c4847-450e-4218-aa99-bcc08c7a6595")
 
 
 if __name__ == "__main__":
