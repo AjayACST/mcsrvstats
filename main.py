@@ -191,7 +191,7 @@ async def veltpvp(username, session):
         print(await veltpvp(username, session))"""
 
 async def run_def(username):
-    await hypxielPetStats(username, "218c4847-450e-4218-aa99-bcc08c7a6595")
+    await hypxielPetStats(username, "hypixel-api-key)
 
 
 if __name__ == "__main__":
