@@ -93,6 +93,16 @@ async def hypxielAllAchievements(username,key):
         for ach in json_new['player']['achievementsOneTime']:
             data["all_achievements"].append(ach)
     print(data)
+
+
+async def hiveMCAchievements(username):
+    url = f"http://api.hivemc.com/v1/player/{username}"
+    json_data = await get_json(url)
+    str_json = json.dumps(json_data)
+    json_new = json.loads(str_json)
+    data = {"player_info": []}
+    for ach in json_new["achievements"]:
+        print(ach)
     
 
 async def blocksmc(username, session):
@@ -191,7 +201,7 @@ async def veltpvp(username, session):
         print(await veltpvp(username, session))"""
 
 async def run_def(username):
-    await hypxielPetStats(username, "hypixel-api-key)
+    await hypxielPetStats(username, "hypixel-api-key")
 
 
 if __name__ == "__main__":
