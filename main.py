@@ -92,7 +92,7 @@ async def hypxielAllAchievements(username,key):
     else:
         for ach in json_new['player']['achievementsOneTime']:
             data["all_achievements"].append(ach)
-    print(data)
+    return data
 
 
 async def hiveMCAchievements(username):
@@ -100,9 +100,47 @@ async def hiveMCAchievements(username):
     json_data = await get_json(url)
     str_json = json.dumps(json_data)
     json_new = json.loads(str_json)
-    data = {"player_info": []}
-    for ach in json_new["achievements"]:
-        print(ach)
+    data = {"all_achievements": []}
+    for ach in json_new['achievements']:
+        data['all_achievements'].append(ach)
+    return data
+
+async def hiveMCStatus(username):
+    url = f"http://api.hivemc.com/v1/player/{username}"
+    json_data = await get_json(url)
+    str_json = json.dumps(json_data)
+    json_new = json.loads(str_json)
+    data = {"status": []}
+    for status in json_new['status']:
+        thing = json_new['status']
+        data['status'].append(thing)
+    return data
+
+async def hiveMCGameStats(username):
+    url = f"http://api.hivemc.com/v1/game"
+    json_data = await get_json(url)
+    str_json = json.dumps(json_data)
+    json_new = json.loads(str_json)
+    data = {"stats": []}
+    for game in json_new:
+        url = f"http://api.hivemc.com/v1/player/{username}/{game}"
+        json_data = await get_json(url)
+        str_json = json.dumps(json_data)
+        json_new = json.loads(str_json)
+        data['stats'].append({game: json_new})
+    return data
+
+
+async def hiveMCRank(username):
+    url = f"http://api.hivemc.com/v1/player/{username}"
+    json_data = await get_json(url)
+    str_json = json.dumps(json_data)
+    json_new = json.loads(str_json)
+    rank = json_new['rankName']
+    data = {"rank": [rank]}
+    return data
+
+
     
 
 async def blocksmc(username, session):
@@ -201,10 +239,10 @@ async def veltpvp(username, session):
         print(await veltpvp(username, session))"""
 
 async def run_def(username):
-    await hypxielPetStats(username, "hypixel-api-key")
+    await hiveMCRank(username)
 
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_def(""))
+    loop.run_until_complete(run_def("ajay_plays"))
     loop.close()
