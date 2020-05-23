@@ -116,18 +116,12 @@ async def hiveMCStatus(username):
         data['status'].append(thing)
     return data
 
-async def hiveMCGameStats(username):
-    url = f"http://api.hivemc.com/v1/game"
+async def hiveMCGameStats(username, game):
+    url = f"http://api.hivemc.com/v1/player/{username}/{game}"
     json_data = await get_json(url)
     str_json = json.dumps(json_data)
     json_new = json.loads(str_json)
-    data = {"stats": []}
-    for game in json_new:
-        url = f"http://api.hivemc.com/v1/player/{username}/{game}"
-        json_data = await get_json(url)
-        str_json = json.dumps(json_data)
-        json_new = json.loads(str_json)
-        data['stats'].append({game: json_new})
+    data = {"stats": [json_new]}
     return data
 
 
@@ -140,8 +134,6 @@ async def hiveMCRank(username):
     data = {"rank": [rank]}
     return data
 
-
-    
 
 async def blocksmc(username, session):
     url = f"https://blocksmc.com/player/{username}"
@@ -239,10 +231,10 @@ async def veltpvp(username, session):
         print(await veltpvp(username, session))"""
 
 async def run_def(username):
-    await hiveMCRank(username)
+    await hiveMCGameStats(username, "SG")
 
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_def("ajay_plays"))
+    loop.run_until_complete(run_def(""))
     loop.close()
