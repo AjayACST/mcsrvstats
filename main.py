@@ -135,6 +135,23 @@ async def hiveMCRank(username):
     return data
 
 
+
+async def manacube(username, session):
+    url = f"https://www.gommehd.net/player/index?playerName={username}"
+    html = await get_html(url, session)
+    soup = BeautifulSoup(html, "lxml")
+    data = {"game_stats": []}
+    for game in soup.find_all("span", {"class": "server-title-text"}):
+        stats = {}
+        game_name = game.find("span", {"class": "server-title-text"}).get_text().replace("\n", "").strip()
+        for stat in game.find_all("div", {"class": "server-stats"}):
+            stat_val = stat.find("span", {"class": "score"}).get_text()
+            stat_name = stat.get_text().replace("\n", "").strip().replace(stat_val, "")
+            stats[stat_name] = stat_val
+        data["game_stats"].append({game_name: stats})
+    return data
+
+
 async def blocksmc(username, session):
     url = f"https://blocksmc.com/player/{username}"
     html = await get_html(url, session)
@@ -226,15 +243,15 @@ async def veltpvp(username, session):
         data["game_stats"].append({game_name: stats})
     return data
 
-"""async def run_def(username):
-    async with aiohttp.ClientSession() as session:
-        print(await veltpvp(username, session))"""
-
 async def run_def(username):
-    await hiveMCGameStats(username, "SG")
+    async with aiohttp.ClientSession() as session:
+        print(await gommehd(username, session))
+
+"""async def run_def(username):
+    await hiveMCGameStats(username, "SG")"""
 
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_def(""))
+    loop.run_until_complete(run_def("minimichecker"))
     loop.close()
