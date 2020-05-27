@@ -1,6 +1,5 @@
 import aiohttp
 import asyncio
-import requests
 import json
 from bs4 import BeautifulSoup
 
@@ -31,10 +30,9 @@ async def hypixelGameStats(username, key, session):
     data = {"game_stats": []}
     if json_new['player'] is None:
         return False
-    else:
-        for game in json_new['player']['stats']:
-            hypixelGames = json_new['player']['stats'][game] if game in json_new['player']['stats'] else 0
-            data["game_stats"].append({game: hypixelGames})
+    for game in json_new['player']['stats']:
+        hypixelGames = json_new['player']['stats'][game] if game in json_new['player']['stats'] else 0
+        data["game_stats"].append({game: hypixelGames})
     return data
 
 
@@ -46,10 +44,9 @@ async def hypixelPetConsumables(username, key, session):
     data = {"pet_consumables": []}
     if json_new['player'] is None:
         return False
-    else:
-        for pet in json_new['player']['petConsumables']:
-            hypixelPets = json_new['player']['petConsumables'][pet] if pet in json_new['player']['petConsumables'] else 0
-            data["pet_consumables"].append({pet: hypixelPets})
+    for pet in json_new['player']['petConsumables']:
+        hypixelPets = json_new['player']['petConsumables'][pet] if pet in json_new['player']['petConsumables'] else 0
+        data["pet_consumables"].append({pet: hypixelPets})
     print(data)
 
 
@@ -61,10 +58,9 @@ async def hypixelVoting(username, key, session):
     data = {"votesData": []}
     if json_new['player'] is None:
         return False
-    else:
-        for votes in json_new['player']['voting']:
-            hypixelVotes = json_new['player']['voting'][votes] if votes in json_new['player']['voting'] else 0
-            data['votesData'].append({votes: hypixelVotes})
+    for votes in json_new['player']['voting']:
+        hypixelVotes = json_new['player']['voting'][votes] if votes in json_new['player']['voting'] else 0
+        data['votesData'].append({votes: hypixelVotes})
     return data
 
 
@@ -76,11 +72,11 @@ async def hypxielPetStats(username, key, session):
     data = {"petStats": []}
     if json_new['player'] is None:
         return False
-    else:
-        for petStats in json_new['player']['petStats']:
-            hypixelPetStat = json_new['player']['petStats'][petStats] if petStats in json_new['player']['petStats'] else 0
-            data['petStats'].append({petStats: hypixelPetStat})
+    for petStats in json_new['player']['petStats']:
+        hypixelPetStat = json_new['player']['petStats'][petStats] if petStats in json_new['player']['petStats'] else 0
+        data['petStats'].append({petStats: hypixelPetStat})
     return data
+
 
 async def hypxielAllAchievements(username, key, session):
     url = f"https://api.hypixel.net/player?key={key}&name={username}"
@@ -90,9 +86,8 @@ async def hypxielAllAchievements(username, key, session):
     data = {"all_achievements": []}
     if json_new['player'] is None:
         return False
-    else:
-        for ach in json_new['player']['achievementsOneTime']:
-            data["all_achievements"].append(ach)
+    for ach in json_new['player']['achievementsOneTime']:
+        data["all_achievements"].append(ach)
     return data
 
 
@@ -113,7 +108,7 @@ async def hiveMCStatus(username, session):
     str_json = json.dumps(json_data)
     json_new = json.loads(str_json)
     data = {"status": []}
-    for status in json_new['status']:
+    for _ in json_new['status']:
         thing = json_new['status']
         data['status'].append(thing)
     return data
@@ -251,7 +246,7 @@ async def veltpvp(username, session):
     data["game_stats"].append({game_name: stats})
 
     for game in soup.find_all("div", {"class": "server"}):
-        if game.find("div", {"class": "server unknown"}) == None:
+        if not game.find("div", {"class": "server unknown"}):
             break
         game_name = game.find(
             "div", {"class": "server-header"}).get_text().strip()
