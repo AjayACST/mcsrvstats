@@ -9,8 +9,7 @@ async def get_html(url, session):
         if resp.status == 200:
             html = await resp.text()
             return html
-        else:
-            return False
+        return False
 
 
 async def get_json(url, session):
@@ -18,8 +17,7 @@ async def get_json(url, session):
         if resp.status == 200:
             data = await resp.json()
             return data
-        else:
-            return False
+        return False
 
 
 async def hypixelGameStats(username, key, session):
