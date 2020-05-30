@@ -132,20 +132,23 @@ async def hiveMCRank(username, session):
 
 
 async def manacube(username, session):
-    url = f"https://www.gommehd.net/player/index?playerName={username}"
+    url = f"https://manacube.com/stats/player/{username}/"
     html = await get_html(url, session)
     soup = BeautifulSoup(html, "lxml")
     data = {"game_stats": []}
-    for game in soup.find_all("span", {"class": "server-title-text"}):
+    for game in soup.find_all("div", {"class": "server box"}):
         stats = {}
-        game_name = game.find(
-            "span", {"class": "server-title-text"}).get_text().replace("\n", "").strip()
-        for stat in game.find_all("div", {"class": "server-stats"}):
-            stat_val = stat.find("span", {"class": "score"}).get_text()
-            stat_name = stat.get_text().replace("\n", "").strip().replace(stat_val, "")
-            stats[stat_name] = stat_val
+        game_text = soup.find("span", {"class": "server-title-text"})
+        game_name = game_text.get_text().replace("\n", "").strip()
+        for stat in game.find_all("div", {"class": "stat"}):
+            stat_val = stat.find("span", {"class": "stat-val"}).get_text()
+            stat_name = stat.find("span", {"class": "stat-key"}).get_text()
+            stats[stat_name] = stat_val    
         data["game_stats"].append({game_name: stats})
     return data
+
+
+    #not working due to manacube's website
 
 
 async def blocksmc(username, session):
@@ -261,10 +264,10 @@ async def veltpvp(username, session):
 
 async def run_def(username):
     async with aiohttp.ClientSession() as session:
-        print(await blocksmc(username, session))
+        print(await manacube(username, session))
 
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_def("Darkflame72"))
+    loop.run_until_complete(run_def("darkflame72"))
     loop.close()
