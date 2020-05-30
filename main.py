@@ -146,9 +146,20 @@ async def manacube(username, session):
             stats[stat_name] = stat_val    
         data["game_stats"].append({game_name: stats})
     return data
-
-
     #not working due to manacube's website
+
+
+async def wyncraftClasses(username, session):
+    url = f"https://api.wynncraft.com/v2/player/{username}/stats"
+    json_data = await get_json(url, session)
+    str_json = json.dumps(json_data)
+    json_new = json.loads(str_json)
+    data = {"classes": []}
+    if json_new['code'] == 400:
+        return False
+    wynClasses = json_new['data'][0]['classes']
+    data["classes"].append(wynClasses)
+    return data
 
 
 async def blocksmc(username, session):
@@ -264,10 +275,10 @@ async def veltpvp(username, session):
 
 async def run_def(username):
     async with aiohttp.ClientSession() as session:
-        print(await manacube(username, session))
+        print(await wyncraftClasses(username, session))
 
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_def("darkflame72"))
+    loop.run_until_complete(run_def("_Tiger"))
     loop.close()
