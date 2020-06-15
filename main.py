@@ -20,74 +20,6 @@ async def get_json(url, session):
         return False
 
 
-async def hypixelGameStats(username, key, session):
-    url = f"https://api.hypixel.net/player?key={key}&name={username}"
-    json_data = await get_json(url, session)
-    str_json = json.dumps(json_data)
-    json_new = json.loads(str_json)
-    data = {"game_stats": []}
-    if json_new['player'] is None:
-        return False
-    for game in json_new['player']['stats']:
-        hypixelGames = json_new['player']['stats'][game] if game in json_new['player']['stats'] else 0
-        data["game_stats"].append({game: hypixelGames})
-    return data
-
-
-async def hypixelPetConsumables(username, key, session):
-    url = f"https://api.hypixel.net/player?key={key}&name={username}"
-    json_data = await get_json(url, session)
-    str_json = json.dumps(json_data)
-    json_new = json.loads(str_json)
-    data = {"pet_consumables": []}
-    if json_new['player'] is None:
-        return False
-    for pet in json_new['player']['petConsumables']:
-        hypixelPets = json_new['player']['petConsumables'][pet] if pet in json_new['player']['petConsumables'] else 0
-        data["pet_consumables"].append({pet: hypixelPets})
-    print(data)
-
-
-async def hypixelVoting(username, key, session):
-    url = f"https://api.hypixel.net/player?key={key}&name={username}"
-    json_data = await get_json(url, session)
-    str_json = json.dumps(json_data)
-    json_new = json.loads(str_json)
-    data = {"votesData": []}
-    if json_new['player'] is None:
-        return False
-    for votes in json_new['player']['voting']:
-        hypixelVotes = json_new['player']['voting'][votes] if votes in json_new['player']['voting'] else 0
-        data['votesData'].append({votes: hypixelVotes})
-    return data
-
-
-async def hypxielPetStats(username, key, session):
-    url = f"https://api.hypixel.net/player?key={key}&name={username}"
-    json_data = await get_json(url, session)
-    str_json = json.dumps(json_data)
-    json_new = json.loads(str_json)
-    data = {"petStats": []}
-    if json_new['player'] is None:
-        return False
-    for petStats in json_new['player']['petStats']:
-        hypixelPetStat = json_new['player']['petStats'][petStats] if petStats in json_new['player']['petStats'] else 0
-        data['petStats'].append({petStats: hypixelPetStat})
-    return data
-
-
-async def hypxielAllAchievements(username, key, session):
-    url = f"https://api.hypixel.net/player?key={key}&name={username}"
-    json_data = await get_json(url, session)
-    str_json = json.dumps(json_data)
-    json_new = json.loads(str_json)
-    data = {"all_achievements": []}
-    if json_new['player'] is None:
-        return False
-    for ach in json_new['player']['achievementsOneTime']:
-        data["all_achievements"].append(ach)
-    return data
-
 
 async def hiveMCAchievements(username, session):
     url = f"http://api.hivemc.com/v1/player/{username}"
@@ -131,22 +63,15 @@ async def hiveMCRank(username, session):
     return data
 
 
-async def manacube(username, session):
-    url = f"https://manacube.com/stats/player/{username}/"
-    html = await get_html(url, session)
-    soup = BeautifulSoup(html, "lxml")
-    data = {"game_stats": []}
-    for game in soup.find_all("div", {"class": "server box"}):
-        stats = {}
-        game_text = soup.find("span", {"class": "server-title-text"})
-        game_name = game_text.get_text().replace("\n", "").strip()
-        for stat in game.find_all("div", {"class": "stat"}):
-            stat_val = stat.find("span", {"class": "stat-val"}).get_text()
-            stat_name = stat.find("span", {"class": "stat-key"}).get_text()
-            stats[stat_name] = stat_val    
-        data["game_stats"].append({game_name: stats})
+async def manacube(username, session, game):
+    url = f"https://manacube.com/stats_data/fetch.php?username={username}"
+    json_data = await get_json(url, session)
+    str_json = json.dumps(json_data)
+    json_new = json.loads(str_json)
+    game_stat = json_new[game]
+    data = {"game_stats": [game_stat]}
     return data
-    #not working due to manacube's website
+
 
 
 async def wyncraftClasses(username, session):
@@ -275,10 +200,10 @@ async def veltpvp(username, session):
 
 async def run_def(username):
     async with aiohttp.ClientSession() as session:
-        print(await wyncraftClasses(username, session))
+        print(await manacube(username, session, "aztec"))
 
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_def("_Tiger"))
+    loop.run_until_complete(run_def("Rayyan2014"))
     loop.close()
