@@ -114,6 +114,22 @@ async def blocksmc(username, session):
 # a bit of a time consumer will do later not finished yet
 
 
+async def universocraft(username, session):
+    url = f"https://stats.universocraft.com/stats.php?player={username}"
+    html = await get_html(url, session)
+    soup = BeautifulSoup(html, 'lxml')
+    data = {"game_stats": []}
+    for game in soup.find_all("div", {"class": "game"}):
+        stats = {}
+        game_name = game.find("h2").get_text().replace("\n", "").strip()
+        for stat in soup.find_all("div", {"class": "game-stat"}):
+            stat_val = stat.find("p", {"class": "game-stat-count"}).get_text()
+            stat_name = stat.find("p", {"class": "game-stat-title"}).get_text()
+            stats[stat_name] = stat_val
+            data["game_stats"].append({stat_name: stat_val})
+    return data
+
+
 async def minesaga(username, session):
     url = f"https://www.minesaga.org/player/{username}"
     html = await get_html(url, session)
@@ -200,10 +216,10 @@ async def veltpvp(username, session):
 
 async def run_def(username):
     async with aiohttp.ClientSession() as session:
-        print(await manacube(username, session, "aztec"))
+        print(await universocraft(username, session,))
 
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_def("Rayyan2014"))
+    loop.run_until_complete(run_def("jisaac_uwu"))
     loop.close()
