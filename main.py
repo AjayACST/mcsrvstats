@@ -27,6 +27,8 @@ async def hiveMCAchievements(username, session):
     str_json = json.dumps(json_data)
     json_new = json.loads(str_json)
     data = {"all_achievements": []}
+    if json_new == False:
+        return False
     for ach in json_new['achievements']:
         data['all_achievements'].append(ach)
     return data
@@ -37,6 +39,8 @@ async def hiveMCStatus(username, session):
     json_data = await get_json(url, session)
     str_json = json.dumps(json_data)
     json_new = json.loads(str_json)
+    if json_new == False:
+        return False
     data = {"status": []}
     for _ in json_new['status']:
         thing = json_new['status']
@@ -49,6 +53,8 @@ async def hiveMCGameStats(username, game, session):
     json_data = await get_json(url, session)
     str_json = json.dumps(json_data)
     json_new = json.loads(str_json)
+    if json_new == False:
+        return False
     data = {"stats": [json_new]}
     return data
 
@@ -58,6 +64,8 @@ async def hiveMCRank(username, session):
     json_data = await get_json(url, session)
     str_json = json.dumps(json_data)
     json_new = json.loads(str_json)
+    if json_new == False:
+        return False
     rank = json_new['rankName']
     data = {"rank": [rank]}
     return data
@@ -216,10 +224,10 @@ async def veltpvp(username, session):
 
 async def run_def(username):
     async with aiohttp.ClientSession() as session:
-        print(await universocraft(username, session,))
+        print(await hiveMCRank(username, session,))
 
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_def("jisaac_uwu"))
+    loop.run_until_complete(run_def("fyguhjdf"))
     loop.close()
