@@ -90,8 +90,14 @@ async def wyncraftClasses(username, session):
     data = {"classes": []}
     if json_new['code'] == 400:
         return False
-    wynClasses = json_new['data'][0]['classes']
-    data["classes"].append(wynClasses)
+    json_len = len(json_new['data'][0]['classes'])
+    for i in range(json_len):
+        class_name = json_new['data'][0]['classes'][i]['name']
+        class_level = json_new['data'][0]['classes'][i]['level']
+        class_deaths = json_new['data'][0]['classes'][i]['deaths']
+        data['classes'].append({'class_name': class_name, 'class_level': class_level, 'class_deaths': class_deaths})
+    """wynClasses = json_new['data'][0]['classes']
+    data["classes"].append(wynClasses)"""
     return data
 
 
@@ -224,10 +230,10 @@ async def veltpvp(username, session):
 
 async def run_def(username):
     async with aiohttp.ClientSession() as session:
-        print(await hiveMCRank(username, session,))
+        print(await wyncraftClasses(username, session))
 
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_def("fyguhjdf"))
+    loop.run_until_complete(run_def("_Tiger"))
     loop.close()
