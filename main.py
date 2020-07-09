@@ -107,8 +107,6 @@ async def blocksmc(username, session):
     url = f"https://blocksmc.com/player/{username}"
     html = await get_html(url, session)
     soup = BeautifulSoup(html, "lxml")
-    if not soup.find("h1", {"class": "profile-header"}):
-        return False
     rank = (
         soup.find("p", {"class": ["profile-rank"]}).get_text().replace("\n", "").strip()
     )
@@ -254,10 +252,10 @@ async def veltpvp(username, session):
 
 async def run_def(username):
     async with aiohttp.ClientSession() as session:
-        print(await minesaga(username, session))
+        print(await blocksmc(username, session))
 
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_def("Ambitions"))
+    loop.run_until_complete(run_def("Faaiisal"))
     loop.close()
