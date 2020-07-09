@@ -50,7 +50,7 @@ async def hiveMCGameStats(username, game, session):
     json_data = await get_json(url, session)
     str_json = json.dumps(json_data)
     json_new = json.loads(str_json)
-    if json_new == False:
+    if not json_new:
         return False
     data = {"stats": [json_new]}
     return data
@@ -68,13 +68,10 @@ async def hiveMCRank(username, session):
     return data
 
 
-async def manacube(username, session, game):
+async def manacube(username, session):
     url = f"https://manacube.com/stats_data/fetch.php?username={username}"
-    json_data = await get_json(url, session)
-    str_json = json.dumps(json_data)
-    json_new = json.loads(str_json)
-    game_stat = json_new[game]
-    data = {"game_stats": [game_stat]}
+    json_data = await get_html(url, session)
+    data = json.loads(json_data)
     return data
 
 
@@ -252,10 +249,10 @@ async def veltpvp(username, session):
 
 async def run_def(username):
     async with aiohttp.ClientSession() as session:
-        print((await blocksmc(username, session)))
+        print((await manacube(username, session)))
 
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_def("1Brhom"))
+    loop.run_until_complete(run_def("romero101"))
     loop.close()
