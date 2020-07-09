@@ -140,7 +140,7 @@ async def universocraft(username, session):
             stat_val = stat.find("p", {"class": "game-stat-count"}).get_text()
             stat_name = stat.find("p", {"class": "game-stat-title"}).get_text()
             stats[stat_name] = stat_val
-            data["game_stats"].append({stat_name: stat_val})
+        data["game_stats"].append({game_name: stats})
     return data
 
 
@@ -252,10 +252,10 @@ async def veltpvp(username, session):
 
 async def run_def(username):
     async with aiohttp.ClientSession() as session:
-        print(await blocksmc(username, session))
+        print(await universocraft(username, session))
 
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_def("Faaiisal"))
+    loop.run_until_complete(run_def("Novitaslayer"))
     loop.close()
