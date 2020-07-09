@@ -118,7 +118,7 @@ async def blocksmc(username, session):
         game_name = (
             game.find("div", {"class": "title"}).get_text().replace("\n", "").strip()
         )
-        for stat in game.find_all("ul"):
+        for stat in game.find_all("li"):
             stat_name = (
                 stat.find("div", {"class": "key"}).get_text().replace("\n", "").strip()
             )
@@ -252,10 +252,10 @@ async def veltpvp(username, session):
 
 async def run_def(username):
     async with aiohttp.ClientSession() as session:
-        print((await universocraft(username, session)))
+        print((await blocksmc(username, session)))
 
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_def("Novitaslayer"))
+    loop.run_until_complete(run_def("1Brhom"))
     loop.close()
