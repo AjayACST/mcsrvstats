@@ -136,7 +136,7 @@ async def universocraft(username, session):
     for game in soup.find_all("div", {"class": "game"}):
         stats = {}
         game_name = game.find("h2").get_text().replace("\n", "").strip()
-        for stat in soup.find_all("div", {"class": "game-stat"}):
+        for stat in game.find_all("div", {"class": "game-stat"}):
             stat_val = stat.find("p", {"class": "game-stat-count"}).get_text()
             stat_name = stat.find("p", {"class": "game-stat-title"}).get_text()
             stats[stat_name] = stat_val
@@ -252,7 +252,7 @@ async def veltpvp(username, session):
 
 async def run_def(username):
     async with aiohttp.ClientSession() as session:
-        print(await universocraft(username, session))
+        print((await universocraft(username, session)))
 
 
 if __name__ == "__main__":
