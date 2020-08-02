@@ -72,6 +72,8 @@ async def manacube(username, session):
     url = f"https://manacube.com/stats_data/fetch.php?username={username}"
     json_data = await get_html(url, session)
     data = json.loads(json_data)
+    if data["exists"] == False:
+        return False
     return data
 
 
@@ -104,9 +106,13 @@ async def blocksmc(username, session):
     url = f"https://blocksmc.com/player/{username}"
     html = await get_html(url, session)
     soup = BeautifulSoup(html, "lxml")
-    rank = (
+    try:
+        rank = (
         soup.find("p", {"class": ["profile-rank"]}).get_text().replace("\n", "").strip()
     )
+    except:
+        return False
+    
     timeplayed = soup.find("h1", {"dir": ["ltr"]}).get_text().replace("\n", "").strip()
     data = {"rank": rank, "timeplayed": timeplayed, "game_stats": []}
 
@@ -130,6 +136,8 @@ async def universocraft(username, session):
     html = await get_html(url, session)
     soup = BeautifulSoup(html, "lxml")
     data = {"game_stats": []}
+    if soup.find("p").get_text() == "¡No se ha encontrado ningún usuario con ese nombre!":
+        return False
     for game in soup.find_all("div", {"class": "game"}):
         stats = {}
         game_name = game.find("h2").get_text().replace("\n", "").strip()
@@ -146,7 +154,10 @@ async def minesaga(username, session):
     html = await get_html(url, session)
     soup = BeautifulSoup(html, "lxml")
     main_info = soup.find("div", {"class": ["dd-profile-details"]})
-    joined = main_info.find("h4").get_text().strip()
+    try:
+        joined = main_info.find("h4").get_text().strip()
+    except:
+        return False
     last_seen = main_info.findAll("span")[1].get_text().strip()
     play_time = main_info.findAll("span")[2].get_text().strip()
     data = {
@@ -178,6 +189,8 @@ async def gommehd(username, session):
     html = await get_html(url, session)
     soup = BeautifulSoup(html, "lxml")
     data = {"game_stats": []}
+    if soup.find("title").get_text() == "Statistiken":
+        return False
     for game in soup.find_all("div", {"class": "stat-table"}):
         stats = {}
         game_name = game.find("h5").get_text().replace("\n", "").strip()
@@ -192,6 +205,8 @@ async def gommehd(username, session):
 async def veltpvp(username, session):
     url = f"https://www.veltpvp.com/u/{username}"
     html = await get_html(url, session)
+    if html == False:
+        return False
     soup = BeautifulSoup(html, "lxml")
     rank = soup.find("div", {"id": "profile"}).find("h2").get_text().strip()
     last_seen = (
@@ -254,5 +269,5 @@ async def run_def(username):
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_def("romero101"))
+    loop.run_until_complete(run_def("Darkflame72"))
     loop.close()
