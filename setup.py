@@ -16,8 +16,9 @@ setuptools.setup(
     classifiers=[
         "Programming Language :: Python :: 3",
         "Operating System :: OS Independent",
+        "License :: OSI Approved :: MIT License",
         "Development Status :: 2 - Pre-Alpha",
     ],
     python_requires=">=3.6",
-    install_requires=["aiohttp",],
+    install_requires=["aiohttp", "beautifulsoup4"],
 )

@@ -1,5 +1,3 @@
-import aiohttp
-import asyncio
 import json
 from bs4 import BeautifulSoup
 
@@ -24,7 +22,7 @@ async def hiveMCAchievements(username, session):
     url = f"http://api.hivemc.com/v1/player/{username}"
     json_data = await get_json(url, session)
     data = {"all_achievements": []}
-    if json_data == False:
+    if not json_data:
         return False
     for ach in json_data["achievements"]:
         data["all_achievements"].append(ach)
@@ -36,7 +34,7 @@ async def hiveMCStatus(username, session):
     json_data = await get_json(url, session)
     str_json = json.dumps(json_data)
     json_new = json.loads(str_json)
-    if json_new == False:
+    if not json_new:
         return False
     data = {"status": []}
     for _ in json_new["status"]:
@@ -61,7 +59,7 @@ async def hiveMCRank(username, session):
     json_data = await get_json(url, session)
     str_json = json.dumps(json_data)
     json_new = json.loads(str_json)
-    if json_new == False:
+    if not json_new:
         return False
     rank = json_new["rankName"]
     data = {"rank": [rank]}
@@ -72,7 +70,7 @@ async def manacube(username, session):
     url = f"https://manacube.com/stats_data/fetch.php?username={username}"
     json_data = await get_html(url, session)
     data = json.loads(json_data)
-    if data["exists"] == False:
+    if not data["exists"]:
         return False
     return data
 
@@ -97,8 +95,6 @@ async def wyncraftClasses(username, session):
                 "class_deaths": class_deaths,
             }
         )
-    """wynClasses = json_new['data'][0]['classes']
-    data["classes"].append(wynClasses)"""
     return data
 
 
@@ -108,11 +104,14 @@ async def blocksmc(username, session):
     soup = BeautifulSoup(html, "lxml")
     try:
         rank = (
-        soup.find("p", {"class": ["profile-rank"]}).get_text().replace("\n", "").strip()
-    )
+            soup.find("p", {"class": ["profile-rank"]})
+            .get_text()
+            .replace("\n", "")
+            .strip()
+        )
     except:
         return False
-    
+
     timeplayed = soup.find("h1", {"dir": ["ltr"]}).get_text().replace("\n", "").strip()
     data = {"rank": rank, "timeplayed": timeplayed, "game_stats": []}
 
@@ -136,7 +135,10 @@ async def universocraft(username, session):
     html = await get_html(url, session)
     soup = BeautifulSoup(html, "lxml")
     data = {"game_stats": []}
-    if soup.find("p").get_text() == "¡No se ha encontrado ningún usuario con ese nombre!":
+    if (
+        soup.find("p").get_text()
+        == "¡No se ha encontrado ningún usuario con ese nombre!"
+    ):
         return False
     for game in soup.find_all("div", {"class": "game"}):
         stats = {}
@@ -205,7 +207,7 @@ async def gommehd(username, session):
 async def veltpvp(username, session):
     url = f"https://www.veltpvp.com/u/{username}"
     html = await get_html(url, session)
-    if html == False:
+    if not html:
         return False
     soup = BeautifulSoup(html, "lxml")
     rank = soup.find("div", {"id": "profile"}).find("h2").get_text().strip()
@@ -260,14 +262,3 @@ async def veltpvp(username, session):
             stats[stat_name] = stat_val
         data["game_stats"].append({game_name: stats})
     return data
-
-
-async def run_def(username):
-    async with aiohttp.ClientSession() as session:
-        print((await manacube(username, session)))
-
-
-if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_def("Darkflame72"))
-    loop.close()
