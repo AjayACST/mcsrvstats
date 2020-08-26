@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="mcsrvstats",
-    version="0.1.0",
+    version="0.1.1",
     author="Leon Bowie",
     author_email="leon@bowie-co.nz",
     description="An async wrapper for popular minecraft servers",
