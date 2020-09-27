@@ -1,24 +1,59 @@
 import json
 from bs4 import BeautifulSoup
+import aiohttp
+from .exceptions.exceptions import ApiError
 
 
-async def get_html(url, session):
+async def get_html(url: str, session: aiohttp.ClientSession) -> str:
+    """Get html from api.
+
+    Args:
+        url (str): url of api
+        session (aiohttp.ClientSession): aiohttp session
+
+    Raises:
+        ApiError: error if invalid response
+
+    Returns:
+        str: raw html
+    """
     async with session.get(url) as resp:
         if resp.status == 200:
             html = await resp.text()
             return html
-        return False
+        raise ApiError("Api response not succesful")
 
 
-async def get_json(url, session):
+async def get_json(url: str, session: aiohttp.ClientSession) -> dict:
+    """Get json response from api.
+
+    Args:
+        url (str): url of api
+        session (aiohttp.ClientSession): aiohttp session
+
+    Raises:
+        ApiError: error if invalid response
+
+    Returns:
+        dict: json response
+    """
     async with session.get(url) as resp:
         if resp.status == 200:
             data = await resp.json()
             return data
-        return False
+        raise ApiError("Api response not succesful")
 
 
-async def hiveMCAchievements(username, session):
+async def hiveMCAchievements(username: str, session: aiohttp.ClientSession) -> dict:
+    """[summary]
+
+    Args:
+        username (str): [description]
+        session (aiohttp.ClientSession): [description]
+
+    Returns:
+        dict: [description]
+    """
     url = f"http://api.hivemc.com/v1/player/{username}"
     json_data = await get_json(url, session)
     data = {"all_achievements": []}
@@ -29,7 +64,16 @@ async def hiveMCAchievements(username, session):
     return data
 
 
-async def hiveMCStatus(username, session):
+async def hiveMCStatus(username: str, session: aiohttp.ClientSession) -> dict:
+    """[summary]
+
+    Args:
+        username (str): [description]
+        session (aiohttp.ClientSession): [description]
+
+    Returns:
+        dict: [description]
+    """
     url = f"http://api.hivemc.com/v1/player/{username}"
     json_data = await get_json(url, session)
     str_json = json.dumps(json_data)
@@ -43,7 +87,19 @@ async def hiveMCStatus(username, session):
     return data
 
 
-async def hiveMCGameStats(username, game, session):
+async def hiveMCGameStats(
+    username: str, game: str, session: aiohttp.ClientSession
+) -> dict:
+    """[summary]
+
+    Args:
+        username (str): [description]
+        game (str): [description]
+        session (aiohttp.ClientSession): [description]
+
+    Returns:
+        dict: [description]
+    """
     url = f"http://api.hivemc.com/v1/player/{username}/{game}"
     json_data = await get_json(url, session)
     str_json = json.dumps(json_data)
@@ -54,7 +110,16 @@ async def hiveMCGameStats(username, game, session):
     return data
 
 
-async def hiveMCRank(username, session):
+async def hiveMCRank(username: str, session: aiohttp.ClientSession) -> dict:
+    """[summary]
+
+    Args:
+        username (str): [description]
+        session (aiohttp.ClientSession): [description]
+
+    Returns:
+        dict: [description]
+    """
     url = f"http://api.hivemc.com/v1/player/{username}"
     json_data = await get_json(url, session)
     str_json = json.dumps(json_data)
@@ -66,7 +131,16 @@ async def hiveMCRank(username, session):
     return data
 
 
-async def manacube(username, session):
+async def manacube(username: str, session: aiohttp.ClientSession) -> dict:
+    """[summary]
+
+    Args:
+        username (str): [description]
+        session (aiohttp.ClientSession): [description]
+
+    Returns:
+        dict: [description]
+    """
     url = f"https://manacube.com/stats_data/fetch.php?username={username}"
     json_data = await get_html(url, session)
     data = json.loads(json_data)
@@ -75,7 +149,16 @@ async def manacube(username, session):
     return data
 
 
-async def wyncraftClasses(username, session):
+async def wyncraftClasses(username: str, session: aiohttp.ClientSession) -> dict:
+    """[summary]
+
+    Args:
+        username (str): [description]
+        session (aiohttp.ClientSession): [description]
+
+    Returns:
+        dict: [description]
+    """
     url = f"https://api.wynncraft.com/v2/player/{username}/stats"
     json_data = await get_json(url, session)
     str_json = json.dumps(json_data)
@@ -98,7 +181,16 @@ async def wyncraftClasses(username, session):
     return data
 
 
-async def blocksmc(username, session):
+async def blocksmc(username: str, session: aiohttp.ClientSession) -> dict:
+    """[summary]
+
+    Args:
+        username (str): [description]
+        session (aiohttp.ClientSession): [description]
+
+    Returns:
+        dict: [description]
+    """
     url = f"https://blocksmc.com/player/{username}"
     html = await get_html(url, session)
     soup = BeautifulSoup(html, "lxml")
@@ -130,7 +222,16 @@ async def blocksmc(username, session):
     return data
 
 
-async def universocraft(username, session):
+async def universocraft(username: str, session: aiohttp.ClientSession) -> dict:
+    """[summary]
+
+    Args:
+        username (str): [description]
+        session (aiohttp.ClientSession): [description]
+
+    Returns:
+        dict: [description]
+    """
     url = f"https://stats.universocraft.com/stats.php?player={username}"
     html = await get_html(url, session)
     soup = BeautifulSoup(html, "lxml")
@@ -151,7 +252,16 @@ async def universocraft(username, session):
     return data
 
 
-async def minesaga(username, session):
+async def minesaga(username: str, session: aiohttp.ClientSession) -> dict:
+    """[summary]
+
+    Args:
+        username (str): [description]
+        session (aiohttp.ClientSession): [description]
+
+    Returns:
+        dict: [description]
+    """
     url = f"https://www.minesaga.org/player/{username}"
     html = await get_html(url, session)
     soup = BeautifulSoup(html, "lxml")
@@ -186,7 +296,16 @@ async def minesaga(username, session):
     return data
 
 
-async def gommehd(username, session):
+async def gommehd(username: str, session: aiohttp.ClientSession) -> dict:
+    """[summary]
+
+    Args:
+        username (str): [description]
+        session (aiohttp.ClientSession): [description]
+
+    Returns:
+        dict: [description]
+    """
     url = f"https://www.gommehd.net/player/index?playerName={username}"
     html = await get_html(url, session)
     soup = BeautifulSoup(html, "lxml")
@@ -204,7 +323,16 @@ async def gommehd(username, session):
     return data
 
 
-async def veltpvp(username, session):
+async def veltpvp(username: str, session: aiohttp.ClientSession) -> dict:
+    """[summary]
+
+    Args:
+        username (str): [description]
+        session (aiohttp.ClientSession): [description]
+
+    Returns:
+        dict: [description]
+    """
     url = f"https://www.veltpvp.com/u/{username}"
     html = await get_html(url, session)
     if not html:
