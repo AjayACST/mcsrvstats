@@ -81,7 +81,7 @@ async def wyncraftClasses(username, session):
     str_json = json.dumps(json_data)
     json_new = json.loads(str_json)
     data = {"classes": []}
-    if json_new["code"] == 400:
+    if json_new == False:
         return False
     json_len = len(json_new["data"][0]["classes"])
     for i in range(json_len):
