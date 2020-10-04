@@ -75,7 +75,7 @@ async def manacube(username, session):
     return data
 
 
-async def wyncraftClasses(username, session):
+async def wynncraftClasses(username, session):
     url = f"https://api.wynncraft.com/v2/player/{username}/stats"
     json_data = await get_json(url, session)
     str_json = json.dumps(json_data)
