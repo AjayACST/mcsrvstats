@@ -1,4 +1,5 @@
 """Main functions for mcsrvstats."""
+from typing import Optional
 
 import aiohttp
 from bs4 import BeautifulSoup
@@ -9,8 +10,11 @@ from .exceptions.exceptions import ApiError
 class Client:
     """Client class."""
 
-    def __init__(self) -> None:
+    def __init__(self, session: Optional[aiohttp.ClientSession] = None) -> None:
         """Initialises class and creates aiohttp session."""
+        if session:
+            self.session = session
+            return
         self.session = aiohttp.ClientSession()
 
     async def close(self) -> None:
