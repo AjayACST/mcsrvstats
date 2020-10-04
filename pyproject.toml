@@ -15,7 +15,7 @@ license = "MIT"
 name = "mcsrvstats"
 readme = "README.md"
 repository = "https://github.com/Obsidion-dev/mcsrvstats"
-version = "0.1.1"
+version = "0.2.0"
 
 [tool.poetry.dependencies]
 aiohttp = "^3.6.2"
@@ -39,7 +39,7 @@ mypy = "^0.782"
 pytest = "^5.0"
 pytest-cov = "^2.10.1"
 pytest-mock = "^3.3.1"
-pytype = {version = "^2020.9.16", python = "3.7"}
+pytype = {version = "^2020.9.29", python = "3.8"}
 safety = "^1.9.0"
 sphinx = "^3.2.1"
 sphinx-autodoc-typehints = "^1.11.0"

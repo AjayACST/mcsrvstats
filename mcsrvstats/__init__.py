@@ -5,6 +5,7 @@ A wrapper for a collection of popular minecraft server stats.
 :copyright: (c) 2020 Darkflame72
 :license: MIT, see LICENSE for more details.
 """
+from .main import Client
 
 __title__ = "mcsrvstats"
 __author__ = "Leon Bowie"
@@ -23,10 +24,4 @@ try:
 except PackageNotFoundError:  # pragma: no cover
     __version__ = "unknown"
 
-
-from collections import namedtuple
-
-
-VersionInfo = namedtuple("VersionInfo", "major minor micro releaselevel serial")
-
-version_info = VersionInfo(major=0, minor=1, micro=1, releaselevel="alpha", serial=0)
+__all__ = ["Client"]

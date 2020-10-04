@@ -2,7 +2,7 @@
 
 
 class ApiError(Exception):
-    """Raised when a error occurs on the api side"""
+    """Raised when a error occurs on the api side."""
 
     def __init__(self, error: str, source: str = "unknown source") -> None:
         """Error raised when api is not succesful.

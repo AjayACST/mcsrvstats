@@ -1,384 +1,326 @@
-import json
-from bs4 import BeautifulSoup
+"""Main functions for mcsrvstats."""
+
 import aiohttp
+from bs4 import BeautifulSoup
+
 from .exceptions.exceptions import ApiError
 
 
-async def get_html(url: str, session: aiohttp.ClientSession) -> str:
-    """Get html from api.
+class Client:
+    """Client class."""
 
-    Args:
-        url (str): url of api
-        session (aiohttp.ClientSession): aiohttp session
+    def __init__(self) -> None:
+        """Initialises class and creates aiohttp session."""
+        self.session = aiohttp.ClientSession()
 
-    Raises:
-        ApiError: error if invalid response
+    async def close(self) -> None:
+        """Used for safe client cleanup and stuff."""
+        await self.session.close()
 
-    Returns:
-        str: raw html
-    """
-    async with session.get(url) as resp:
-        if resp.status == 200:
-            html = await resp.text()
-            return html
-        raise ApiError("Api response not succesful")
+    async def get_html(self, url: str) -> str:
+        """Get html from api.
 
+        Args:
+            url (str): url of api
 
-async def get_json(url: str, session: aiohttp.ClientSession) -> dict:
-    """Get json response from api.
+        Raises:
+            ApiError: error if invalid response
 
-    Args:
-        url (str): url of api
-        session (aiohttp.ClientSession): aiohttp session
+        Returns:
+            str: raw html
+        """
+        async with self.session.get(url) as resp:
+            if resp.status == 200:
+                html = await resp.text()
+                return html
+            raise ApiError("Api response not succesful")
 
-    Raises:
-        ApiError: error if invalid response
+    async def get_json(self, url: str) -> dict:
+        """Get json response from api.
 
-    Returns:
-        dict: json response
-    """
-    async with session.get(url) as resp:
-        if resp.status == 200:
-            data = await resp.json()
-            return data
-        raise ApiError("Api response not succesful")
+        Args:
+            url (str): url of api
 
+        Raises:
+            ApiError: error if invalid response
 
-async def hiveMCAchievements(username: str, session: aiohttp.ClientSession) -> dict:
-    """[summary]
+        Returns:
+            dict: json response
+        """
+        async with self.session.get(url) as resp:
+            if resp.status == 200:
+                data = await resp.json()
+                return data
+            raise ApiError("Api response not succesful")
 
-    Args:
-        username (str): [description]
-        session (aiohttp.ClientSession): [description]
+    async def hiveMCAchievements(self, username: str) -> dict:
+        """Hive Minceaft player achievements.
 
-    Returns:
-        dict: [description]
-    """
-    url = f"http://api.hivemc.com/v1/player/{username}"
-    json_data = await get_json(url, session)
-    data = {"all_achievements": []}
-    if not json_data:
-        return False
-    for ach in json_data["achievements"]:
-        data["all_achievements"].append(ach)
-    return data
+        Args:
+            username (str): username of player
 
+        Returns:
+            dict: dictionary of achievements.
+        """
+        url = f"http://api.hivemc.com/v1/player/{username}"
+        json_data = await self.get_json(url)
+        data: dict = {"all_achievements": []}
+        for ach in json_data["achievements"]:
+            data["all_achievements"].append(ach)
+        return data
 
-async def hiveMCStatus(username: str, session: aiohttp.ClientSession) -> dict:
-    """[summary]
+    async def hiveMCStatus(self, username: str) -> dict:
+        """Hive Minecraft player status.
 
-    Args:
-        username (str): [description]
-        session (aiohttp.ClientSession): [description]
+        Args:
+            username (str): username of player
 
-    Returns:
-        dict: [description]
-    """
-    url = f"http://api.hivemc.com/v1/player/{username}"
-    json_data = await get_json(url, session)
-    str_json = json.dumps(json_data)
-    json_new = json.loads(str_json)
-    if not json_new:
-        return False
-    data = {"status": []}
-    for _ in json_new["status"]:
-        thing = json_new["status"]
-        data["status"].append(thing)
-    return data
+        Returns:
+            dict: dictionary of status
+        """
+        url = f"http://api.hivemc.com/v1/player/{username}"
+        json_data = await self.get_json(url)
+        data: dict = {"status": []}
+        for _ in json_data["status"]:
+            thing = json_data["status"]
+            data["status"].append(thing)
+        return data
 
+    async def hiveMCGameStats(self, username: str, game: str) -> dict:
+        """Hive Minecraft game stats of a player.
 
-async def hiveMCGameStats(
-    username: str, game: str, session: aiohttp.ClientSession
-) -> dict:
-    """[summary]
+        Args:
+            username (str): username of player
+            game (str): game for stats
 
-    Args:
-        username (str): [description]
-        game (str): [description]
-        session (aiohttp.ClientSession): [description]
+        Returns:
+            dict: dictionary of stats.
+        """
+        url = f"http://api.hivemc.com/v1/player/{username}/{game}"
+        json_data = await self.get_json(url)
+        data = {"stats": [json_data]}
+        return data
 
-    Returns:
-        dict: [description]
-    """
-    url = f"http://api.hivemc.com/v1/player/{username}/{game}"
-    json_data = await get_json(url, session)
-    str_json = json.dumps(json_data)
-    json_new = json.loads(str_json)
-    if not json_new:
-        return False
-    data = {"stats": [json_new]}
-    return data
+    async def hiveMCRank(self, username: str) -> dict:
+        """Hive Minecraft rank.
 
+        Args:
+            username (str): username of player
 
-async def hiveMCRank(username: str, session: aiohttp.ClientSession) -> dict:
-    """[summary]
+        Returns:
+            dict: dictionary of player rank
+        """
+        url = f"http://api.hivemc.com/v1/player/{username}"
+        json_data = await self.get_json(url)
+        data = {"rank": [json_data["rankName"]]}
+        return data
 
-    Args:
-        username (str): [description]
-        session (aiohttp.ClientSession): [description]
+    async def manacube(self, username: str) -> dict:
+        """Manacube player stats.
 
-    Returns:
-        dict: [description]
-    """
-    url = f"http://api.hivemc.com/v1/player/{username}"
-    json_data = await get_json(url, session)
-    str_json = json.dumps(json_data)
-    json_new = json.loads(str_json)
-    if not json_new:
-        return False
-    rank = json_new["rankName"]
-    data = {"rank": [rank]}
-    return data
+        Args:
+            username (str): username of player
 
+        Returns:
+            dict: dictionary of player stats
+        """
+        url = f"https://manacube.com/stats_data/fetch.php?username={username}"
+        json_data = await self.get_json(url)
+        return json_data
 
-async def manacube(username: str, session: aiohttp.ClientSession) -> dict:
-    """[summary]
+    async def wynncraftClasses(self, username: str) -> dict:
+        """Wynncraft player classes.
 
-    Args:
-        username (str): [description]
-        session (aiohttp.ClientSession): [description]
+        Args:
+            username (str): username of player
 
-    Returns:
-        dict: [description]
-    """
-    url = f"https://manacube.com/stats_data/fetch.php?username={username}"
-    json_data = await get_html(url, session)
-    data = json.loads(json_data)
-    if not data["exists"]:
-        return False
-    return data
+        Returns:
+            dict: dictionary of player classes
+        """
+        url = f"https://api.wynncraft.com/v2/player/{username}/stats"
+        json_data = await self.get_json(url)
+        data: dict = {"classes": []}
+        for _class in json_data["data"][0]["classes"]:
+            data["classes"].append(
+                {
+                    "class_name": _class["name"],
+                    "class_level": _class["level"],
+                    "class_deaths": _class["deaths"],
+                }
+            )
+        return data
 
+    async def blocksmc(self, username: str) -> dict:
+        """Blocksmc player stats.
 
-async def wyncraftClasses(username: str, session: aiohttp.ClientSession) -> dict:
-    """[summary]
+        Args:
+            username (str): username of player
 
-    Args:
-        username (str): [description]
-        session (aiohttp.ClientSession): [description]
-
-    Returns:
-        dict: [description]
-    """
-    url = f"https://api.wynncraft.com/v2/player/{username}/stats"
-    json_data = await get_json(url, session)
-    str_json = json.dumps(json_data)
-    json_new = json.loads(str_json)
-    data = {"classes": []}
-    if json_new["code"] == 400:
-        return False
-    json_len = len(json_new["data"][0]["classes"])
-    for i in range(json_len):
-        class_name = json_new["data"][0]["classes"][i]["name"]
-        class_level = json_new["data"][0]["classes"][i]["level"]
-        class_deaths = json_new["data"][0]["classes"][i]["deaths"]
-        data["classes"].append(
-            {
-                "class_name": class_name,
-                "class_level": class_level,
-                "class_deaths": class_deaths,
-            }
-        )
-    return data
-
-
-async def blocksmc(username: str, session: aiohttp.ClientSession) -> dict:
-    """[summary]
-
-    Args:
-        username (str): [description]
-        session (aiohttp.ClientSession): [description]
-
-    Returns:
-        dict: [description]
-    """
-    url = f"https://blocksmc.com/player/{username}"
-    html = await get_html(url, session)
-    soup = BeautifulSoup(html, "lxml")
-    try:
+        Returns:
+            dict: dictionary of player stats
+        """
+        url = f"https://blocksmc.com/player/{username}"
+        html = await self.get_html(url)
+        soup = BeautifulSoup(html, "lxml")
         rank = (
             soup.find("p", {"class": ["profile-rank"]})
             .get_text()
             .replace("\n", "")
             .strip()
         )
-    except:
-        return False
 
-    timeplayed = soup.find("h1", {"dir": ["ltr"]}).get_text().replace("\n", "").strip()
-    data = {"rank": rank, "timeplayed": timeplayed, "game_stats": []}
-
-    for game in soup.find_all("div", {"class": "col-xl-4"}):
-        stats = {}
-        game_name = (
-            game.find("div", {"class": "title"}).get_text().replace("\n", "").strip()
+        timeplayed = (
+            soup.find("h1", {"dir": ["ltr"]}).get_text().replace("\n", "").strip()
         )
-        for stat in game.find_all("li"):
-            stat_name = (
-                stat.find("div", {"class": "key"}).get_text().replace("\n", "").strip()
+        data = {"rank": rank, "timeplayed": timeplayed, "game_stats": []}
+
+        for game in soup.find_all("div", {"class": "col-xl-4"}):
+            stats = {}
+            game_name = (
+                game.find("div", {"class": "title"})
+                .get_text()
+                .replace("\n", "")
+                .strip()
             )
-            stat_val = int(stat.find("div", {"class": "val"}).get_text())
-            stats[stat_name] = stat_val
-        data["game_stats"].append({game_name: stats})
-    return data
+            for stat in game.find_all("li"):
+                stat_name = (
+                    stat.find("div", {"class": "key"})
+                    .get_text()
+                    .replace("\n", "")
+                    .strip()
+                )
+                stat_val = int(stat.find("div", {"class": "val"}).get_text())
+                stats[stat_name] = stat_val
+            data["game_stats"].append({game_name: stats})
+        return data
 
+    async def universocraft(self, username: str) -> dict:
+        """Universocraft player stats.
 
-async def universocraft(username: str, session: aiohttp.ClientSession) -> dict:
-    """[summary]
+        Args:
+            username (str): username of player
 
-    Args:
-        username (str): [description]
-        session (aiohttp.ClientSession): [description]
+        Returns:
+            dict: dictionary of player stats
+        """
+        url = f"https://stats.universocraft.com/stats.php?player={username}"
+        html = await self.get_html(url)
+        soup = BeautifulSoup(html, "lxml")
+        data: dict = {"game_stats": []}
+        for game in soup.find_all("div", {"class": "game"}):
+            stats = {}
+            game_name = game.find("h2").get_text().replace("\n", "").strip()
+            for stat in game.find_all("div", {"class": "game-stat"}):
+                stat_val = stat.find("p", {"class": "game-stat-count"}).get_text()
+                stat_name = stat.find("p", {"class": "game-stat-title"}).get_text()
+                stats[stat_name] = stat_val
+            data["game_stats"].append({game_name: stats})
+        return data
 
-    Returns:
-        dict: [description]
-    """
-    url = f"https://stats.universocraft.com/stats.php?player={username}"
-    html = await get_html(url, session)
-    soup = BeautifulSoup(html, "lxml")
-    data = {"game_stats": []}
-    if (
-        soup.find("p").get_text()
-        == "¡No se ha encontrado ningún usuario con ese nombre!"
-    ):
-        return False
-    for game in soup.find_all("div", {"class": "game"}):
-        stats = {}
-        game_name = game.find("h2").get_text().replace("\n", "").strip()
-        for stat in game.find_all("div", {"class": "game-stat"}):
-            stat_val = stat.find("p", {"class": "game-stat-count"}).get_text()
-            stat_name = stat.find("p", {"class": "game-stat-title"}).get_text()
-            stats[stat_name] = stat_val
-        data["game_stats"].append({game_name: stats})
-    return data
+    async def minesaga(self, username: str) -> dict:
+        """Minesaga player stats.
 
+        Args:
+            username (str): username of player
 
-async def minesaga(username: str, session: aiohttp.ClientSession) -> dict:
-    """[summary]
-
-    Args:
-        username (str): [description]
-        session (aiohttp.ClientSession): [description]
-
-    Returns:
-        dict: [description]
-    """
-    url = f"https://www.minesaga.org/player/{username}"
-    html = await get_html(url, session)
-    soup = BeautifulSoup(html, "lxml")
-    main_info = soup.find("div", {"class": ["dd-profile-details"]})
-    try:
+        Returns:
+            dict: dictionary of player stats
+        """
+        url = f"https://www.minesaga.org/player/{username}"
+        html = await self.get_html(url)
+        soup = BeautifulSoup(html, "lxml")
+        main_info = soup.find("div", {"class": ["dd-profile-details"]})
         joined = main_info.find("h4").get_text().strip()
-    except:
-        return False
-    last_seen = main_info.findAll("span")[1].get_text().strip()
-    play_time = main_info.findAll("span")[2].get_text().strip()
-    data = {
-        "joined": joined,
-        "last_seen": last_seen,
-        "play_time": play_time,
-        "game_stats": [],
-    }
+        data = {
+            "joined": joined,
+            "last_seen": main_info.findAll("span")[1].get_text().strip(),
+            "play_time": main_info.findAll("span")[2].get_text().strip(),
+            "game_stats": [],
+        }
 
-    for game in soup.find_all("div", {"class": "dd-section col-md-4"}):
-        stats = {}
-        game_name = (
-            game.find("div", {"class": "dd-box-title"})
+        for game in soup.find_all("div", {"class": "dd-section col-md-4"}):
+            stats = {}
+            game_name = (
+                game.find("div", {"class": "dd-box-title"})
+                .get_text()
+                .replace("\n", "")
+                .strip()
+            )
+            for stat in game.find_all("dl"):
+                stat_name = stat.find("dt").get_text().replace("\n", "").strip()
+                stat_val = stat.find("dd").get_text()
+                stats[stat_name] = stat_val
+            data["game_stats"].append({game_name: stats})
+
+        return data
+
+    async def gommehd(self, username: str) -> dict:
+        """Gommehd player stats.
+
+        Args:
+            username (str): username of player
+
+        Returns:
+            dict: dictionary of player stats
+        """
+        url = f"https://www.gommehd.net/player/index?playerName={username}"
+        html = await self.get_html(url)
+        soup = BeautifulSoup(html, "lxml")
+        data: dict = {"game_stats": []}
+        for game in soup.find_all("div", {"class": "stat-table"}):
+            stats = {}
+            game_name = game.find("h5").get_text().replace("\n", "").strip()
+            for stat in game.find_all("li"):
+                stat_val = stat.find("span", {"class": "score"}).get_text()
+                stat_name = (
+                    stat.get_text().replace("\n", "").strip().replace(stat_val, "")
+                )
+                stats[stat_name] = stat_val
+            data["game_stats"].append({game_name: stats})
+        return data
+
+    async def veltpvp(self, username: str) -> dict:
+        """Veltpvp player stats.
+
+        Args:
+            username (str): username of player
+
+        Returns:
+            dict: dictionary of player stats
+        """
+        url = f"https://www.veltpvp.com/u/{username}"
+        html = await self.get_html(url)
+        soup = BeautifulSoup(html, "lxml")
+        rank = soup.find("div", {"id": "profile"}).find("h2").get_text().strip()
+        last_seen = (
+            soup.find("div", {"class": "bottom"})
             .get_text()
-            .replace("\n", "")
+            .split("\n")[2]
+            .replace("\xa0", " ")
             .strip()
         )
-        for stat in game.find_all("dl"):
-            stat_name = stat.find("dt").get_text().replace("\n", "").strip()
-            stat_val = stat.find("dd").get_text()
-            stats[stat_name] = stat_val
-        data["game_stats"].append({game_name: stats})
+        current_status = soup.find("div", {"class": "top"}).get_text().strip()
+        info = soup.find_all("div", {"class": "element"})[1].get_text().split("\n")
+        first_joined = info[3].strip()
+        time_played = info[5].replace("\xa0", " ").strip()
+        monthly_views = info[7].strip()
+        data = {
+            "rank": rank,
+            "last_seen": last_seen,
+            "current_status": current_status,
+            "first_joined": first_joined,
+            "time_played": time_played,
+            "monthly_views": monthly_views,
+            "game_stats": [],
+        }
 
-    return data
-
-
-async def gommehd(username: str, session: aiohttp.ClientSession) -> dict:
-    """[summary]
-
-    Args:
-        username (str): [description]
-        session (aiohttp.ClientSession): [description]
-
-    Returns:
-        dict: [description]
-    """
-    url = f"https://www.gommehd.net/player/index?playerName={username}"
-    html = await get_html(url, session)
-    soup = BeautifulSoup(html, "lxml")
-    data = {"game_stats": []}
-    if soup.find("title").get_text() == "Statistiken":
-        return False
-    for game in soup.find_all("div", {"class": "stat-table"}):
-        stats = {}
-        game_name = game.find("h5").get_text().replace("\n", "").strip()
-        for stat in game.find_all("li"):
-            stat_val = stat.find("span", {"class": "score"}).get_text()
-            stat_name = stat.get_text().replace("\n", "").strip().replace(stat_val, "")
-            stats[stat_name] = stat_val
-        data["game_stats"].append({game_name: stats})
-    return data
-
-
-async def veltpvp(username: str, session: aiohttp.ClientSession) -> dict:
-    """[summary]
-
-    Args:
-        username (str): [description]
-        session (aiohttp.ClientSession): [description]
-
-    Returns:
-        dict: [description]
-    """
-    url = f"https://www.veltpvp.com/u/{username}"
-    html = await get_html(url, session)
-    if not html:
-        return False
-    soup = BeautifulSoup(html, "lxml")
-    rank = soup.find("div", {"id": "profile"}).find("h2").get_text().strip()
-    last_seen = (
-        soup.find("div", {"class": "bottom"})
-        .get_text()
-        .split("\n")[2]
-        .replace("\xa0", " ")
-        .strip()
-    )
-    current_status = soup.find("div", {"class": "top"}).get_text().strip()
-    info = soup.find_all("div", {"class": "element"})[1].get_text().split("\n")
-    first_joined = info[3].strip()
-    time_played = info[5].replace("\xa0", " ").strip()
-    monthly_views = info[7].strip()
-    data = {
-        "rank": rank,
-        "last_seen": last_seen,
-        "current_status": current_status,
-        "first_joined": first_joined,
-        "time_played": time_played,
-        "monthly_views": monthly_views,
-        "game_stats": [],
-    }
-
-    # first stat is special
-    first_game = soup.find("a", {"class": "server"})
-    game_name = first_game.find("div", {"class": "server-header"}).get_text().strip()
-    stats = {}
-    for stat in first_game.find_all("div", {"class": "server-stat"}):
-        stat_name = (
-            stat.find("div", {"class": "server-stat-description"}).get_text().strip()
+        # first stat is special
+        first_game = soup.find("a", {"class": "server"})
+        game_name = (
+            first_game.find("div", {"class": "server-header"}).get_text().strip()
         )
-        stat_val = stat.find("div", {"class": "server-stat-number"}).get_text().strip()
-        stats[stat_name] = stat_val
-    data["game_stats"].append({game_name: stats})
-
-    for game in soup.find_all("div", {"class": "server"}):
-        if not game.find("div", {"class": "server unknown"}):
-            break
-        game_name = game.find("div", {"class": "server-header"}).get_text().strip()
         stats = {}
-        for stat in game.find_all("div", {"class": "server-stat"}):
+        for stat in first_game.find_all("div", {"class": "server-stat"}):
             stat_name = (
                 stat.find("div", {"class": "server-stat-description"})
                 .get_text()
@@ -389,4 +331,21 @@ async def veltpvp(username: str, session: aiohttp.ClientSession) -> dict:
             )
             stats[stat_name] = stat_val
         data["game_stats"].append({game_name: stats})
-    return data
+
+        for game in soup.find_all("div", {"class": "server"}):
+            if not game.find("div", {"class": "server unknown"}):
+                break
+            game_name = game.find("div", {"class": "server-header"}).get_text().strip()
+            stats = {}
+            for stat in game.find_all("div", {"class": "server-stat"}):
+                stat_name = (
+                    stat.find("div", {"class": "server-stat-description"})
+                    .get_text()
+                    .strip()
+                )
+                stat_val = (
+                    stat.find("div", {"class": "server-stat-number"}).get_text().strip()
+                )
+                stats[stat_name] = stat_val
+            data["game_stats"].append({game_name: stats})
+        return data

@@ -90,7 +90,7 @@ def mypy(session: Session) -> None:
     session.run("mypy", *args)
 
 
-@nox.session(python="3.7")
+@nox.session(python=["3.7", "3.8"])
 def pytype(session: Session) -> None:
     """Type-check using pytype."""
     args = session.posargs or ["--disable=import-error", *locations]
@@ -98,7 +98,7 @@ def pytype(session: Session) -> None:
     session.run("pytype", *args)
 
 
-@nox.session(python=["3.8", "3.7"])
+@nox.session(python=["3.7", "3.8"])
 def tests(session: Session) -> None:
     """Run the test suite."""
     args = session.posargs or ["--cov", "-m", "not e2e"]
@@ -116,15 +116,6 @@ def typeguard(session: Session) -> None:
     session.run("poetry", "install", "--no-dev", external=True)
     install_with_constraints(session, "pytest", "pytest-mock", "typeguard")
     session.run("pytest", f"--typeguard-packages={package}", *args)
-
-
-@nox.session(python=["3.8", "3.7"])
-def xdoctest(session: Session) -> None:
-    """Run examples with xdoctest."""
-    args = session.posargs or ["all"]
-    session.run("poetry", "install", "--no-dev", external=True)
-    install_with_constraints(session, "xdoctest")
-    session.run("python", "-m", "xdoctest", package, *args)
 
 
 @nox.session(python="3.8")
