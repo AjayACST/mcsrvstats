@@ -110,6 +110,7 @@ def tests(session: Session) -> None:
         "pytest-cov",
         "pytest-mock",
         "pytest-asyncio",
+        "cryptography",
     )
     session.run("pytest", *args)
 
