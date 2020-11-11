@@ -1,10 +1,11 @@
 """All exceptions for asyncpixel."""
+from typing import Optional
 
 
 class ApiError(Exception):
     """Raised when a error occurs on the api side."""
 
-    def __init__(self, error: str, source: str = "unknown source") -> None:
+    def __init__(self, error: str, source: Optional[str] = "unknown source") -> None:
         """Error raised when api is not succesful.
 
         Args:
