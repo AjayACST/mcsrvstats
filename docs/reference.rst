@@ -9,5 +9,5 @@ Reference
 asyncpixel
 --------------------------
 
-.. automodule:: asyncpixel
+.. automodule:: mcsrvstats
    :members:
