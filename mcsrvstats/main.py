@@ -55,7 +55,7 @@ class Client:
         """
         async with self.session.get(url) as resp:
             if resp.status == 200:
-                data = await resp.json()
+                data: Dict[str, Any] = await resp.json()
                 return data
             raise ApiError("Api response not succesful")
 
