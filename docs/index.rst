@@ -5,7 +5,6 @@ The Ayncpixel Python Project
    :hidden:
    :maxdepth: 1
 
-   license
    reference
 
 TODO

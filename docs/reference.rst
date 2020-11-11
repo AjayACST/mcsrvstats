@@ -6,7 +6,7 @@ Reference
     :backlinks: none
 
 
-asyncpixel
+mcsrvstats
 --------------------------
 
 .. automodule:: mcsrvstats

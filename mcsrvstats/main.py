@@ -58,7 +58,7 @@ class Client:
                 return data
             raise ApiError("Api response not succesful")
 
-    async def hiveMCAchievements(self, username: str) -> Dict:
+    async def hive_mc_achievments(self, username: str) -> Dict:
         """Hive Minceaft player achievements.
 
         Args:
@@ -74,7 +74,7 @@ class Client:
             data["all_achievements"].append(ach)
         return data
 
-    async def hiveMCStatus(self, username: str) -> Dict:
+    async def hive_mc_status(self, username: str) -> Dict:
         """Hive Minecraft player status.
 
         Args:
@@ -91,7 +91,7 @@ class Client:
             data["status"].append(thing)
         return data
 
-    async def hiveMCGameStats(self, username: str, game: str) -> Dict:
+    async def hive_mc_game_stats(self, username: str, game: str) -> Dict:
         """Hive Minecraft game stats of a player.
 
         Args:
@@ -106,7 +106,7 @@ class Client:
         data = {"stats": [json_data]}
         return data
 
-    async def hiveMCRank(self, username: str) -> Dict:
+    async def hive_mc_rank(self, username: str) -> Dict:
         """Hive Minecraft rank.
 
         Args:
@@ -133,7 +133,7 @@ class Client:
         json_data = await self.get_json(url)
         return json_data
 
-    async def wynncraftClasses(self, username: str) -> Dict:
+    async def wynncraft_classes(self, username: str) -> Dict:
         """Wynncraft player classes.
 
         Args:
