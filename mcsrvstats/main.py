@@ -1,4 +1,5 @@
 """Main functions for mcsrvstats."""
+from typing import Any
 from typing import Dict
 from typing import Optional
 
@@ -40,7 +41,7 @@ class Client:
                 return html
             raise ApiError("Api response not succesful")
 
-    async def get_json(self, url: str) -> Dict:
+    async def get_json(self, url: str) -> Dict[str, Any]:
         """Get json response from api.
 
         Args:
@@ -50,7 +51,7 @@ class Client:
             ApiError: error if invalid response
 
         Returns:
-            Dict: json response
+            Dict[str, Any]: json response
         """
         async with self.session.get(url) as resp:
             if resp.status == 200:
@@ -58,40 +59,40 @@ class Client:
                 return data
             raise ApiError("Api response not succesful")
 
-    async def hive_mc_achievments(self, username: str) -> Dict:
+    async def hive_mc_achievments(self, username: str) -> Dict[str, Any]:
         """Hive Minceaft player achievements.
 
         Args:
             username (str): username of player
 
         Returns:
-            Dict: Dictionary of achievements.
+            Dict[str, Any]: Dict[str, Any]ionary of achievements.
         """
         url = f"http://api.hivemc.com/v1/player/{username}"
         json_data = await self.get_json(url)
-        data: Dict = {"all_achievements": []}
+        data: Dict[str, Any] = {"all_achievements": []}
         for ach in json_data["achievements"]:
             data["all_achievements"].append(ach)
         return data
 
-    async def hive_mc_status(self, username: str) -> Dict:
+    async def hive_mc_status(self, username: str) -> Dict[str, Any]:
         """Hive Minecraft player status.
 
         Args:
             username (str): username of player
 
         Returns:
-            Dict: Dictionary of status
+            Dict[str, Any]: Dict[str, Any]ionary of status
         """
         url = f"http://api.hivemc.com/v1/player/{username}"
         json_data = await self.get_json(url)
-        data: Dict = {"status": []}
+        data: Dict[str, Any] = {"status": []}
         for _ in json_data["status"]:
             thing = json_data["status"]
             data["status"].append(thing)
         return data
 
-    async def hive_mc_game_stats(self, username: str, game: str) -> Dict:
+    async def hive_mc_game_stats(self, username: str, game: str) -> Dict[str, Any]:
         """Hive Minecraft game stats of a player.
 
         Args:
@@ -99,52 +100,52 @@ class Client:
             game (str): game for stats
 
         Returns:
-            Dict: Dictionary of stats.
+            Dict[str, Any]: Dict[str, Any]ionary of stats.
         """
         url = f"http://api.hivemc.com/v1/player/{username}/{game}"
         json_data = await self.get_json(url)
         data = {"stats": [json_data]}
         return data
 
-    async def hive_mc_rank(self, username: str) -> Dict:
+    async def hive_mc_rank(self, username: str) -> Dict[str, Any]:
         """Hive Minecraft rank.
 
         Args:
             username (str): username of player
 
         Returns:
-            Dict: Dictionary of player rank
+            Dict[str, Any]: Dict[str, Any]ionary of player rank
         """
         url = f"http://api.hivemc.com/v1/player/{username}"
         json_data = await self.get_json(url)
         data = {"rank": [json_data["rankName"]]}
         return data
 
-    async def manacube(self, username: str) -> Dict:
+    async def manacube(self, username: str) -> Dict[str, Any]:
         """Manacube player stats.
 
         Args:
             username (str): username of player
 
         Returns:
-            Dict: Dictionary of player stats
+            Dict[str, Any]: Dict[str, Any]ionary of player stats
         """
         url = f"https://manacube.com/stats_data/fetch.php?username={username}"
         json_data = await self.get_json(url)
         return json_data
 
-    async def wynncraft_classes(self, username: str) -> Dict:
+    async def wynncraft_classes(self, username: str) -> Dict[str, Any]:
         """Wynncraft player classes.
 
         Args:
             username (str): username of player
 
         Returns:
-            Dict: Dictionary of player classes
+            Dict[str, Any]: Dict[str, Any]ionary of player classes
         """
         url = f"https://api.wynncraft.com/v2/player/{username}/stats"
         json_data = await self.get_json(url)
-        data: Dict = {"classes": []}
+        data: Dict[str, Any] = {"classes": []}
         for _class in json_data["data"][0]["classes"]:
             data["classes"].append(
                 {
@@ -155,14 +156,14 @@ class Client:
             )
         return data
 
-    async def blocksmc(self, username: str) -> Dict:
+    async def blocksmc(self, username: str) -> Dict[str, Any]:
         """Blocksmc player stats.
 
         Args:
             username (str): username of player
 
         Returns:
-            Dict: Dictionary of player stats
+            Dict[str, Any]: Dict[str, Any]ionary of player stats
         """
         url = f"https://blocksmc.com/player/{username}"
         html = await self.get_html(url)
@@ -199,19 +200,19 @@ class Client:
             data["game_stats"].append({game_name: stats})
         return data
 
-    async def universocraft(self, username: str) -> Dict:
+    async def universocraft(self, username: str) -> Dict[str, Any]:
         """Universocraft player stats.
 
         Args:
             username (str): username of player
 
         Returns:
-            Dict: Dictionary of player stats
+            Dict[str, Any]: Dict[str, Any]ionary of player stats
         """
         url = f"https://stats.universocraft.com/stats.php?player={username}"
         html = await self.get_html(url)
         soup = BeautifulSoup(html, "lxml")
-        data: Dict = {"game_stats": []}
+        data: Dict[str, Any] = {"game_stats": []}
         for game in soup.find_all("div", {"class": "game"}):
             stats = {}
             game_name = game.find("h2").get_text().replace("\n", "").strip()
@@ -222,14 +223,14 @@ class Client:
             data["game_stats"].append({game_name: stats})
         return data
 
-    async def minesaga(self, username: str) -> Dict:
+    async def minesaga(self, username: str) -> Dict[str, Any]:
         """Minesaga player stats.
 
         Args:
             username (str): username of player
 
         Returns:
-            Dict: Dictionary of player stats
+            Dict[str, Any]: Dict[str, Any]ionary of player stats
         """
         url = f"https://www.minesaga.org/player/{username}"
         html = await self.get_html(url)
@@ -259,19 +260,19 @@ class Client:
 
         return data
 
-    async def gommehd(self, username: str) -> Dict:
+    async def gommehd(self, username: str) -> Dict[str, Any]:
         """Gommehd player stats.
 
         Args:
             username (str): username of player
 
         Returns:
-            Dict: Dictionary of player stats
+            Dict[str, Any]: Dict[str, Any]ionary of player stats
         """
         url = f"https://www.gommehd.net/player/index?playerName={username}"
         html = await self.get_html(url)
         soup = BeautifulSoup(html, "lxml")
-        data: Dict = {"game_stats": []}
+        data: Dict[str, Any] = {"game_stats": []}
         for game in soup.find_all("div", {"class": "stat-table"}):
             stats = {}
             game_name = game.find("h5").get_text().replace("\n", "").strip()
@@ -284,14 +285,14 @@ class Client:
             data["game_stats"].append({game_name: stats})
         return data
 
-    async def veltpvp(self, username: str) -> Dict:
+    async def veltpvp(self, username: str) -> Dict[str, Any]:
         """Veltpvp player stats.
 
         Args:
             username (str): username of player
 
         Returns:
-            Dict: Dictionary of player stats
+            Dict[str, Any]: Dict[str, Any]ionary of player stats
         """
         url = f"https://www.veltpvp.com/u/{username}"
         html = await self.get_html(url)
