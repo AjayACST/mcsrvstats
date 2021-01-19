@@ -1,12 +1,28 @@
 """Main functions for mcsrvstats."""
+import json
 from typing import Any
 from typing import Dict
+from typing import List
 from typing import Optional
 
 import aiohttp
 from bs4 import BeautifulSoup
 
 from .exceptions.exceptions import ApiError
+from .models import Aether
+from .models import Atlas
+from .models import Aztec
+from .models import Creative
+from .models import Factions
+from .models import HiveAchievements
+from .models import HiveRank
+from .models import HiveStatus
+from .models import Islands
+from .models import Kitpvp
+from .models import Manacube
+from .models import Oasis
+from .models import Parkour
+from .models import Survival
 
 
 class Client:
@@ -59,38 +75,37 @@ class Client:
                 return data
             raise ApiError("Api response not succesful")
 
-    async def hive_mc_achievments(self, username: str) -> Dict[str, Any]:
+    async def hive_mc_achievments(self, username: str) -> HiveAchievements:
         """Hive Minceaft player achievements.
 
         Args:
             username (str): username of player
 
         Returns:
-            Dict[str, Any]: Dict[str, Any]ionary of achievements.
+            HiveAchievements: object containing all achievements for a player.
         """
         url = f"http://api.hivemc.com/v1/player/{username}"
         json_data = await self._get_json(url)
-        data: Dict[str, Any] = {"all_achievements": []}
+        data: List[str] = []
         for ach in json_data["achievements"]:
-            data["all_achievements"].append(ach)
-        return data
+            data.append(ach)
+        return HiveAchievements(all_achievements=data)
 
-    async def hive_mc_status(self, username: str) -> Dict[str, Any]:
+    async def hive_mc_status(self, username: str) -> HiveStatus:
         """Hive Minecraft player status.
 
         Args:
             username (str): username of player
 
         Returns:
-            Dict[str, Any]: Dict[str, Any]ionary of status
+            HiveStatus: Object containing the players current status.
         """
         url = f"http://api.hivemc.com/v1/player/{username}"
         json_data = await self._get_json(url)
-        data: Dict[str, Any] = {"status": []}
-        for _ in json_data["status"]:
-            thing = json_data["status"]
-            data["status"].append(thing)
-        return data
+        return HiveStatus(
+            description=json_data["status"]["description"],
+            game=json_data["status"]["game"],
+        )
 
     async def hive_mc_game_stats(self, username: str, game: str) -> Dict[str, Any]:
         """Hive Minecraft game stats of a player.
@@ -107,32 +122,120 @@ class Client:
         data = {"stats": [json_data]}
         return data
 
-    async def hive_mc_rank(self, username: str) -> Dict[str, Any]:
+    async def hive_mc_rank(self, username: str) -> HiveRank:
         """Hive Minecraft rank.
 
         Args:
             username (str): username of player
 
         Returns:
-            Dict[str, Any]: Dict[str, Any]ionary of player rank
+            HiveRank: object containing the players rank on Hive.
         """
         url = f"http://api.hivemc.com/v1/player/{username}"
         json_data = await self._get_json(url)
-        data = {"rank": [json_data["rankName"]]}
-        return data
+        return HiveRank(rank=json_data["rankName"])
 
-    async def manacube(self, username: str) -> Dict[str, Any]:
+    async def manacube(self, username: str) -> Manacube:
         """Manacube player stats.
 
         Args:
             username (str): username of player
 
         Returns:
-            Dict[str, Any]: Dict[str, Any]ionary of player stats
+            Manacube: object containing players manacube data.
         """
         url = f"https://manacube.com/stats_data/fetch.php?username={username}"
-        json_data = await self._get_json(url)
-        return json_data
+        html_data = await self._get_html(url)
+        json_data = json.loads(html_data)
+
+        parkour_manacube = Parkour(
+            playtime=json_data["parkour"]["playtime"],
+            mana=json_data["parkour"]["mana"],
+            score=json_data["parkour"]["score"],
+            courses=json_data["parkour"]["courses"],
+        )
+
+        aztec_manacube = Aztec(
+            playtime=json_data["aztec"]["playtime"],
+            mobkills=json_data["aztec"]["mobKills"],
+            mana=json_data["aztec"]["mana"],
+            money=json_data["aztec"]["money"],
+        )
+
+        oasis_manacube = Oasis(
+            playtime=json_data["oasis"]["playtime"],
+            mobkills=json_data["oasis"]["mobKills"],
+            mana=json_data["oasis"]["mana"],
+            money=json_data["oasis"]["money"],
+        )
+
+        islands_manacube = Islands(
+            playtime=json_data["islands"]["playtime"],
+            mobkills=json_data["islands"]["mobKills"],
+            silver=json_data["islands"]["silver"],
+            money=json_data["islands"]["money"],
+        )
+
+        survival_manacube = Survival(
+            playtime=json_data["survival"]["playtime"],
+            mobkills=json_data["survival"]["mobKills"],
+            money=json_data["survival"]["money"],
+            quests=json_data["survival"]["quests"],
+        )
+
+        factions_manacube = Factions(
+            playtime=json_data["factions"]["playtime"],
+            kills=json_data["factions"]["kills"],
+            mobkills=json_data["factions"]["mobkills"],
+            money=json_data["factions"]["money"],
+        )
+
+        aether_manacube = Aether(
+            playtime=json_data["aether"]["playtime"],
+            mininglevel=json_data["aether"]["miningLevel"],
+            money=json_data["aether"]["money"],
+            rebirths=json_data["aether"]["rebirths"],
+        )
+
+        atlas_manacube = Atlas(
+            playtime=json_data["atlas"]["playtime"],
+            mininglevel=json_data["atlas"]["miningLevel"],
+            money=json_data["atlas"]["money"],
+            rebirths=json_data["atlas"]["rebirths"],
+        )
+
+        creative_manacube = Creative(
+            playtime=json_data["creative"]["playtime"],
+            blocksplaced=json_data["creative"]["blocksplaced"],
+            blocksbroken=json_data["creative"]["blocksbroken"],
+        )
+
+        kitpvp_manacube = Kitpvp(
+            playtime=json_data["kitpvp"]["playtime"],
+            level=json_data["kitpvp"]["level"],
+            money=json_data["kitpvp"]["money"],
+            kills=json_data["kitpvp"]["kills"],
+        )
+
+        return Manacube(
+            exists=json_data["exists"],
+            level=json_data["level"],
+            rank=json_data["rank"],
+            cubits=json_data["cubits"],
+            firstseen=json_data["firstSeen"],
+            lastseen=json_data["lastSeen"],
+            lastseenago=json_data["lastSeenAgo"],
+            parkour=parkour_manacube,
+            aztec=aztec_manacube,
+            oasis=oasis_manacube,
+            islands=islands_manacube,
+            survival=survival_manacube,
+            factions=factions_manacube,
+            aether=aether_manacube,
+            atlas=atlas_manacube,
+            creative=creative_manacube,
+            kitpvp=kitpvp_manacube,
+        )
 
     async def wynncraft_classes(self, username: str) -> Dict[str, Any]:
         """Wynncraft player classes.
