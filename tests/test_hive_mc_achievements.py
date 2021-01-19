@@ -1,8 +1,7 @@
 """Test for Hive Achievements."""
-from mcsrvstats import Client
-
 import pytest
 from aioresponses import aioresponses
+from mcsrvstats import Client
 
 
 @pytest.mark.asyncio

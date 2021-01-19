@@ -10,7 +10,7 @@ from nox.sessions import Session
 
 
 package = "mcsrvstats"
-python_versions = ["3.9", "3.8", "3.7"]
+python_versions = ["3.9", "3.8", "3.7", "3.6"]
 nox.options.sessions = (
     "pre-commit",
     "safety",
@@ -72,10 +72,14 @@ def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
         hook.write_text("\n".join(lines))
 
 
-@nox.session(name="pre-commit", python="3.8")
+@nox.session(name="pre-commit", python="3.9")
 def precommit(session: Session) -> None:
-    """Lint using pre-commit."""
-    args = session.posargs or ["run", "--all-files", "--show-diff-on-failure"]
+    """Lint using pre-commit.
+
+    Args:
+        session: The Session object.
+    """
+    args = session.posargs or ["run", "--all-files"]
     session.install(
         "black",
         "darglint",
@@ -83,6 +87,9 @@ def precommit(session: Session) -> None:
         "flake8-bandit",
         "flake8-bugbear",
         "flake8-docstrings",
+        "flake8-black",
+        "flake8-annotations",
+        "flake8-import-order",
         "pep8-naming",
         "pre-commit",
         "pre-commit-hooks",
@@ -116,7 +123,9 @@ def mypy(session: Session) -> None:
 def tests(session: Session) -> None:
     """Run the test suite."""
     session.install(".")
-    session.install("coverage[toml]", "pytest", "pytest-asyncio", "aioresponses")
+    session.install(
+        "coverage[toml]", "pytest", "pygments", "aioresponses", "pytest-asyncio"
+    )
     try:
         session.run("coverage", "run", "--parallel", "-m", "pytest", *session.posargs)
     finally:
@@ -147,14 +156,13 @@ def typeguard(session: Session) -> None:
     session.run("pytest", f"--typeguard-packages={package}", *session.posargs)
 
 
-@nox.session(name="docs-build", python="3.8")
+@nox.session(name="docs-build", python="3.9")
 def docs_build(session: Session) -> None:
     """Build the documentation."""
     args = session.posargs or ["docs", "docs/_build"]
     session.install(".")
     session.install(
-        "sphinx",
-        "sphinx-rtd-theme",
+        "sphinx", "sphinx-rtd-theme", "recommonmark", "sphinx_autodoc_typehints"
     )
 
     build_dir = Path("docs", "_build")
@@ -164,7 +172,7 @@ def docs_build(session: Session) -> None:
     session.run("sphinx-build", *args)
 
 
-@nox.session(python="3.8")
+@nox.session(python="3.9")
 def docs(session: Session) -> None:
     """Build and serve the documentation with live reloading on file changes."""
     args = session.posargs or ["--open-browser", "docs", "docs/_build"]
@@ -173,6 +181,8 @@ def docs(session: Session) -> None:
         "sphinx",
         "sphinx-autobuild",
         "sphinx-rtd-theme",
+        "recommonmark",
+        "sphinx_autodoc_typehints",
     )
 
     build_dir = Path("docs", "_build")

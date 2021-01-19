@@ -1,13 +1,21 @@
 Reference
 =========
 
-.. contents::
-    :local:
-    :backlinks: none
 
+Client
+-------------------
 
-mcsrvstats
---------------------------
+.. autoclass:: mcsrvstats.Hypixel
+   :members:
 
-.. automodule:: mcsrvstats
+Exceptions
+-------------------
+
+.. automodule:: mcsrvstats.exceptions
+   :members:
+
+Models
+-------------------
+
+.. automodule:: mcsrvstats.models
    :members:

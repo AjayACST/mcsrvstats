@@ -1,8 +1,8 @@
 """Pytest fixtures."""
-from mcsrvstats import Client
 from typing import AsyncIterator
 
 import pytest
+from mcsrvstats import Client
 
 
 @pytest.fixture

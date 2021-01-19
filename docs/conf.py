@@ -13,7 +13,7 @@ import os
 import sys
 from datetime import datetime
 
-sys.path.insert(0, os.path.abspath("../asyncpixel"))
+sys.path.insert(0, os.path.abspath("../"))
 
 
 # -- Project information -----------------------------------------------------
@@ -37,6 +37,8 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
     "sphinx.ext.intersphinx",
+    "recommonmark",
+    "sphinx_autodoc_typehints",
 ]
 
 intersphinx_mapping = {
