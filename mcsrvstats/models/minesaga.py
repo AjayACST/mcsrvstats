@@ -1,0 +1,1 @@
+"""Minesaga related objects."""

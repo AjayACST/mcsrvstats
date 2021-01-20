@@ -1,4 +1,6 @@
 """Manacube related objects."""
+from typing import Optional
+
 from pydantic import BaseModel
 
 
@@ -12,10 +14,10 @@ class Parkour(BaseModel):
         courses (str): How many courses the player has done.
     """
 
-    playtime: str
-    mana: str
-    score: str
-    courses: str
+    playtime: Optional[str] = "N/A"
+    mana: Optional[str] = "N/A"
+    score: Optional[str] = "N/A"
+    courses: Optional[str] = "N/A"
 
 
 class Aztec(BaseModel):
@@ -28,10 +30,10 @@ class Aztec(BaseModel):
         money (str): How much money the player has.
     """
 
-    playtime: str
-    mobkills: str
-    mana: str
-    money: str
+    playtime: Optional[str] = "N/A"
+    mobkills: Optional[str] = "N/A"
+    mana: Optional[str] = "N/A"
+    money: Optional[str] = "N/A"
 
 
 class Oasis(BaseModel):
@@ -44,10 +46,10 @@ class Oasis(BaseModel):
         money (str): How many quests the player has completed.
     """
 
-    playtime: str
-    mobkills: str
-    mana: str
-    money: str
+    playtime: Optional[str] = "N/A"
+    mobkills: Optional[str] = "N/A"
+    mana: Optional[str] = "N/A"
+    money: Optional[str] = "N/A"
 
 
 class Islands(BaseModel):
@@ -60,10 +62,10 @@ class Islands(BaseModel):
         money (str): How much money the player has.
     """
 
-    playtime: str
-    mobkills: str
-    silver: str
-    money: str
+    playtime: Optional[str] = "N/A"
+    mobkills: Optional[str] = "N/A"
+    silver: Optional[str] = "N/A"
+    money: Optional[str] = "N/A"
 
 
 class Survival(BaseModel):
@@ -76,10 +78,10 @@ class Survival(BaseModel):
         quests (str): How many quests the player has completed.
     """
 
-    playtime: str
-    mobkills: str
-    money: str
-    quests: str
+    playtime: Optional[str] = "N/A"
+    mobkills: Optional[str] = "N/A"
+    money: Optional[str] = "N/A"
+    quests: Optional[str] = "N/A"
 
 
 class Factions(BaseModel):
@@ -92,10 +94,10 @@ class Factions(BaseModel):
         money (str): How much money the player has.
     """
 
-    playtime: str
-    kills: str
-    mobkills: str
-    money: str
+    playtime: Optional[str] = "N/A"
+    kills: Optional[str] = "N/A"
+    mobkills: Optional[str] = "N/A"
+    money: Optional[str] = "N/A"
 
 
 class Aether(BaseModel):
@@ -108,10 +110,10 @@ class Aether(BaseModel):
         rebirths (str): How many rebirths the player has had.
     """
 
-    playtime: str
-    mininglevel: str
-    money: str
-    rebirths: str
+    playtime: Optional[str] = "N/A"
+    mininglevel: Optional[str] = "N/A"
+    money: Optional[str] = "N/A"
+    rebirths: Optional[str] = "N/A"
 
 
 class Atlas(BaseModel):
@@ -124,10 +126,10 @@ class Atlas(BaseModel):
         rebirths (str): How many rebirths the player has had.
     """
 
-    playtime: str
-    mininglevel: str
-    money: str
-    rebirths: str
+    playtime: Optional[str] = "N/A"
+    mininglevel: Optional[str] = "N/A"
+    money: Optional[str] = "N/A"
+    rebirths: Optional[str] = "N/A"
 
 
 class Creative(BaseModel):
@@ -139,9 +141,9 @@ class Creative(BaseModel):
         blocksbroken (str): How many blocks the player has broken.
     """
 
-    playtime: str
-    blocksplaced: str
-    blocksbroken: str
+    playtime: Optional[str] = "N/A"
+    blocksplaced: Optional[str] = "N/A"
+    blocksbroken: Optional[str] = "N/A"
 
 
 class Kitpvp(BaseModel):
@@ -154,10 +156,10 @@ class Kitpvp(BaseModel):
         kills (str): How many kills the player has.
     """
 
-    playtime: str
-    level: str
-    money: str
-    kills: str
+    playtime: Optional[str] = "N/A"
+    level: Optional[str] = "N/A"
+    money: Optional[str] = "N/A"
+    kills: Optional[str] = "N/A"
 
 
 class Manacube(BaseModel):
@@ -183,13 +185,13 @@ class Manacube(BaseModel):
         Kitpvp (Kitpvp): Kitpvp stats.
     """
 
-    exists: str
-    level: str
-    rank: str
-    cubits: str
-    firstseen: str
-    lastseen: str
-    lastseenago: str
+    exists: Optional[str] = "N/A"
+    level: Optional[str] = "N/A"
+    rank: Optional[str] = "N/A"
+    cubits: Optional[str] = "N/A"
+    firstseen: Optional[str] = "N/A"
+    lastseen: Optional[str] = "N/A"
+    lastseenago: Optional[str] = "N/A"
     parkour: Parkour
     aztec: Aztec
     oasis: Oasis
