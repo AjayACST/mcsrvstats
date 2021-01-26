@@ -13,6 +13,8 @@ from .manacube import Manacube
 from .manacube import Oasis
 from .manacube import Parkour
 from .manacube import Survival
+from .wyncraft_classes import Classes
+from .wyncraft_classes import WyncraftClasses
 
 __all__ = [
     "HiveAchievements",
@@ -29,4 +31,6 @@ __all__ = [
     "Atlas",
     "Creative",
     "Kitpvp",
+    "WyncraftClasses",
+    "Classes",
 ]

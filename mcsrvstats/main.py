@@ -24,6 +24,10 @@ from .models import Oasis
 from .models import Parkour
 from .models import Survival
 
+# from .models import Classes
+
+# from .models import WyncraftClasses
+
 
 class Client:
     """Client class."""
@@ -237,27 +241,29 @@ class Client:
             kitpvp=kitpvp_manacube,
         )
 
-    async def wynncraft_classes(self, username: str) -> Dict[str, Any]:
-        """Wynncraft player classes.
+    # async def wynncraft_classes(self, username: str) -> WyncraftClasses:
+    #     """Wynncraft player classes.
 
-        Args:
-            username (str): username of player
+    #     Args:
+    #         username (str): username of player
 
-        Returns:
-            Dict[str, Any]: Dict[str, Any]ionary of player classes
-        """
-        url = f"https://api.wynncraft.com/v2/player/{username}/stats"
-        json_data = await self._get_json(url)
-        data: Dict[str, Any] = {"classes": []}
-        for _class in json_data["data"][0]["classes"]:
-            data["classes"].append(
-                {
-                    "class_name": _class["name"],
-                    "class_level": _class["level"],
-                    "class_deaths": _class["deaths"],
-                }
-            )
-        return data
+    #     Returns:
+    #         WyncraftClasses: object containing the players classes
+    #     """
+    #     url = f"https://api.wynncraft.com/v2/player/{username}/stats"
+    #     json_data = await self._get_json(url)
+    #     data = []
+    #     for _class in json_data["data"][0]["classes"]:
+    #         data.append(
+    #             Classes(
+    #                 class_name=_class["name"],
+    #                 class_level=_class["level"],
+    #                 class_deaths=_class["deaths"]
+    #             )
+    #         )
+    #     return WyncraftClasses(
+    #         classes=data
+    #     )
 
     async def blocksmc(self, username: str) -> Dict[str, Any]:
         """Blocksmc player stats.
