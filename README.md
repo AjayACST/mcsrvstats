@@ -7,3 +7,8 @@
 [![Codecov](https://codecov.io/gh/Obsidion-dev/mcsrvstats/branch/master/graph/badge.svg)](https://codecov.io/gh/Obsidion-dev/mcsrvstats)
 [![PyPI](https://img.shields.io/pypi/v/mcsrvstats.svg)](https://pypi.org/project/mcsrvstats/)
 [![Read the Docs](https://readthedocs.org/projects/mcsrvstats/badge/)](https://mcsrvstats.readthedocs.io/) [![Join the chat at https://gitter.im/Obsidion-dev/mcsrvstats](https://badges.gitter.im/Obsidion-dev/mcsrvstats.svg)](https://gitter.im/Obsidion-dev/mcsrvstats?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FObsidion-dev%2Fmcsrvstats.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FObsidion-dev%2Fmcsrvstats?ref=badge_shield)
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FObsidion-dev%2Fmcsrvstats.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FObsidion-dev%2Fmcsrvstats?ref=badge_large)
