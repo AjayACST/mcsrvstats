@@ -1,1 +1,0 @@
-"""Blocksmc related objects."""

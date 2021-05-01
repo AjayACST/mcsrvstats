@@ -2,7 +2,6 @@
 import json
 from typing import Any
 from typing import Dict
-from typing import List
 from typing import Optional
 
 import aiohttp
@@ -12,21 +11,16 @@ from .exceptions.exceptions import ApiError
 from .models import Aether
 from .models import Atlas
 from .models import Aztec
+from .models import Classes
 from .models import Creative
 from .models import Factions
-from .models import HiveAchievements
-from .models import HiveRank
-from .models import HiveStatus
 from .models import Islands
 from .models import Kitpvp
 from .models import Manacube
 from .models import Oasis
 from .models import Parkour
 from .models import Survival
-
-# from .models import Classes
-
-# from .models import WyncraftClasses
+from .models import WyncraftClasses
 
 
 class Client:
@@ -79,71 +73,11 @@ class Client:
                 return data
             raise ApiError("Api response not succesful")
 
-    async def hive_mc_achievments(self, username: str) -> HiveAchievements:
-        """Hive Minceaft player achievements.
-
-        Args:
-            username (str): username of player
-
-        Returns:
-            HiveAchievements: object containing all achievements for a player.
-        """
-        url = f"http://api.hivemc.com/v1/player/{username}"
-        json_data = await self._get_json(url)
-        data: List[str] = []
-        for ach in json_data["achievements"]:
-            data.append(ach)
-        return HiveAchievements(all_achievements=data)
-
-    async def hive_mc_status(self, username: str) -> HiveStatus:
-        """Hive Minecraft player status.
-
-        Args:
-            username (str): username of player
-
-        Returns:
-            HiveStatus: Object containing the players current status.
-        """
-        url = f"http://api.hivemc.com/v1/player/{username}"
-        json_data = await self._get_json(url)
-        return HiveStatus(
-            description=json_data["status"]["description"],
-            game=json_data["status"]["game"],
-        )
-
-    async def hive_mc_game_stats(self, username: str, game: str) -> Dict[str, Any]:
-        """Hive Minecraft game stats of a player.
-
-        Args:
-            username (str): username of player
-            game (str): game for stats
-
-        Returns:
-            Dict[str, Any]: Dict[str, Any]ionary of stats.
-        """
-        url = f"http://api.hivemc.com/v1/player/{username}/{game}"
-        json_data = await self._get_json(url)
-        data = {"stats": [json_data]}
-        return data
-
-    async def hive_mc_rank(self, username: str) -> HiveRank:
-        """Hive Minecraft rank.
-
-        Args:
-            username (str): username of player
-
-        Returns:
-            HiveRank: object containing the players rank on Hive.
-        """
-        url = f"http://api.hivemc.com/v1/player/{username}"
-        json_data = await self._get_json(url)
-        return HiveRank(rank=json_data["rankName"])
-
     async def manacube(self, username: str) -> Manacube:
         """Manacube player stats.
 
         Args:
-            username (str): username of player
+            username (str): username of player.
 
         Returns:
             Manacube: object containing players manacube data.
@@ -241,73 +175,75 @@ class Client:
             kitpvp=kitpvp_manacube,
         )
 
-    # async def wynncraft_classes(self, username: str) -> WyncraftClasses:
-    #     """Wynncraft player classes.
-
-    #     Args:
-    #         username (str): username of player
-
-    #     Returns:
-    #         WyncraftClasses: object containing the players classes
-    #     """
-    #     url = f"https://api.wynncraft.com/v2/player/{username}/stats"
-    #     json_data = await self._get_json(url)
-    #     data = []
-    #     for _class in json_data["data"][0]["classes"]:
-    #         data.append(
-    #             Classes(
-    #                 class_name=_class["name"],
-    #                 class_level=_class["level"],
-    #                 class_deaths=_class["deaths"]
-    #             )
-    #         )
-    #     return WyncraftClasses(
-    #         classes=data
-    #     )
-
-    async def blocksmc(self, username: str) -> Dict[str, Any]:
-        """Blocksmc player stats.
+    async def wynncraft_classes(self, username: str) -> WyncraftClasses:
+        """Wynncraft player classes.
 
         Args:
             username (str): username of player
 
         Returns:
-            Dict[str, Any]: Dict[str, Any]ionary of player stats
+            WyncraftClasses: object containing the players classes
         """
-        url = f"https://blocksmc.com/player/{username}"
-        html = await self._get_html(url)
-        soup = BeautifulSoup(html, "lxml")
-        rank = (
-            soup.find("p", {"class": ["profile-rank"]})
-            .get_text()
-            .replace("\n", "")
-            .strip()
-        )
-
-        timeplayed = (
-            soup.find("h1", {"dir": ["ltr"]}).get_text().replace("\n", "").strip()
-        )
-        data = {"rank": rank, "timeplayed": timeplayed, "game_stats": []}
-
-        for game in soup.find_all("div", {"class": "col-xl-4"}):
-            stats = {}
-            game_name = (
-                game.find("div", {"class": "title"})
-                .get_text()
-                .replace("\n", "")
-                .strip()
-            )
-            for stat in game.find_all("li"):
-                stat_name = (
-                    stat.find("div", {"class": "key"})
-                    .get_text()
-                    .replace("\n", "")
-                    .strip()
+        url = f"https://api.wynncraft.com/v2/player/{username}/stats"
+        json_data = await self._get_json(url)
+        data = []
+        for _class in json_data["data"][0]["classes"]:
+            data.append(
+                Classes(
+                    class_name=_class["name"],
+                    class_level=_class["level"],
+                    class_deaths=_class["deaths"],
+                    class_chest=_class["chestsFound"],
+                    class_logins=_class["logins"],
+                    class_events_won=_class["eventsWon"],
+                    class_discoveries=_class["discoveries"],
                 )
-                stat_val = int(stat.find("div", {"class": "val"}).get_text())
-                stats[stat_name] = stat_val
-            data["game_stats"].append({game_name: stats})
-        return data
+            )
+        return WyncraftClasses(classes=data)
+
+    # async def blocksmc(self, username: str) -> Dict[str, Any]:
+    #     """Blocksmc player stats.
+
+    #     Args:
+    #         username (str): username of player
+
+    #     Returns:
+    #         Dict[str, Any]: Dict[str, Any]ionary of player stats
+    #     """
+    #     url = f"https://blocksmc.com/player/{username}"
+    #     html = await self._get_html(url)
+    #     soup = BeautifulSoup(html, "lxml")
+    #     rank = (
+    #         soup.find("p", {"class": ["profile-rank"]})
+    #         .get_text()
+    #         .replace("\n", "")
+    #         .strip()
+    #     )
+
+    #     timeplayed = (
+    #         soup.find("h1", {"dir": ["ltr"]}).get_text().replace("\n", "").strip()
+    #     )
+    #     data = {"rank": rank, "timeplayed": timeplayed, "game_stats": []}
+
+    #     for game in soup.find_all("div", {"class": "col-xl-4"}):
+    #         stats = {}
+    #         game_name = (
+    #             game.find("div", {"class": "title"})
+    #             .get_text()
+    #             .replace("\n", "")
+    #             .strip()
+    #         )
+    #         for stat in game.find_all("li"):
+    #             stat_name = (
+    #                 stat.find("div", {"class": "key"})
+    #                 .get_text()
+    #                 .replace("\n", "")
+    #                 .strip()
+    #             )
+    #             stat_val = int(stat.find("div", {"class": "val"}).get_text())
+    #             stats[stat_name] = stat_val
+    #         data["game_stats"].append({game_name: stats})
+    #     return data
 
     async def universocraft(self, username: str) -> Dict[str, Any]:
         """Universocraft player stats.
