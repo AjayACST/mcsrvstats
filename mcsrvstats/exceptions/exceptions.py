@@ -22,3 +22,23 @@ class ApiError(Exception):
             str: string version of error
         """
         return self.message
+
+class PlayerNotFound(Exception):
+    """ Raised when a player is not found."""
+
+    def __init__(self, username: str) -> None:
+        """Erorr raised when player is not found
+
+        Args:
+            username (str): The username of the player.
+        """
+        self.message = f"The player {username} could not be found."
+    
+    def __str__(self):
+        """Return error in readable format.
+
+        Returns:
+            str: string version of error.
+        """
+
+        return self.message

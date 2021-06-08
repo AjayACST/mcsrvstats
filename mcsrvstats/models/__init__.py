@@ -1,30 +1,7 @@
 """Models for mcsrvstats data objects."""
-from .manacube import Aether
-from .manacube import Atlas
-from .manacube import Aztec
-from .manacube import Creative
-from .manacube import Factions
-from .manacube import Islands
-from .manacube import Kitpvp
-from .manacube import Manacube
-from .manacube import Oasis
-from .manacube import Parkour
-from .manacube import Survival
-from .universocraft import BedWars
-from .universocraft import BuildBattle
-from .universocraft import CaptureWool
-from .universocraft import DestoryNexus
-from .universocraft import EggWars
-from .universocraft import EscapeBeast
-from .universocraft import MurderMystery
-from .universocraft import PartyGames
-from .universocraft import SkyPit
-from .universocraft import SkyWars
-from .universocraft import SpeedBuilders
-from .universocraft import UHC
-from .universocraft import Universocraft
-from .wyncraft_classes import Classes
-from .wyncraft_classes import WyncraftClasses
+from .manacube import *
+from .universocraft import *
+from .wyncraft_classes import *
 
 __all__ = [
     "Manacube",
@@ -52,5 +29,7 @@ __all__ = [
     "UHC",
     "MurderMystery",
     "CaptureWool",
+    "ArenaPVP",
+    "HungerGames",
     "Universocraft",
 ]

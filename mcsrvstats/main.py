@@ -7,21 +7,8 @@ from typing import Optional
 import aiohttp
 from bs4 import BeautifulSoup
 
-from .exceptions.exceptions import ApiError
-from .models import Aether
-from .models import Atlas
-from .models import Aztec
-from .models import Classes
-from .models import Creative
-from .models import Factions
-from .models import Islands
-from .models import Kitpvp
-from .models import Manacube
-from .models import Oasis
-from .models import Parkour
-from .models import Survival
-from .models import WyncraftClasses
-
+from .exceptions.exceptions import ApiError, PlayerNotFound
+from .models import *
 
 class Client:
     """Client class."""
@@ -86,74 +73,19 @@ class Client:
         html_data = await self._get_html(url)
         json_data = json.loads(html_data)
 
-        parkour_manacube = Parkour(
-            playtime=json_data["parkour"]["playtime"],
-            mana=json_data["parkour"]["mana"],
-            score=json_data["parkour"]["score"],
-            courses=json_data["parkour"]["courses"],
-        )
+        if not json_data["exists"]:
+            raise PlayerNotFound(username=username)
 
-        aztec_manacube = Aztec(
-            playtime=json_data["aztec"]["playtime"],
-            mobkills=json_data["aztec"]["mobKills"],
-            mana=json_data["aztec"]["mana"],
-            money=json_data["aztec"]["money"],
-        )
-
-        oasis_manacube = Oasis(
-            playtime=json_data["oasis"]["playtime"],
-            mobkills=json_data["oasis"]["mobKills"],
-            mana=json_data["oasis"]["mana"],
-            money=json_data["oasis"]["money"],
-        )
-
-        islands_manacube = Islands(
-            playtime=json_data["islands"]["playtime"],
-            mobkills=json_data["islands"]["mobKills"],
-            silver=json_data["islands"]["silver"],
-            money=json_data["islands"]["money"],
-        )
-
-        survival_manacube = Survival(
-            playtime=json_data["survival"]["playtime"],
-            mobkills=json_data["survival"]["mobKills"],
-            money=json_data["survival"]["money"],
-            quests=json_data["survival"]["quests"],
-        )
-
-        factions_manacube = Factions(
-            playtime=json_data["factions"]["playtime"],
-            kills=json_data["factions"]["kills"],
-            mobkills=json_data["factions"]["mobkills"],
-            money=json_data["factions"]["money"],
-        )
-
-        aether_manacube = Aether(
-            playtime=json_data["aether"]["playtime"],
-            mininglevel=json_data["aether"]["miningLevel"],
-            money=json_data["aether"]["money"],
-            rebirths=json_data["aether"]["rebirths"],
-        )
-
-        atlas_manacube = Atlas(
-            playtime=json_data["atlas"]["playtime"],
-            mininglevel=json_data["atlas"]["miningLevel"],
-            money=json_data["atlas"]["money"],
-            rebirths=json_data["atlas"]["rebirths"],
-        )
-
-        creative_manacube = Creative(
-            playtime=json_data["creative"]["playtime"],
-            blocksplaced=json_data["creative"]["blocksplaced"],
-            blocksbroken=json_data["creative"]["blocksbroken"],
-        )
-
-        kitpvp_manacube = Kitpvp(
-            playtime=json_data["kitpvp"]["playtime"],
-            level=json_data["kitpvp"]["level"],
-            money=json_data["kitpvp"]["money"],
-            kills=json_data["kitpvp"]["kills"],
-        )
+        parkour_manacube=Parkour.parse_obj(json_data["parkour"])
+        aztec_manacube=Aztec.parse_obj(json_data["aztec"])
+        oasis_manacube=Oasis.parse_obj(json_data["oasis"])
+        islands_manacube=Islands.parse_obj(json_data["islands"])
+        survival_manacube=Survival.parse_obj(json_data["survival"])
+        factions_manacube=Factions.parse_obj(json_data["factions"])
+        aether_manacube=Aether.parse_obj(json_data["aether"])
+        atlas_manacube= Atlas.parse_obj(json_data["atlas"])
+        creative_manacube=Creative.parse_obj(json_data["creative"])
+        kitpvp_manacube= Kitpvp.parse_obj(json_data["kitpvp"])
 
         return Manacube(
             exists=json_data["exists"],
@@ -187,18 +119,12 @@ class Client:
         url = f"https://api.wynncraft.com/v2/player/{username}/stats"
         json_data = await self._get_json(url)
         data = []
+
+        if json_data["code"] == 400:
+            raise PlayerNotFound(username=username)
+
         for _class in json_data["data"][0]["classes"]:
-            data.append(
-                Classes(
-                    class_name=_class["name"],
-                    class_level=_class["level"],
-                    class_deaths=_class["deaths"],
-                    class_chest=_class["chestsFound"],
-                    class_logins=_class["logins"],
-                    class_events_won=_class["eventsWon"],
-                    class_discoveries=_class["discoveries"],
-                )
-            )
+            data.append(Classes.parse_obj(_class))
         return WyncraftClasses(classes=data)
 
     # async def blocksmc(self, username: str) -> Dict[str, Any]:
@@ -245,19 +171,22 @@ class Client:
     #         data["game_stats"].append({game_name: stats})
     #     return data
 
-    async def universocraft(self, username: str) -> Dict[str, Any]:
+    async def universocraft(self, username: str) -> Universocraft:
         """Universocraft player stats.
 
         Args:
             username (str): username of player
 
         Returns:
-            Dict[str, Any]: Dict[str, Any]ionary of player stats
+            Universocraft: object containing the players stats.
         """
         url = f"https://stats.universocraft.com/stats.php?player={username}"
         html = await self._get_html(url)
         soup = BeautifulSoup(html, "lxml")
-        data: Dict[str, Any] = {"game_stats": []}
+
+        print(soup)
+        if soup.find("div", {"class": "main-content-error"}):
+            raise PlayerNotFound(username=username)
         for game in soup.find_all("div", {"class": "game"}):
             stats = {}
             game_name = game.find("h2").get_text().replace("\n", "").strip()
@@ -265,8 +194,57 @@ class Client:
                 stat_val = stat.find("p", {"class": "game-stat-count"}).get_text()
                 stat_name = stat.find("p", {"class": "game-stat-title"}).get_text()
                 stats[stat_name] = stat_val
-            data["game_stats"].append({game_name: stats})
-        return data
+            if game_name == "Destruye el Nexus":
+                destory_nexus=DestoryNexus.parse_obj(stats)
+            elif game_name == "SkyWars":
+                sky_wars=SkyWars.parse_obj(stats)
+            elif game_name == "LuckyWars":
+                lucky_wars=SkyWars.parse_obj(stats)
+            elif game_name == "EggWars":
+                egg_wars=EggWars.parse_obj(stats)
+            elif game_name == "BedWars":
+                bed_wars=BedWars.parse_obj(stats)
+            elif game_name == "TeamSkyWars":
+                team_sky_wars=SkyWars.parse_obj(stats)
+            elif game_name == "SpeedBuilders":
+                speed_builders=SpeedBuilders.parse_obj(stats)
+            elif game_name == "BuildBattle":
+                build_battle=BuildBattle.parse_obj(stats)
+            elif game_name == "Escapa de la Bestia":
+                escape_beast=EscapeBeast.parse_obj(stats)
+            elif game_name == "Party Games":
+                party_games=PartyGames.parse_obj(stats)
+            elif game_name == "Juegos del Hambre":
+                hunger_games=HungerGames.parse_obj(stats)
+            elif game_name == "SkyPit":
+                sky_pit=SkyPit.parse_obj(stats)
+            elif game_name == "ArenaPvP":
+                arena_pvp=ArenaPVP.parse_obj(stats)
+            elif game_name == "UHC":
+                uhc=UHC.parse_obj(stats)
+            elif game_name == "MurderMystery":
+                murder_mystery=MurderMystery.parse_obj(stats)
+            elif game_name == "Captura la Lana":
+                capture_wool=CaptureWool.parse_obj(stats)
+
+        return Universocraft(
+            DestoryNexus=destory_nexus,
+            SkyWars=sky_wars,
+            LuckyWars=lucky_wars,
+            EggWars=egg_wars,
+            BedWars=bed_wars,
+            TeamSkyWars=team_sky_wars,
+            SpeedBuilders=speed_builders,
+            BuildBattle=build_battle,
+            EscapeBeast=escape_beast,
+            PartyGames=party_games,
+            HungerGames=hunger_games,
+            SkyPit=sky_pit,
+            ArenaPVP=arena_pvp,
+            UHC=uhc,
+            MurderMystery=murder_mystery,
+            CaptureWool=capture_wool
+        )
 
     async def minesaga(self, username: str) -> Dict[str, Any]:
         """Minesaga player stats.

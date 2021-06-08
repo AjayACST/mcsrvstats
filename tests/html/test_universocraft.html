@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UniversoCraft / uBored</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/assets/cache/player/style.min.css">
+    <link rel="stylesheet" href="/assets/cache/style.min.css">
+    <link rel="icon" type="image/png" href="https://downloads.universocraft.com/favicon.ico" sizes="32x32">
+</head>
+<body>
+    <div id="app">
+        <div id="header">
+            <div class="header">
+                <div class="container">
+                    <a class="header-link" href="/">
+                        <div class="header-logo">
+                            <img src="/assets/img/logo.png" alt="">
+                        </div>
+                        <div class="header-title">
+                            <h2>Estadísticas</h2>
+                        </div>
+                    </a>
+                    <div class="header-menu">
+                        <ul class="header-menu-list">
+                            <li><a href="/tops">TOPS</a></li>
+                        </ul>
+                    </div>
+                    <div class="header-search">
+                        <form action="/stats.php" method="GET">
+                            <input type="text" name="player" placeholder="Ingresar nombre...">
+                            <button>Buscar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="content-header">
+                <div class="content-header-overlay">
+                    <div class="container">
+                        <div class="player-info">
+                            <div class="player-status">
+                                <div class="player-status-block player-rank satur">
+                                    <p>SAT</p>
+                                </div>
+                                                                    <div class="player-status-block player-premium">
+                                    <p>PREMIUM</p>
+                                    </div>
+                                                            </div>
+                            <h1>uBored</h1>
+                            <div class="player-debug">
+                                <p>Datos generados en 14ms.</p>
+                            </div>
+                        </div>
+                        <div class="player-image">
+                            <div class="player-image-border">
+                                <img width="80%" src="https://api.mineskin.org/render/head?url=http://textures.minecraft.net/texture/7768b2ea8aea873c2feb7391e3e9ecf0b5c4b1d7c914bb3a269dd292c5bca435" alt="">
+                            </div>
+                        </div>
+                        <div class="player-description">
+                            <p><strong>Última conexión</strong></p>
+                            <p>Hace 3 horas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <div class="content-body">
+                <div class="container">
+                    <div id="stats">
+                        <div class="stats-container">
+                                                            <div class="game">
+                                    <div class="game-header" style="background-image: url('/assets/img/skywars.png');">
+                                        <div class="game-header-overlay">
+                                            <h2 class="game-header-title">Destruye el Nexus</h2>
+                                        </div>
+                                    </div>
+                                                                        <div class="game-content">
+                                        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-star"></i></span></div>
+        <p class="game-stat-title">VICTORIAS</p>
+        <p class="game-stat-count"><strong>5</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull"></i></span></div>
+        <p class="game-stat-title">ASESINATOS</p>
+        <p class="game-stat-count"><strong>137</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-dot-circle"></i></span></div>
+        <p class="game-stat-title">ASESINATOS CON ARCO</p>
+        <p class="game-stat-count"><strong>0</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull-crossbones"></i></span></div>
+        <p class="game-stat-title">MUERTES</p>
+        <p class="game-stat-count"><strong>94</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-hammer"></i></span></div>
+        <p class="game-stat-title">DAÑOS AL NEXUS</p>
+        <p class="game-stat-count"><strong>165</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-gavel"></i></span></div>
+        <p class="game-stat-title">DESTRUCCIONES DEL NEXUS</p>
+        <p class="game-stat-count"><strong>1</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-cubes"></i></span></div>
+        <p class="game-stat-title">BLOQUES COLOCADOS</p>
+        <p class="game-stat-count"><strong>226</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-cubes"></i></span></div>
+        <p class="game-stat-title">BLOQUES DESTRUIDOS</p>
+        <p class="game-stat-count"><strong>824</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-box"></i></span></div>
+        <p class="game-stat-title">MENAS DESTRUIDAS</p>
+        <p class="game-stat-count"><strong>322</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-box"></i></span></div>
+        <p class="game-stat-title">TRONCOS DESTRUIDOS</p>
+        <p class="game-stat-count"><strong>36</strong></p>
+    </div>
+                                        </div>
+                                </div>
+                                                            <div class="game">
+                                    <div class="game-header" style="background-image: url('/assets/img/skywars.png');">
+                                        <div class="game-header-overlay">
+                                            <h2 class="game-header-title">SkyWars</h2>
+                                        </div>
+                                    </div>
+                                                                        <div class="game-content">
+                                        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-star"></i></span></div>
+        <p class="game-stat-title">VICTORIAS</p>
+        <p class="game-stat-count"><strong>613</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull"></i></span></div>
+        <p class="game-stat-title">ASESINATOS</p>
+        <p class="game-stat-count"><strong>3450</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull-crossbones"></i></span></div>
+        <p class="game-stat-title">MUERTES</p>
+        <p class="game-stat-count"><strong>755</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-cubes"></i></span></div>
+        <p class="game-stat-title">BLOQUES COLOCADOS</p>
+        <p class="game-stat-count"><strong>39024</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-cubes"></i></span></div>
+        <p class="game-stat-title">BLOQUES DESTRUIDOS</p>
+        <p class="game-stat-count"><strong>3091</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-bullseye"></i></span></div>
+        <p class="game-stat-title">PROJECTILES LANZADOS</p>
+        <p class="game-stat-count"><strong>14774</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-dot-circle"></i></span></div>
+        <p class="game-stat-title">PROJECTILES IMPACTADOS</p>
+        <p class="game-stat-count"><strong>3805</strong></p>
+    </div>
+                                        </div>
+                                </div>
+                                                            <div class="game">
+                                    <div class="game-header" style="background-image: url('/assets/img/skywars.png');">
+                                        <div class="game-header-overlay">
+                                            <h2 class="game-header-title">LuckyWars</h2>
+                                        </div>
+                                    </div>
+                                                                        <div class="game-content">
+                                        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-star"></i></span></div>
+        <p class="game-stat-title">VICTORIAS</p>
+        <p class="game-stat-count"><strong>11005</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull"></i></span></div>
+        <p class="game-stat-title">ASESINATOS</p>
+        <p class="game-stat-count"><strong>50201</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull-crossbones"></i></span></div>
+        <p class="game-stat-title">MUERTES</p>
+        <p class="game-stat-count"><strong>5543</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-cubes"></i></span></div>
+        <p class="game-stat-title">BLOQUES COLOCADOS</p>
+        <p class="game-stat-count"><strong>68201</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-cubes"></i></span></div>
+        <p class="game-stat-title">BLOQUES DESTRUIDOS</p>
+        <p class="game-stat-count"><strong>43670</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-bullseye"></i></span></div>
+        <p class="game-stat-title">PROJECTILES LANZADOS</p>
+        <p class="game-stat-count"><strong>9333</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-dot-circle"></i></span></div>
+        <p class="game-stat-title">PROJECTILES IMPACTADOS</p>
+        <p class="game-stat-count"><strong>4517</strong></p>
+    </div>
+                                        </div>
+                                </div>
+                                                            <div class="game">
+                                    <div class="game-header" style="background-image: url('/assets/img/eggwars.png');">
+                                        <div class="game-header-overlay">
+                                            <h2 class="game-header-title">EggWars</h2>
+                                        </div>
+                                    </div>
+                                                                        <div class="game-content">
+                                        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-star"></i></span></div>
+        <p class="game-stat-title">VICTORIAS</p>
+        <p class="game-stat-count"><strong>166</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull"></i></span></div>
+        <p class="game-stat-title">ASESINATOS</p>
+        <p class="game-stat-count"><strong>2188</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-egg"></i></span></div>
+        <p class="game-stat-title">HUEVOS ROTOS</p>
+        <p class="game-stat-count"><strong>303</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull-crossbones"></i></span></div>
+        <p class="game-stat-title">MUERTES</p>
+        <p class="game-stat-count"><strong>522</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-cubes"></i></span></div>
+        <p class="game-stat-title">BLOQUES COLOCADOS</p>
+        <p class="game-stat-count"><strong>27216</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-cubes"></i></span></div>
+        <p class="game-stat-title">BLOQUES DESTRUIDOS</p>
+        <p class="game-stat-count"><strong>1701</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-bullseye"></i></span></div>
+        <p class="game-stat-title">PROJECTILES LANZADOS</p>
+        <p class="game-stat-count"><strong>443</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-dot-circle"></i></span></div>
+        <p class="game-stat-title">PROJECTILES IMPACTADOS</p>
+        <p class="game-stat-count"><strong>257</strong></p>
+    </div>
+                                        </div>
+                                </div>
+                                                            <div class="game">
+                                    <div class="game-header" style="background-image: url('/assets/img/bedwars.png');">
+                                        <div class="game-header-overlay">
+                                            <h2 class="game-header-title">BedWars</h2>
+                                        </div>
+                                    </div>
+                                                                        <div class="game-content">
+                                        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-star"></i></span></div>
+        <p class="game-stat-title">VICTORIAS</p>
+        <p class="game-stat-count"><strong>151</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull"></i></span></div>
+        <p class="game-stat-title">ASESINATOS</p>
+        <p class="game-stat-count"><strong>1896</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull"></i></span></div>
+        <p class="game-stat-title">ASESINATOS FINALES</p>
+        <p class="game-stat-count"><strong>595</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-bed"></i></span></div>
+        <p class="game-stat-title">CAMAS DESTRUIDAS</p>
+        <p class="game-stat-count"><strong>268</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull-crossbones"></i></span></div>
+        <p class="game-stat-title">MUERTES</p>
+        <p class="game-stat-count"><strong>873</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull-crossbones"></i></span></div>
+        <p class="game-stat-title">MUERTES FINALES</p>
+        <p class="game-stat-count"><strong>100</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-gamepad"></i></span></div>
+        <p class="game-stat-title">PARTIDAS JUGADAS</p>
+        <p class="game-stat-count"><strong>264</strong></p>
+    </div>
+                                        </div>
+                                </div>
+                                                            <div class="game">
+                                    <div class="game-header" style="background-image: url('/assets/img/teamskywars.png');">
+                                        <div class="game-header-overlay">
+                                            <h2 class="game-header-title">TeamSkyWars</h2>
+                                        </div>
+                                    </div>
+                                                                        <div class="game-content">
+                                        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-star"></i></span></div>
+        <p class="game-stat-title">VICTORIAS</p>
+        <p class="game-stat-count"><strong>3354</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull"></i></span></div>
+        <p class="game-stat-title">ASESINATOS</p>
+        <p class="game-stat-count"><strong>31247</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull-crossbones"></i></span></div>
+        <p class="game-stat-title">MUERTES</p>
+        <p class="game-stat-count"><strong>2327</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-cubes"></i></span></div>
+        <p class="game-stat-title">BLOQUES COLOCADOS</p>
+        <p class="game-stat-count"><strong>270382</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-cubes"></i></span></div>
+        <p class="game-stat-title">BLOQUES DESTRUIDOS</p>
+        <p class="game-stat-count"><strong>22574</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-bullseye"></i></span></div>
+        <p class="game-stat-title">PROJECTILES LANZADOS</p>
+        <p class="game-stat-count"><strong>64955</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-dot-circle"></i></span></div>
+        <p class="game-stat-title">PROJECTILES IMPACTADOS</p>
+        <p class="game-stat-count"><strong>17871</strong></p>
+    </div>
+                                        </div>
+                                </div>
+                                                            <div class="game">
+                                    <div class="game-header" style="background-image: url('/assets/img/speedbuilders.png');">
+                                        <div class="game-header-overlay">
+                                            <h2 class="game-header-title">SpeedBuilders</h2>
+                                        </div>
+                                    </div>
+                                                                        <div class="game-content">
+                                        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-star"></i></span></div>
+        <p class="game-stat-title">VICTORIAS</p>
+        <p class="game-stat-count"><strong>15</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull-crossbones"></i></span></div>
+        <p class="game-stat-title">PERDIDAS</p>
+        <p class="game-stat-count"><strong>27</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-cubes"></i></span></div>
+        <p class="game-stat-title">CONSTRUCCIONES PERFECTAS</p>
+        <p class="game-stat-count"><strong>457</strong></p>
+    </div>
+                                        </div>
+                                </div>
+                                                            <div class="game">
+                                    <div class="game-header" style="background-image: url('/assets/img/buildbattle.png');">
+                                        <div class="game-header-overlay">
+                                            <h2 class="game-header-title">BuildBattle</h2>
+                                        </div>
+                                    </div>
+                                                                        <div class="game-content">
+                                        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-star"></i></span></div>
+        <p class="game-stat-title">VICTORIAS</p>
+        <p class="game-stat-count"><strong>1</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-gamepad"></i></span></div>
+        <p class="game-stat-title">PARTIDAS JUGADAS</p>
+        <p class="game-stat-count"><strong>31</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-coins"></i></span></div>
+        <p class="game-stat-title">PUNTAJE</p>
+        <p class="game-stat-count"><strong>79</strong></p>
+    </div>
+                                        </div>
+                                </div>
+                                                            <div class="game">
+                                    <div class="game-header" style="background-image: url('/assets/img/edlb.png');">
+                                        <div class="game-header-overlay">
+                                            <h2 class="game-header-title">Escapa de la Bestia</h2>
+                                        </div>
+                                    </div>
+                                                                        <div class="game-content">
+                                        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-star"></i></span></div>
+        <p class="game-stat-title">VICTORIAS TOTALES</p>
+        <p class="game-stat-count"><strong>95</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-star"></i></span></div>
+        <p class="game-stat-title">VICTORIAS COMO CORREDOR</p>
+        <p class="game-stat-count"><strong>91</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-star"></i></span></div>
+        <p class="game-stat-title">VICTORIAS COMO BESTIA</p>
+        <p class="game-stat-count"><strong>4</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull"></i></span></div>
+        <p class="game-stat-title">ASESINATO COMO CORREDOR</p>
+        <p class="game-stat-count"><strong>42</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull"></i></span></div>
+        <p class="game-stat-title">ASESINATO COMO BESTIA</p>
+        <p class="game-stat-count"><strong>42</strong></p>
+    </div>
+                                        </div>
+                                </div>
+                                                            <div class="game">
+                                    <div class="game-header" style="background-image: url('/assets/img/skywars.png');">
+                                        <div class="game-header-overlay">
+                                            <h2 class="game-header-title">Party Games</h2>
+                                        </div>
+                                    </div>
+                                                                        <div class="game-content">
+                                        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-star"></i></span></div>
+        <p class="game-stat-title">VICTORIAS</p>
+        <p class="game-stat-count"><strong>112</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull"></i></span></div>
+        <p class="game-stat-title">ASESINATOS</p>
+        <p class="game-stat-count"><strong>3273</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull-crossbones"></i></span></div>
+        <p class="game-stat-title">MUERTES</p>
+        <p class="game-stat-count"><strong>1484</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-gamepad"></i></span></div>
+        <p class="game-stat-title">PARTIDAS JUGADAS</p>
+        <p class="game-stat-count"><strong>182</strong></p>
+    </div>
+                                        </div>
+                                </div>
+                                                            <div class="game">
+                                    <div class="game-header" style="background-image: url('/assets/img/sg.png');">
+                                        <div class="game-header-overlay">
+                                            <h2 class="game-header-title">Juegos del Hambre</h2>
+                                        </div>
+                                    </div>
+                                                                        <div class="game-content">
+                                        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-star"></i></span></div>
+        <p class="game-stat-title">VICTORIAS</p>
+        <p class="game-stat-count"><strong>410</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull"></i></span></div>
+        <p class="game-stat-title">ASESINATOS</p>
+        <p class="game-stat-count"><strong>0</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull-crossbones"></i></span></div>
+        <p class="game-stat-title">MUERTES</p>
+        <p class="game-stat-count"><strong>277</strong></p>
+    </div>
+                                        </div>
+                                </div>
+                                                            <div class="game">
+                                    <div class="game-header" style="background-image: url('/assets/img/skypvp.png');">
+                                        <div class="game-header-overlay">
+                                            <h2 class="game-header-title">SkyPit</h2>
+                                        </div>
+                                    </div>
+                                                                        <div class="game-content">
+                                        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-gamepad"></i></span></div>
+        <p class="game-stat-title">Nivel</p>
+        <p class="game-stat-count"><strong>42</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-coins"></i></span></div>
+        <p class="game-stat-title">UNICOINS</p>
+        <p class="game-stat-count"><strong>609312</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-dot-circle"></i></span></div>
+        <p class="game-stat-title">ASISTENCIAS</p>
+        <p class="game-stat-count"><strong>32349</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull"></i></span></div>
+        <p class="game-stat-title">ASESINATOS</p>
+        <p class="game-stat-count"><strong>67097</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull-crossbones"></i></span></div>
+        <p class="game-stat-title">MUERTES</p>
+        <p class="game-stat-count"><strong>6553</strong></p>
+    </div>
+                                        </div>
+                                </div>
+                                                            <div class="game">
+                                    <div class="game-header" style="background-image: url('/assets/img/arenapvp.png');">
+                                        <div class="game-header-overlay">
+                                            <h2 class="game-header-title">ArenaPvP</h2>
+                                        </div>
+                                    </div>
+                                                                        <div class="game-content">
+                                        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-star"></i></span></div>
+        <p class="game-stat-title">VICTORIAS</p>
+        <p class="game-stat-count"><strong>630</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull"></i></span></div>
+        <p class="game-stat-title">ASESINATOS</p>
+        <p class="game-stat-count"><strong>756</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull-crossbones"></i></span></div>
+        <p class="game-stat-title">PERDIDAS</p>
+        <p class="game-stat-count"><strong>261</strong></p>
+    </div>
+                                        </div>
+                                </div>
+                                                            <div class="game">
+                                    <div class="game-header" style="background-image: url('/assets/img/uhc.png');">
+                                        <div class="game-header-overlay">
+                                            <h2 class="game-header-title">UHC</h2>
+                                        </div>
+                                    </div>
+                                                                        <div class="game-content">
+                                        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-star"></i></span></div>
+        <p class="game-stat-title">VICTORIAS</p>
+        <p class="game-stat-count"><strong>9</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull-crossbones"></i></span></div>
+        <p class="game-stat-title">PERDIDAS</p>
+        <p class="game-stat-count"><strong>22</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-gamepad"></i></span></div>
+        <p class="game-stat-title">PARTIDAS JUGADAS</p>
+        <p class="game-stat-count"><strong>37</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull"></i></span></div>
+        <p class="game-stat-title">ASESINATOS</p>
+        <p class="game-stat-count"><strong>94</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull-crossbones"></i></span></div>
+        <p class="game-stat-title">MUERTES</p>
+        <p class="game-stat-count"><strong>22</strong></p>
+    </div>
+                                        </div>
+                                </div>
+                                                            <div class="game">
+                                    <div class="game-header" style="background-image: url('/assets/img/murdermystery.png');">
+                                        <div class="game-header-overlay">
+                                            <h2 class="game-header-title">MurderMystery</h2>
+                                        </div>
+                                    </div>
+                                                                        <div class="game-content">
+                                        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-star"></i></span></div>
+        <p class="game-stat-title">VICTORIAS</p>
+        <p class="game-stat-count"><strong>56</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull-crossbones"></i></span></div>
+        <p class="game-stat-title">PERDIDAS</p>
+        <p class="game-stat-count"><strong>43</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull"></i></span></div>
+        <p class="game-stat-title">ASESINATOS</p>
+        <p class="game-stat-count"><strong>82</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull-crossbones"></i></span></div>
+        <p class="game-stat-title">MUERTES</p>
+        <p class="game-stat-count"><strong>43</strong></p>
+    </div>
+                                        </div>
+                                </div>
+                                                            <div class="game">
+                                    <div class="game-header" style="background-image: url('/assets/img/ctw.png');">
+                                        <div class="game-header-overlay">
+                                            <h2 class="game-header-title">Captura la Lana</h2>
+                                        </div>
+                                    </div>
+                                                                        <div class="game-content">
+                                        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-coins"></i></span></div>
+        <p class="game-stat-title">PUNTAJE</p>
+        <p class="game-stat-count"><strong>0</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-skull"></i></span></div>
+        <p class="game-stat-title">ASESINATOS</p>
+        <p class="game-stat-count"><strong>0</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-dot-circle"></i></span></div>
+        <p class="game-stat-title">ASESINATOS CON ARCO</p>
+        <p class="game-stat-count"><strong>0</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-bullseye"></i></span></div>
+        <p class="game-stat-title">DISTANCIA MÁXIMA DE MUERTE CON ARCO</p>
+        <p class="game-stat-count"><strong>0</strong></p>
+    </div>
+        <div class="game-stat">
+        <div class="game-stat-icon"><span><i class="fas fa-cubes"></i></span></div>
+        <p class="game-stat-title">LANAS COLOCADAS</p>
+        <p class="game-stat-count"><strong>0</strong></p>
+    </div>
+                                        </div>
+                                </div>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="/assets/cache/player/main.min.js"></script>
+</body>
+</html>

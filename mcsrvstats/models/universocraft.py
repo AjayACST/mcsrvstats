@@ -1,5 +1,5 @@
 """Universocraft related objects."""
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class DestoryNexus(BaseModel):
@@ -14,20 +14,20 @@ class DestoryNexus(BaseModel):
         nexusdestructions (int): Amount of Nexus Destructions
         blocksplaced (int): Amount of blocks placed.
         destroyedblocks (int): Amount of blocks destroyed.
-        minesdestroyed (int): Amount of mines destroyed.
-        trunksdestroyed (int): Amount of trunks destroyed.
+        oresdestroyed (int): Amount of ores destroyed.
+        logsdestroyed (int): Amount of logs destroyed.
     """
 
-    victories: int
-    murders: int
-    archedmurders: int
-    deaths: int
-    damagenexus: int
-    nexusdestructions: int
-    blocksplaced: int
-    destroyedblocks: int
-    minesdestroyed: int
-    trunksdestroyed: int
+    victories: int = Field(alias="VICTORIAS")
+    murders: int = Field(alias="ASESINATOS")
+    archedmurders: int = Field(alias="ASESINATOS CON ARCO")
+    deaths: int = Field(alias="MUERTES")
+    damagenexus: int = Field(alias="DAÑOS AL NEXUS")
+    nexusdestructions: int = Field(alias="DESTRUCCIONES DEL NEXUS")
+    blocksplaced: int = Field(alias="BLOQUES COLOCADOS")
+    destroyedblocks: int = Field(alias="BLOQUES DESTRUIDOS")
+    oresdestroyed: int = Field(alias="MENAS DESTRUIDAS")
+    logsdestroyed: int = Field(alias="TRONCOS DESTRUIDOS")
 
 
 class SkyWars(BaseModel):
@@ -43,13 +43,13 @@ class SkyWars(BaseModel):
         impactedprojectiles (int): Number of impactedProjectiles.
     """
 
-    victories: int
-    murders: int
-    deaths: int
-    blocksplaced: int
-    destroyedblocks: int
-    projectileslaunch: int
-    impactedprojectiles: int
+    victories: int = Field(alias="VICTORIAS")
+    murders: int = Field(alias="ASESINATOS")
+    deaths: int = Field(alias="MUERTES")
+    blocksplaced: int = Field(alias="BLOQUES COLOCADOS")
+    destroyedblocks: int = Field(alias="BLOQUES DESTRUIDOS")
+    projectileslaunch: int = Field(alias="PROJECTILES LANZADOS")
+    impactedprojectiles: int = Field(alias="PROJECTILES IMPACTADOS")
 
 
 class EggWars(BaseModel):
@@ -66,14 +66,14 @@ class EggWars(BaseModel):
         impactedprojectiles (int): Number of impactedProjectiles.
     """
 
-    victories: int
-    murders: int
-    brokeneggs: int
-    deaths: int
-    blocksplaced: int
-    destroyedblocks: int
-    projectileslaunch: int
-    impactedprojectiles: int
+    victories: int = Field(alias="VICTORIAS")
+    murders: int = Field(alias="ASESINATOS")
+    brokeneggs: int = Field(alias="HUEVOS ROTOS")
+    deaths: int = Field(alias="MUERTES")
+    blocksplaced: int = Field(alias="BLOQUES COLOCADOS")
+    destroyedblocks: int = Field(alias="BLOQUES DESTRUIDOS")
+    projectileslaunch: int = Field(alias="PROJECTILES LANZADOS")
+    impactedprojectiles: int = Field(alias="PROJECTILES IMPACTADOS")
 
 
 class BedWars(BaseModel):
@@ -89,13 +89,13 @@ class BedWars(BaseModel):
         gamesplayed (int): Number of games played.
     """
 
-    victories: int
-    murders: int
-    finalmurders: int
-    destroyedbeds: int
-    deaths: int
-    finaldeaths: int
-    gamesplayed: int
+    victories: int = Field(alias="VICTORIAS")
+    murders: int = Field(alias="ASESINATOS")
+    finalmurders: int = Field(alias="ASESINATOS FINALES")
+    destroyedbeds: int = Field(alias="CAMAS DESTRUIDAS")
+    deaths: int = Field(alias="MUERTES")
+    finaldeaths: int = Field(alias="MUERTES FINALES")
+    gamesplayed: int = Field(alias="PARTIDAS JUGADAS")
 
 
 class SpeedBuilders(BaseModel):
@@ -107,9 +107,9 @@ class SpeedBuilders(BaseModel):
         perfectconstructions (int): Number of perfect constructions.
     """
 
-    victories: int
-    lost: int
-    perfectconstructions: int
+    victories: int = Field(alias="VICTORIAS")
+    lost: int = Field(alias="PERDIDAS")
+    perfectconstructions: int = Field(alias="CONSTRUCCIONES PERFECTAS")
 
 
 class BuildBattle(BaseModel):
@@ -121,9 +121,9 @@ class BuildBattle(BaseModel):
         score (int): The player's score.
     """
 
-    victories: int
-    gamesplayed: int
-    score: int
+    victories: int = Field(alias="VICTORIAS")
+    gamesplayed: int = Field(alias="PARTIDAS JUGADAS")
+    score: int = Field(alias="PUNTAJE")
 
 
 class EscapeBeast(BaseModel):
@@ -137,11 +137,11 @@ class EscapeBeast(BaseModel):
         murdersbeast (int): Number of murders as the beast.
     """
 
-    totalvictories: int
-    victoriesrunner: int
-    victoriesbeast: int
-    murdersrunner: int
-    murdersbeast: int
+    totalvictories: int = Field(alias="VICTORIAS TOTALES")
+    victoriesrunner: int = Field(alias="VICTORIAS COMO CORREDOR")
+    victoriesbeast: int = Field(alias="VICTORIAS COMO BESTIA")
+    murdersrunner: int = Field(alias="ASESINATO COMO CORREDOR")
+    murdersbeast: int = Field(alias="ASESINATO COMO BESTIA")
 
 
 class PartyGames(BaseModel):
@@ -154,10 +154,10 @@ class PartyGames(BaseModel):
         gamesplayed (int): Number of games played.
     """
 
-    victories: int
-    murders: int
-    deaths: int
-    gamesplayed: int
+    victories: int = Field(alias="VICTORIAS")
+    murders: int = Field(alias="ASESINATOS")
+    deaths: int = Field(alias="MUERTES")
+    gamesplayed: int = Field(alias="PARTIDAS JUGADAS")
 
 
 class SkyPit(BaseModel):
@@ -171,11 +171,11 @@ class SkyPit(BaseModel):
         deaths (int): Total number of deaths.
     """
 
-    level: int
-    unicoins: int
-    assists: int
-    murders: int
-    deaths: int
+    level: int = Field(alias="Nivel")
+    unicoins: int = Field(alias="UNICOINS")
+    assists: int = Field(alias="ASISTENCIAS")
+    murders: int = Field(alias="ASESINATOS")
+    deaths: int = Field(alias="MUERTES")
 
 
 class UHC(BaseModel):
@@ -189,11 +189,11 @@ class UHC(BaseModel):
         deaths (int): Total number of deaths.
     """
 
-    victories: int
-    lost: int
-    gamesplayed: int
-    murders: int
-    deaths: int
+    victories: int = Field(alias="VICTORIAS")
+    lost: int = Field(alias="PERDIDAS")
+    gamesplayed: int = Field(alias="PARTIDAS JUGADAS")
+    murders: int = Field(alias="ASESINATOS")
+    deaths: int = Field(alias="MUERTES")
 
 
 class MurderMystery(BaseModel):
@@ -206,10 +206,10 @@ class MurderMystery(BaseModel):
         deaths (int): Total number of deaths.
     """
 
-    victories: int
-    lost: int
-    murders: int
-    deaths: int
+    victories: int = Field(alias="VICTORIAS")
+    lost: int = Field(alias="PERDIDAS")
+    murders: int = Field(alias="ASESINATOS")
+    deaths: int = Field(alias="MUERTES")
 
 
 class CaptureWool(BaseModel):
@@ -223,11 +223,36 @@ class CaptureWool(BaseModel):
         woolplaced (int): Total number of blocks of wool placed.
     """
 
-    score: int
-    murders: int
-    archedmurders: int
-    maxarchdistance: int
-    woolplaced: int
+    score: int = Field(alias="PUNTAJE")
+    murders: int = Field(alias="ASESINATOS")
+    archedmurders: int = Field(alias="ASESINATOS CON ARCO")
+    maxarchdistance: int = Field(alias="DISTANCIA MÁXIMA DE MUERTE CON ARCO")
+    woolplaced: int = Field(alias="LANAS COLOCADAS")
+
+class ArenaPVP(BaseModel):
+    """Model for ArenaPVP.
+
+    Args:
+        victories (int): How many wins the player has.
+        murders (int): How many murders the player has.
+        lost (int): How many games the player has lost.
+    """
+
+    victories: int = Field(alias="VICTORIAS")
+    murders: int = Field(alias="ASESINATOS")
+    lost: int = Field(alias="PERDIDAS")
+
+class HungerGames(BaseModel):
+    """ Model for Hunger Games.
+
+    Args: 
+        victories (int): Number of victories the player has.
+        murders (int): Number of murders the player has.
+        deaths (int): Number of death the player has.
+    """
+    victories: int = Field(alias="VICTORIAS")
+    murders: int = Field(alias="ASESINATOS")
+    deaths: int = Field(alias="MUERTES")
 
 
 class Universocraft(BaseModel):
@@ -236,13 +261,17 @@ class Universocraft(BaseModel):
     Args:
         DestoryNexus (DestoryNexus): DestoryNexus stats.
         SkyWars (SkyWars): SkyWars stats.
+        LuckyWars (SkyWars): LuckyWars stats.
         EggWars (EggWars): EggWars stats.
         BedWars (BedWars): BedWars stats.
+        TeamSkyWars (SkyWars): TeamSkyWars stats.
         SpeedBuilders (SpeedBuilders): SpeedBuilders stats.
         BuildBattle (BuildBattle): BuildBattle stats.
         EscapeBeast (EscapeBeast): Escape the Beast stats.
         PartyGames (PartyGames): PartyGames stats.
+        HungerGames (HungerGames): HungerGames stats.
         SkyPit (SkyPit): SkyPit stats.
+        ArenaPVP (ArenaPVP): ArenaPVP stats.
         UHC (UHC): UHC stats.
         MurderMystery (MurderMystery): MurderMystery stats.
         CaptureWool (CaptureWool): Capture the Woll stats.
@@ -250,13 +279,17 @@ class Universocraft(BaseModel):
 
     DestoryNexus: DestoryNexus
     SkyWars: SkyWars
+    LuckyWars: SkyWars
     EggWars: EggWars
     BedWars: BedWars
+    TeamSkyWars: SkyWars
     SpeedBuilders: SpeedBuilders
     BuildBattle: BuildBattle
     EscapeBeast: EscapeBeast
     PartyGames: PartyGames
+    HungerGames: HungerGames
     SkyPit: SkyPit
+    ArenaPVP: ArenaPVP
     UHC: UHC
     MurderMystery: MurderMystery
     CaptureWool: CaptureWool

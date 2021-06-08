@@ -1,7 +1,7 @@
 """Wyncraft Classes related objects."""
 from typing import List
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class Classes(BaseModel):
@@ -17,13 +17,13 @@ class Classes(BaseModel):
         class_discoveries (int): How many discoveries the player has made in this class.
     """
 
-    class_name: str
-    class_level: int
-    class_deaths: int
-    class_chest: int
-    class_logins: int
-    class_events_won: int
-    class_discoveries: int
+    class_name: str = Field(alias="name")
+    class_level: int = Field(alias="level")
+    class_deaths: int = Field(alias="deaths")
+    class_chest: int = Field(alias="chestsFound")
+    class_logins: int = Field(alias="logins")
+    class_events_won: int = Field(alias="eventsWon")
+    class_discoveries: int = Field(alias="discoveries")
 
 
 class WyncraftClasses(BaseModel):
