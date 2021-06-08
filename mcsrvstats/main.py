@@ -184,7 +184,6 @@ class Client:
         html = await self._get_html(url)
         soup = BeautifulSoup(html, "lxml")
 
-        print(soup)
         if soup.find("div", {"class": "main-content-error"}):
             raise PlayerNotFound(username=username)
         for game in soup.find_all("div", {"class": "game"}):

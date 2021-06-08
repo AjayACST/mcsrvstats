@@ -98,22 +98,22 @@ async def test_manacube(mcsrvstats_client: Client) -> None:
         assert data.parkour.courses == "0"
 
         assert data.aztec.playtime == "3046 hours"
-        assert data.aztec.mobkills == "0"
+        assert data.aztec.mobkills == "N/A"
         assert data.aztec.mana == "150"
         assert data.aztec.money == "50"
 
         assert data.oasis.playtime == "1 hours"
-        assert data.oasis.mobkills == "0"
+        assert data.oasis.mobkills == "N/A"
         assert data.oasis.mana == "185"
         assert data.oasis.money == "2000000051"
 
         assert data.islands.playtime == "6244 hours"
-        assert data.islands.mobkills == "0"
+        assert data.islands.mobkills == "N/A"
         assert data.islands.silver == "13950"
         assert data.islands.money == "3188330000"
 
         assert data.survival.playtime == "0 mins"
-        assert data.survival.mobkills == "0"
+        assert data.survival.mobkills == "N/A"
         assert data.survival.money == "300"
         assert data.survival.quests == "0"
 
