@@ -1,4 +1,5 @@
 """Test for Manaucbe."""
+from datetime import datetime
 from mcsrvstats import Client
 
 import pytest
@@ -84,59 +85,59 @@ async def test_manacube(mcsrvstats_client: Client) -> None:
         client = mcsrvstats_client
         data = await client.manacube("_iTempo")
 
-        assert data.exists == "True"
-        assert data.level == "14"
+        assert data.exists == True
+        assert data.level == 14
         assert data.rank == "default"
-        assert data.cubits == "61.87"
-        assert data.firstseen == "2019-07-07 00:22:11"
-        assert data.lastseen == "2021-01-20 01:07:32"
+        assert data.cubits == 61.87
+        assert data.firstseen == datetime.strptime("2019-07-07 00:22:11", "%Y-%m-%d %H:%M:%S")
+        assert data.lastseen == datetime.strptime("2021-01-20 01:07:32", "%Y-%m-%d %H:%M:%S")
         assert data.lastseenago == "1 second ago"
 
         assert data.parkour.playtime == "15 hours"
-        assert data.parkour.mana == "N/A"
-        assert data.parkour.score == "0"
-        assert data.parkour.courses == "0"
+        assert data.parkour.mana == 0
+        assert data.parkour.score == 0
+        assert data.parkour.courses == 0
 
         assert data.aztec.playtime == "3046 hours"
-        assert data.aztec.mobkills == "N/A"
-        assert data.aztec.mana == "150"
-        assert data.aztec.money == "50"
+        assert data.aztec.mobkills == 0
+        assert data.aztec.mana == 150
+        assert data.aztec.money == 50
 
         assert data.oasis.playtime == "1 hours"
-        assert data.oasis.mobkills == "N/A"
-        assert data.oasis.mana == "185"
-        assert data.oasis.money == "2000000051"
+        assert data.oasis.mobkills == 0
+        assert data.oasis.mana == 185
+        assert data.oasis.money == 2000000051
 
         assert data.islands.playtime == "6244 hours"
-        assert data.islands.mobkills == "N/A"
-        assert data.islands.silver == "13950"
-        assert data.islands.money == "3188330000"
+        assert data.islands.mobkills == 0
+        assert data.islands.silver == 13950
+        assert data.islands.money == 3188330000
 
         assert data.survival.playtime == "0 mins"
-        assert data.survival.mobkills == "N/A"
-        assert data.survival.money == "300"
-        assert data.survival.quests == "0"
+        assert data.survival.mobkills == 0
+        assert data.survival.money == 300
+        assert data.survival.quests == 0
 
-        assert data.factions.playtime == "N/A"
-        assert data.factions.kills == "N/A"
-        assert data.factions.mobkills == "N/A"
-        assert data.factions.money == "N/A"
+        assert data.factions.playtime == "No Time"
+        assert data.factions.kills == 0
+        assert data.factions.mobkills == 0
+        assert data.factions.money == 0
 
-        assert data.aether.playtime == "N/A"
-        assert data.aether.mininglevel == "N/A"
-        assert data.aether.money == "N/A"
-        assert data.aether.rebirths == "N/A"
+        assert data.aether.playtime == "No Time"
+        assert data.aether.mininglevel == 0
+        assert data.aether.money == 0
+        assert data.aether.rebirths == 0
 
-        assert data.atlas.playtime == "N/A"
-        assert data.atlas.mininglevel == "N/A"
-        assert data.atlas.money == "N/A"
-        assert data.atlas.rebirths == "N/A"
+        assert data.atlas.playtime == "No Time"
+        assert data.atlas.mininglevel == 0
+        assert data.atlas.money == 0
+        assert data.atlas.rebirths == 0
 
         assert data.creative.playtime == "73 hours"
-        assert data.creative.blocksplaced == "0"
-        assert data.creative.blocksbroken == "0"
+        assert data.creative.blocksplaced == 0
+        assert data.creative.blocksbroken == 0
 
         assert data.kitpvp.playtime == "7 mins"
-        assert data.kitpvp.level == "0"
-        assert data.kitpvp.money == "10"
-        assert data.kitpvp.kills == "0"
+        assert data.kitpvp.level == 0
+        assert data.kitpvp.money == 10
+        assert data.kitpvp.kills == 0

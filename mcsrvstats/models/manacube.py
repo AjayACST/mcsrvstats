@@ -1,7 +1,9 @@
 """Manacube related objects."""
 from typing import Optional
 
-from pydantic import BaseModel
+from datetime import datetime
+
+from pydantic import BaseModel, validator
 
 
 class Parkour(BaseModel):
@@ -14,10 +16,16 @@ class Parkour(BaseModel):
         courses (str): How many courses the player has done.
     """
 
-    playtime: Optional[str] = "N/A"
-    mana: Optional[str] = "N/A"
-    score: Optional[str] = "N/A"
-    courses: Optional[str] = "N/A"
+    playtime: Optional[str] = "No Time"
+    mana: Optional[int] = 0
+    score: Optional[int] = 0
+    courses: Optional[int] = 0
+
+    @validator('*', pre=True)
+    def name_must_contain_space(cls, v, field):
+        if v == "N/A":
+            return field.default
+        return v
 
 
 class Aztec(BaseModel):
@@ -25,15 +33,21 @@ class Aztec(BaseModel):
 
     Args:
         playtime (str): How many hours the player has played for.
-        mobKills (str): How ma-ny mobs the player has killed.
+        mobKills (str): How many mobs the player has killed.
         mana (str): How much mana the player has.
         money (str): How much money the player has.
     """
 
-    playtime: Optional[str] = "N/A"
-    mobkills: Optional[str] = "N/A"
-    mana: Optional[str] = "N/A"
-    money: Optional[str] = "N/A"
+    playtime: Optional[str] = "No Time"
+    mobkills: Optional[int] = 0
+    mana: Optional[int] = 0
+    money: Optional[int] = 0
+
+    @validator('*', pre=True)
+    def name_must_contain_space(cls, v, field):
+        if v == "N/A":
+            return field.default
+        return v
 
 
 class Oasis(BaseModel):
@@ -46,10 +60,16 @@ class Oasis(BaseModel):
         money (str): How many quests the player has completed.
     """
 
-    playtime: Optional[str] = "N/A"
-    mobkills: Optional[str] = "N/A"
-    mana: Optional[str] = "N/A"
-    money: Optional[str] = "N/A"
+    playtime: Optional[str] = "No Time"
+    mobkills: Optional[int] = 0
+    mana: Optional[int] = 0
+    money: Optional[int] = 0
+
+    @validator('*', pre=True)
+    def name_must_contain_space(cls, v, field):
+        if v == "N/A":
+            return field.default
+        return v
 
 
 class Islands(BaseModel):
@@ -62,10 +82,16 @@ class Islands(BaseModel):
         money (str): How much money the player has.
     """
 
-    playtime: Optional[str] = "N/A"
-    mobkills: Optional[str] = "N/A"
-    silver: Optional[str] = "N/A"
-    money: Optional[str] = "N/A"
+    playtime: Optional[str] = "No Time"
+    mobkills: Optional[int] = 0
+    silver: Optional[int] = 0
+    money: Optional[int] = 0
+
+    @validator('*', pre=True)
+    def name_must_contain_space(cls, v, field):
+        if v == "N/A":
+            return field.default
+        return v
 
 
 class Survival(BaseModel):
@@ -78,10 +104,16 @@ class Survival(BaseModel):
         quests (str): How many quests the player has completed.
     """
 
-    playtime: Optional[str] = "N/A"
-    mobkills: Optional[str] = "N/A"
-    money: Optional[str] = "N/A"
-    quests: Optional[str] = "N/A"
+    playtime: Optional[str] = "No Time"
+    mobkills: Optional[int] = 0
+    money: Optional[int] = 0
+    quests: Optional[int] = 0
+
+    @validator('*', pre=True)
+    def name_must_contain_space(cls, v, field):
+        if v == "N/A":
+            return field.default
+        return v
 
 
 class Factions(BaseModel):
@@ -94,10 +126,16 @@ class Factions(BaseModel):
         money (str): How much money the player has.
     """
 
-    playtime: Optional[str] = "N/A"
-    kills: Optional[str] = "N/A"
-    mobkills: Optional[str] = "N/A"
-    money: Optional[str] = "N/A"
+    playtime: Optional[str] = "No Time"
+    kills: Optional[int] = 0
+    mobkills: Optional[int] = 0
+    money: Optional[int] = 0
+
+    @validator('*', pre=True)
+    def name_must_contain_space(cls, v, field):
+        if v == "N/A":
+            return field.default
+        return v
 
 
 class Aether(BaseModel):
@@ -110,10 +148,16 @@ class Aether(BaseModel):
         rebirths (str): How many rebirths the player has had.
     """
 
-    playtime: Optional[str] = "N/A"
-    mininglevel: Optional[str] = "N/A"
-    money: Optional[str] = "N/A"
-    rebirths: Optional[str] = "N/A"
+    playtime: Optional[str] = "No Time"
+    mininglevel: Optional[int] = 0
+    money: Optional[int] = 0
+    rebirths: Optional[int] = 0
+
+    @validator('*', pre=True)
+    def name_must_contain_space(cls, v, field):
+        if v == "N/A":
+            return field.default
+        return v
 
 
 class Atlas(BaseModel):
@@ -126,10 +170,16 @@ class Atlas(BaseModel):
         rebirths (str): How many rebirths the player has had.
     """
 
-    playtime: Optional[str] = "N/A"
-    mininglevel: Optional[str] = "N/A"
-    money: Optional[str] = "N/A"
-    rebirths: Optional[str] = "N/A"
+    playtime: Optional[str] = "No Time"
+    mininglevel: Optional[int] = 0
+    money: Optional[int] = 0
+    rebirths: Optional[int] = 0
+
+    @validator('*', pre=True)
+    def name_must_contain_space(cls, v, field):
+        if v == "N/A":
+            return field.default
+        return v
 
 
 class Creative(BaseModel):
@@ -141,9 +191,15 @@ class Creative(BaseModel):
         blocksbroken (str): How many blocks the player has broken.
     """
 
-    playtime: Optional[str] = "N/A"
-    blocksplaced: Optional[str] = "N/A"
-    blocksbroken: Optional[str] = "N/A"
+    playtime: Optional[str] = "No Time"
+    blocksplaced: Optional[int] = 0
+    blocksbroken: Optional[int] = 0
+
+    @validator('*', pre=True)
+    def name_must_contain_space(cls, v, field):
+        if v == "N/A":
+            return field.default
+        return v
 
 
 class Kitpvp(BaseModel):
@@ -156,10 +212,16 @@ class Kitpvp(BaseModel):
         kills (str): How many kills the player has.
     """
 
-    playtime: Optional[str] = "N/A"
-    level: Optional[str] = "N/A"
-    money: Optional[str] = "N/A"
-    kills: Optional[str] = "N/A"
+    playtime: Optional[str] = "No Time"
+    level: Optional[int] = 0
+    money: Optional[int] = 0
+    kills: Optional[int] = 0
+
+    @validator('*', pre=True)
+    def name_must_contain_space(cls, v, field):
+        if v == "N/A":
+            return field.default
+        return v
 
 
 class Manacube(BaseModel):
@@ -185,13 +247,13 @@ class Manacube(BaseModel):
         Kitpvp (Kitpvp): Kitpvp stats.
     """
 
-    exists: Optional[str] = "N/A"
-    level: Optional[str] = "N/A"
-    rank: Optional[str] = "N/A"
-    cubits: Optional[str] = "N/A"
-    firstseen: Optional[str] = "N/A"
-    lastseen: Optional[str] = "N/A"
-    lastseenago: Optional[str] = "N/A"
+    exists: bool
+    level: int
+    rank: str
+    cubits: float
+    firstseen: datetime
+    lastseen: datetime
+    lastseenago: str
     parkour: Parkour
     aztec: Aztec
     oasis: Oasis
