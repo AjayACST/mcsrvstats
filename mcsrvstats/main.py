@@ -245,43 +245,6 @@ class Client:
             CaptureWool=capture_wool
         )
 
-    async def minesaga(self, username: str) -> Dict[str, Any]:
-        """Minesaga player stats.
-
-        Args:
-            username (str): username of player
-
-        Returns:
-            Dict[str, Any]: Dict[str, Any]ionary of player stats
-        """
-        url = f"https://www.minesaga.org/player/{username}"
-        html = await self._get_html(url)
-        soup = BeautifulSoup(html, "lxml")
-        main_info = soup.find("div", {"class": ["dd-profile-details"]})
-        joined = main_info.find("h4").get_text().strip()
-        data = {
-            "joined": joined,
-            "last_seen": main_info.findAll("span")[1].get_text().strip(),
-            "play_time": main_info.findAll("span")[2].get_text().strip(),
-            "game_stats": [],
-        }
-
-        for game in soup.find_all("div", {"class": "dd-section col-md-4"}):
-            stats = {}
-            game_name = (
-                game.find("div", {"class": "dd-box-title"})
-                .get_text()
-                .replace("\n", "")
-                .strip()
-            )
-            for stat in game.find_all("dl"):
-                stat_name = stat.find("dt").get_text().replace("\n", "").strip()
-                stat_val = stat.find("dd").get_text()
-                stats[stat_name] = stat_val
-            data["game_stats"].append({game_name: stats})
-
-        return data
-
     async def gommehd(self, username: str) -> Dict[str, Any]:
         """Gommehd player stats.
 
