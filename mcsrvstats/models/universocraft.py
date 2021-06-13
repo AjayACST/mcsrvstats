@@ -303,10 +303,10 @@ class Universocraft(BaseModel):
     Args:
         DestoryNexus (DestoryNexus): DestoryNexus stats.
         SkyWars (SkyWars): SkyWars stats.
-        LuckyWars (SkyWars): LuckyWars stats.
+        LuckyWars (LuckyWars): LuckyWars stats.
         EggWars (EggWars): EggWars stats.
         BedWars (BedWars): BedWars stats.
-        TeamSkyWars (SkyWars): TeamSkyWars stats.
+        TeamSkyWars (TeamSkyWars): TeamSkyWars stats.
         SpeedBuilders (SpeedBuilders): SpeedBuilders stats.
         BuildBattle (BuildBattle): BuildBattle stats.
         EscapeBeast (EscapeBeast): Escape the Beast stats.
@@ -321,10 +321,10 @@ class Universocraft(BaseModel):
 
     DestoryNexus: DestoryNexus
     SkyWars: SkyWars
-    LuckyWars: SkyWars
+    LuckyWars: LuckyWars
     EggWars: EggWars
     BedWars: BedWars
-    TeamSkyWars: SkyWars
+    TeamSkyWars: TeamSkyWars
     SpeedBuilders: SpeedBuilders
     BuildBattle: BuildBattle
     EscapeBeast: EscapeBeast

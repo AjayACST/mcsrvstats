@@ -198,13 +198,13 @@ class Client:
             elif game_name == "SkyWars":
                 sky_wars=SkyWars.parse_obj(stats)
             elif game_name == "LuckyWars":
-                lucky_wars=SkyWars.parse_obj(stats)
+                lucky_wars=LuckyWars.parse_obj(stats)
             elif game_name == "EggWars":
                 egg_wars=EggWars.parse_obj(stats)
             elif game_name == "BedWars":
                 bed_wars=BedWars.parse_obj(stats)
             elif game_name == "TeamSkyWars":
-                team_sky_wars=SkyWars.parse_obj(stats)
+                team_sky_wars=TeamSkyWars.parse_obj(stats)
             elif game_name == "SpeedBuilders":
                 speed_builders=SpeedBuilders.parse_obj(stats)
             elif game_name == "BuildBattle":

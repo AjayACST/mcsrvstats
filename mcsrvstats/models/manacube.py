@@ -1,5 +1,5 @@
 """Manacube related objects."""
-from typing import Optional
+from typing import Optional, Any
 
 from datetime import datetime
 
@@ -22,7 +22,7 @@ class Parkour(BaseModel):
     courses: Optional[int] = 0
 
     @validator('*', pre=True)
-    def name_must_contain_space(cls, v, field):
+    def name_must_contain_space(cls: Any, v: Any, field: Any) -> Any:
         if v == "N/A":
             return field.default
         return v
@@ -44,7 +44,7 @@ class Aztec(BaseModel):
     money: Optional[int] = 0
 
     @validator('*', pre=True)
-    def name_must_contain_space(cls, v, field):
+    def name_must_contain_space(cls: Any, v: Any, field: Any) -> Any:
         if v == "N/A":
             return field.default
         return v
@@ -66,7 +66,7 @@ class Oasis(BaseModel):
     money: Optional[int] = 0
 
     @validator('*', pre=True)
-    def name_must_contain_space(cls, v, field):
+    def name_must_contain_space(cls: Any, v: Any, field: Any) -> Any:
         if v == "N/A":
             return field.default
         return v
@@ -88,7 +88,7 @@ class Islands(BaseModel):
     money: Optional[int] = 0
 
     @validator('*', pre=True)
-    def name_must_contain_space(cls, v, field):
+    def name_must_contain_space(cls: Any, v: Any, field: Any) -> Any:
         if v == "N/A":
             return field.default
         return v
@@ -110,7 +110,7 @@ class Survival(BaseModel):
     quests: Optional[int] = 0
 
     @validator('*', pre=True)
-    def name_must_contain_space(cls, v, field):
+    def name_must_contain_space(cls: Any, v: Any, field: Any) -> Any:
         if v == "N/A":
             return field.default
         return v
@@ -132,7 +132,7 @@ class Factions(BaseModel):
     money: Optional[int] = 0
 
     @validator('*', pre=True)
-    def name_must_contain_space(cls, v, field):
+    def name_must_contain_space(cls: Any, v: Any, field: Any) -> Any:
         if v == "N/A":
             return field.default
         return v
@@ -154,7 +154,7 @@ class Aether(BaseModel):
     rebirths: Optional[int] = 0
 
     @validator('*', pre=True)
-    def name_must_contain_space(cls, v, field):
+    def name_must_contain_space(cls: Any, v: Any, field: Any) -> Any:
         if v == "N/A":
             return field.default
         return v
@@ -176,7 +176,7 @@ class Atlas(BaseModel):
     rebirths: Optional[int] = 0
 
     @validator('*', pre=True)
-    def name_must_contain_space(cls, v, field):
+    def name_must_contain_space(cls: Any, v: Any, field: Any) -> Any:
         if v == "N/A":
             return field.default
         return v
@@ -196,7 +196,7 @@ class Creative(BaseModel):
     blocksbroken: Optional[int] = 0
 
     @validator('*', pre=True)
-    def name_must_contain_space(cls, v, field):
+    def name_must_contain_space(cls: Any, v: Any, field: Any) -> Any:
         if v == "N/A":
             return field.default
         return v
@@ -218,7 +218,7 @@ class Kitpvp(BaseModel):
     kills: Optional[int] = 0
 
     @validator('*', pre=True)
-    def name_must_contain_space(cls, v, field):
+    def name_must_contain_space(cls: Any, v: Any, field: Any) -> Any:
         if v == "N/A":
             return field.default
         return v
