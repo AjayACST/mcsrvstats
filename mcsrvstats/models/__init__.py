@@ -2,6 +2,7 @@
 from .manacube import *
 from .universocraft import *
 from .wyncraft_classes import *
+from .gommehd import *
 
 __all__ = [
     "Manacube",
@@ -32,4 +33,17 @@ __all__ = [
     "ArenaPVP",
     "HungerGames",
     "Universocraft",
+    "TTT",
+    "BedWarsGomme",
+    "SkyWarsGomme",
+    "SurvivalGames",
+    "EnderGames",
+    "QuickSurvivalGames",
+    "Cores",
+    "GunGame",
+    "SpeedUHC",
+    "MasterBuilders",
+    "Cookies",
+    "Hardcore",
+    "GommeHD"
 ]

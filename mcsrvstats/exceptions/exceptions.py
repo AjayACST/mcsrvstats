@@ -34,7 +34,7 @@ class PlayerNotFound(Exception):
         """
         self.message = f"The player {username} could not be found."
     
-    def __str__(self):
+    def __str__(self) -> str:
         """Return error in readable format.
 
         Returns:

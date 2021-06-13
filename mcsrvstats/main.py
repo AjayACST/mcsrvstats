@@ -245,7 +245,7 @@ class Client:
             CaptureWool=capture_wool
         )
 
-    async def gommehd(self, username: str) -> Dict[str, Any]:
+    async def gommehd(self, username: str) -> GommeHD:
         """Gommehd player stats.
 
         Args:
@@ -257,7 +257,7 @@ class Client:
         url = f"https://www.gommehd.net/player/index?playerName={username}"
         html = await self._get_html(url)
         soup = BeautifulSoup(html, "lxml")
-        data: Dict[str, Any] = {"game_stats": []}
+
         for game in soup.find_all("div", {"class": "stat-table"}):
             stats = {}
             game_name = game.find("h5").get_text().replace("\n", "").strip()
@@ -267,8 +267,45 @@ class Client:
                     stat.get_text().replace("\n", "").strip().replace(stat_val, "")
                 )
                 stats[stat_name] = stat_val
-            data["game_stats"].append({game_name: stats})
-        return data
+            if game_name == "TTT":
+                ttt = TTT.parse_obj(stats)
+            elif game_name == "BedWars":
+                bed_wars = BedWarsGomme.parse_obj(stats)
+            elif game_name == "SkyWars":
+                sky_wars = SkyWarsGomme.parse_obj(stats)
+            elif game_name == "SurvivalGames":
+                survival_games = SurvivalGames.parse_obj(stats)
+            elif game_name == "EnderGames":
+                ender_games = EnderGames.parse_obj(stats)
+            elif game_name == "QuickSurvivalGames":
+                quick_survival_games = QuickSurvivalGames.parse_obj(stats)
+            elif game_name == "Cores":
+                cores = Cores.parse_obj(stats)
+            elif game_name == "GunGame":
+                gun_game = GunGame.parse_obj(stats)
+            elif game_name == "SpeedUHC":
+                speed_uhc = SpeedUHC.parse_obj(stats)
+            elif game_name == "MasterBuilders":
+                master_builders = MasterBuilders.parse_obj(stats)
+            elif game_name == "Cookies":
+                cookies = Cookies.parse_obj(stats)
+            elif game_name == "Hardcore":
+                hardcore = Hardcore.parse_obj(stats)
+
+        return GommeHD(
+            TTT=ttt,
+            BedWars=bed_wars,
+            SkyWars=sky_wars,
+            SurvivalGames=survival_games,
+            EnderGames=ender_games,
+            QuickSurvivalGames=quick_survival_games,
+            Cores=cores,
+            GunGame=gun_game,
+            SpeedUHC=speed_uhc,
+            MasterBuilders=master_builders,
+            Cookies=cookies,
+            Hardcore=hardcore,
+        )
 
     async def veltpvp(self, username: str) -> Dict[str, Any]:
         """Veltpvp player stats.

@@ -31,7 +31,49 @@ class DestoryNexus(BaseModel):
 
 
 class SkyWars(BaseModel):
-    """Model for SkyWars and LuckyWars and TeamSkyWars.
+    """Model for SkyWars.
+
+    Args:
+        victories (int): Number of victories.
+        murders (int): Number of murders.
+        deaths (int): Number of deaths.
+        blocksplaced (int): Number of blocks placed.
+        destroyednlockes (int): Number of destroyed blocks.
+        projectileslaunch (int): Number of projectiles launched.
+        impactedprojectiles (int): Number of impactedProjectiles.
+    """
+
+    victories: int = Field(alias="VICTORIAS")
+    murders: int = Field(alias="ASESINATOS")
+    deaths: int = Field(alias="MUERTES")
+    blocksplaced: int = Field(alias="BLOQUES COLOCADOS")
+    destroyedblocks: int = Field(alias="BLOQUES DESTRUIDOS")
+    projectileslaunch: int = Field(alias="PROJECTILES LANZADOS")
+    impactedprojectiles: int = Field(alias="PROJECTILES IMPACTADOS")
+
+class LuckyWars(BaseModel):
+    """Model for LuckyWars.
+
+    Args:
+        victories (int): Number of victories.
+        murders (int): Number of murders.
+        deaths (int): Number of deaths.
+        blocksplaced (int): Number of blocks placed.
+        destroyednlockes (int): Number of destroyed blocks.
+        projectileslaunch (int): Number of projectiles launched.
+        impactedprojectiles (int): Number of impactedProjectiles.
+    """
+
+    victories: int = Field(alias="VICTORIAS")
+    murders: int = Field(alias="ASESINATOS")
+    deaths: int = Field(alias="MUERTES")
+    blocksplaced: int = Field(alias="BLOQUES COLOCADOS")
+    destroyedblocks: int = Field(alias="BLOQUES DESTRUIDOS")
+    projectileslaunch: int = Field(alias="PROJECTILES LANZADOS")
+    impactedprojectiles: int = Field(alias="PROJECTILES IMPACTADOS")
+
+class TeamSkyWars(BaseModel):
+    """Model for TeamSkyWars.
 
     Args:
         victories (int): Number of victories.
