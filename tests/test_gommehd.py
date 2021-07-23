@@ -21,52 +21,52 @@ async def test_gommehd(mcsrvstats_client: Client) -> None:
         client = mcsrvstats_client
         data = await client.gommehd("jsn78")
 
-        assert data.TTT.Wins == 117
-        assert data.TTT.Kills == 470
-        assert data.TTT.Karma == 6580
-        assert data.TTT.Deaths == 253
+        assert data.TTT.wins == 117
+        assert data.TTT.kills == 470
+        assert data.TTT.karma == 6580
+        assert data.TTT.deaths == 253
         
-        assert data.BedWars.Wins == 650
-        assert data.BedWars.Kills == 2183
-        assert data.BedWars.Games == 1118
-        assert data.BedWars.BedsDestroyed == 1540
-        assert data.BedWars.Deaths == 471
+        assert data.BedWars.wins == 650
+        assert data.BedWars.kills == 2183
+        assert data.BedWars.games == 1118
+        assert data.BedWars.bedsDestroyed == 1540
+        assert data.BedWars.deaths == 471
 
-        assert data.SkyWars.Wins == 351
-        assert data.SkyWars.Kills ==1446
-        assert data.SkyWars.Deaths == 510
+        assert data.SkyWars.wins == 351
+        assert data.SkyWars.kills ==1446
+        assert data.SkyWars.deaths == 510
         
-        assert data.SurvivalGames.Wins == 3
-        assert data.SurvivalGames.Kills == 34
-        assert data.SurvivalGames.Deaths == 32
-        assert data.SurvivalGames.Points == 1280
+        assert data.SurvivalGames.wins == 3
+        assert data.SurvivalGames.kills == 34
+        assert data.SurvivalGames.deaths == 32
+        assert data.SurvivalGames.points == 1280
         
-        assert data.EnderGames.Wins == 0
-        assert data.EnderGames.Kills == 4
-        assert data.EnderGames.Deaths == 7
+        assert data.EnderGames.wins == 0
+        assert data.EnderGames.kills == 4
+        assert data.EnderGames.deaths == 7
 
-        assert data.QuickSurvivalGames.Wins == 7
-        assert data.QuickSurvivalGames.Kills == 119
-        assert data.QuickSurvivalGames.Deaths == 69
-        assert data.QuickSurvivalGames.Points == 3780
+        assert data.QuickSurvivalGames.wins == 7
+        assert data.QuickSurvivalGames.kills == 119
+        assert data.QuickSurvivalGames.deaths == 69
+        assert data.QuickSurvivalGames.points == 3780
 
-        assert data.Cores.Wins == 199
-        assert data.Cores.Kills == 1465
-        assert data.Cores.Deaths == 771
+        assert data.Cores.wins == 199
+        assert data.Cores.kills == 1465
+        assert data.Cores.deaths == 771
 
-        assert data.GunGame.Kills == 2021
+        assert data.GunGame.kills == 2021
 
-        assert data.SpeedUHC.Wins == 1
-        assert data.SpeedUHC.Kills == 3
-        assert data.SpeedUHC.Deaths == 5
-        assert data.SpeedUHC.Points == 5
+        assert data.SpeedUHC.wins == 1
+        assert data.SpeedUHC.kills == 3
+        assert data.SpeedUHC.deaths == 5
+        assert data.SpeedUHC.points == 5
 
-        assert data.MasterBuilders.Wins == 0
-        assert data.MasterBuilders.Games == 12
-        assert data.MasterBuilders.Points == 135
+        assert data.MasterBuilders.wins == 0
+        assert data.MasterBuilders.games == 12
+        assert data.MasterBuilders.points == 135
 
-        assert data.Cookies.Wins == 3
-        assert data.Cookies.Cookies == 4581
+        assert data.Cookies.wins == 3
+        assert data.Cookies.cookies == 4581
 
-        assert data.Hardcore.Kills == 629
-        assert data.Hardcore.Deaths == 677
+        assert data.Hardcore.kills == 629
+        assert data.Hardcore.deaths == 677

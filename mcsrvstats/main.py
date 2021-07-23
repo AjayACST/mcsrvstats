@@ -8,7 +8,56 @@ import aiohttp
 from bs4 import BeautifulSoup
 
 from .exceptions.exceptions import ApiError, PlayerNotFound
-from .models import *
+from .models import Manacube
+from .models import Parkour
+from .models import Aztec
+from .models import Oasis
+from .models import Islands
+from .models import Survival
+from .models import Factions
+from .models import Aether
+from .models import Atlas
+from .models import Creative
+from .models import Kitpvp
+from .models import WyncraftClasses
+from .models import Classes
+from .models import DestoryNexus
+from .models import SkyWars
+from .models import LuckyWars
+from .models import SkyWars
+from .models import EggWars
+from .models import TeamSkyWars
+from .models import BedWars
+from .models import SpeedBuilders
+from .models import BuildBattle
+from .models import EscapeBeast
+from .models import PartyGames
+from .models import SkyPit
+from .models import UHC
+from .models import MurderMystery
+from .models import UHC
+from .models import MurderMystery
+from .models import CaptureWool
+from .models import ArenaPVP
+from .models import HungerGames
+from .models import Universocraft
+from .models import TTT
+from .models import BedWarsGomme
+from .models import SkyWarsGomme
+from .models import SurvivalGames
+from .models import EnderGames
+from .models import QuickSurvivalGames
+from .models import Cores
+from .models import GunGame
+from .models import SpeedUHC
+from .models import MasterBuilders
+from .models import Cookies
+from .models import Hardcore
+from .models import GommeHD
+from .models import HCF
+from .models import Practice
+from .models import Soup
+from .models import Veltpvp
 
 class Client:
     """Client class."""
@@ -252,7 +301,7 @@ class Client:
             username (str): username of player
 
         Returns:
-            Dict[str, Any]: Dict[str, Any]ionary of player stats
+            GommeHD: object containing player stats.
         """
         url = f"https://www.gommehd.net/player/index?playerName={username}"
         html = await self._get_html(url)
@@ -267,6 +316,7 @@ class Client:
                     stat.get_text().replace("\n", "").strip().replace(stat_val, "")
                 )
                 stats[stat_name] = stat_val
+            
             if game_name == "TTT":
                 ttt = TTT.parse_obj(stats)
             elif game_name == "BedWars":
@@ -307,27 +357,36 @@ class Client:
             Hardcore=hardcore,
         )
 
-    async def veltpvp(self, username: str) -> Dict[str, Any]:
+    async def veltpvp(self, username: str) -> Veltpvp:
         """Veltpvp player stats.
 
         Args:
             username (str): username of player
 
         Returns:
-            Dict[str, Any]: Dict[str, Any]ionary of player stats
+            VeltPVP: object containing player stats.
         """
         url = f"https://www.veltpvp.com/u/{username}"
         html = await self._get_html(url)
         soup = BeautifulSoup(html, "lxml")
         rank = soup.find("div", {"id": "profile"}).find("h2").get_text().strip()
-        last_seen = (
-            soup.find("div", {"class": "bottom"})
-            .get_text()
-            .split("\n")[2]
-            .replace("\xa0", " ")
-            .strip()
-        )
-        current_status = soup.find("div", {"class": "top"}).get_text().strip()
+
+        if not soup.find("div", {"class": "bottom"}):
+            last_seen = "N/A"
+        else:
+            last_seen = (
+                soup.find("div", {"class": "bottom"})
+                .get_text()
+                .split("\n")[2]
+                .replace("\xa0", " ")
+                .strip()
+            )
+
+        if not soup.find("div", {"class": "top"}):
+            current_status = "N/A"
+        else:
+            current_status = soup.find("div", {"class": "top"}).get_text().strip()
+
         info = soup.find_all("div", {"class": "element"})[1].get_text().split("\n")
         first_joined = info[3].strip()
         time_played = info[5].replace("\xa0", " ").strip()
@@ -355,13 +414,13 @@ class Client:
                 .strip()
             )
             stat_val = (
-                stat.find("div", {"class": "server-stat-number"}).get_text().strip()
+                stat.find("div", {"class": "server-stat-number"}).get_text().strip().replace("\xa0", " ")
             )
             stats[stat_name] = stat_val
-        data["game_stats"].append({game_name: stats})
+        hcf = HCF.parse_obj(stats)
 
         for game in soup.find_all("div", {"class": "server"}):
-            if not game.find("div", {"class": "server unknown"}):
+            if game.find("span"):
                 break
             game_name = game.find("div", {"class": "server-header"}).get_text().strip()
             stats = {}
@@ -375,5 +434,19 @@ class Client:
                     stat.find("div", {"class": "server-stat-number"}).get_text().strip()
                 )
                 stats[stat_name] = stat_val
-            data["game_stats"].append({game_name: stats})
-        return data
+            if game_name == "Practice":
+                practice = Practice.parse_obj(stats)
+            elif game_name == "Soup":
+                soup = Soup.parse_obj(stats)
+
+        return Veltpvp(
+            rank=rank,
+            lastSeen=last_seen,
+            currentStatus=current_status,
+            firstJoined=first_joined,
+            timePlayed=time_played,
+            monthlyViews=monthly_views,
+            HCF=hcf,
+            Practice=practice,
+            Soup=soup
+        )

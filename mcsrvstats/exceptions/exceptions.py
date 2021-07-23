@@ -1,4 +1,4 @@
-"""All exceptions for asyncpixel."""
+"""All exceptions for mcsrvstats."""
 from typing import Optional
 
 

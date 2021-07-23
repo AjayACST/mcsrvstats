@@ -3,6 +3,7 @@ from .manacube import *
 from .universocraft import *
 from .wyncraft_classes import *
 from .gommehd import *
+from .veltpvp import *
 
 __all__ = [
     "Manacube",
@@ -47,5 +48,9 @@ __all__ = [
     "MasterBuilders",
     "Cookies",
     "Hardcore",
-    "GommeHD"
+    "GommeHD",
+    "HCF",
+    "Practice",
+    "Soup",
+    "Veltpvp"
 ]

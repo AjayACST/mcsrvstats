@@ -2,15 +2,15 @@
 
 ~~~~~~~~~~~~~~~~~~~
 A wrapper for a collection of popular minecraft server stats.
-:copyright: (c) 2020 Darkflame72
+:copyright: (c) 2021 Obsidion-Dev
 :license: MIT, see LICENSE for more details.
 """
 from .main import Client
 
 __title__ = "mcsrvstats"
-__author__ = "Leon Bowie"
+__author__ = "Obsidion-Dev"
 __license__ = "MIT"
-__copyright__ = "Copyright 2020 Darkflame72"
+__copyright__ = "Copyright 2021 Obsidion-Dev"
 
 
 try:
@@ -22,6 +22,6 @@ except ImportError:  # pragma: no cover
 try:
     __version__ = version(__name__)
 except PackageNotFoundError:  # pragma: no cover
-    __version__ = "unknown"
+    __version__ = "0.2.0"
 
 __all__ = ["Client"]

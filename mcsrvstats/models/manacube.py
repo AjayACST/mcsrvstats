@@ -11,12 +11,12 @@ class Parkour(BaseModel):
 
     Args:
         playtime (str): How many hours the player has played for.
-        mana (str): How much mana the player has.
-        score (str): The players score.
-        courses (str): How many courses the player has done.
+        mana (int): How much mana the player has.
+        score (int): The players score.
+        courses (int): How many courses the player has done.
     """
 
-    playtime: Optional[str] = "No Time"
+    playtime: str = "No Time"
     mana: Optional[int] = 0
     score: Optional[int] = 0
     courses: Optional[int] = 0
@@ -33,12 +33,12 @@ class Aztec(BaseModel):
 
     Args:
         playtime (str): How many hours the player has played for.
-        mobKills (str): How many mobs the player has killed.
-        mana (str): How much mana the player has.
-        money (str): How much money the player has.
+        mobKills (int): How many mobs the player has killed.
+        mana (int): How much mana the player has.
+        money (int): How much money the player has.
     """
 
-    playtime: Optional[str] = "No Time"
+    playtime: str = "No Time"
     mobkills: Optional[int] = 0
     mana: Optional[int] = 0
     money: Optional[int] = 0
@@ -55,12 +55,12 @@ class Oasis(BaseModel):
 
     Args:
         playtime (str): How many hours the player has played for.
-        mobkills (str): How many mobs the player has killed.
-        mana (str): How much mana the player has.
-        money (str): How many quests the player has completed.
+        mobkills (int): How many mobs the player has killed.
+        mana (int): How much mana the player has.
+        money (int): How many quests the player has completed.
     """
 
-    playtime: Optional[str] = "No Time"
+    playtime: str = "No Time"
     mobkills: Optional[int] = 0
     mana: Optional[int] = 0
     money: Optional[int] = 0
@@ -77,12 +77,12 @@ class Islands(BaseModel):
 
     Args:
         playtime (str): How many hours the player has played for.
-        mobKills (str): How many mobs the player has killed.
-        silver (str): How much silver the player has.
-        money (str): How much money the player has.
+        mobKills (int): How many mobs the player has killed.
+        silver (int): How much silver the player has.
+        money (int): How much money the player has.
     """
 
-    playtime: Optional[str] = "No Time"
+    playtime: str = "No Time"
     mobkills: Optional[int] = 0
     silver: Optional[int] = 0
     money: Optional[int] = 0
@@ -99,12 +99,12 @@ class Survival(BaseModel):
 
     Args:
         playtime (str): How many hours the player has played for.
-        mobKills (str): How many mobs the player has killed.
-        money (str): How much money the player has.
-        quests (str): How many quests the player has completed.
+        mobKills (int): How many mobs the player has killed.
+        money (int): How much money the player has.
+        quests (int): How many quests the player has completed.
     """
 
-    playtime: Optional[str] = "No Time"
+    playtime: str = "No Time"
     mobkills: Optional[int] = 0
     money: Optional[int] = 0
     quests: Optional[int] = 0
@@ -121,12 +121,12 @@ class Factions(BaseModel):
 
     Args:
         playtime (str): How many hours the player has played for.
-        kills (str): How many kills the player has.
-        mobkills (str): How many mobs the player has killed.
-        money (str): How much money the player has.
+        kills (int): How many kills the player has.
+        mobkills (int): How many mobs the player has killed.
+        money (int): How much money the player has.
     """
 
-    playtime: Optional[str] = "No Time"
+    playtime: str = "No Time"
     kills: Optional[int] = 0
     mobkills: Optional[int] = 0
     money: Optional[int] = 0
@@ -143,12 +143,12 @@ class Aether(BaseModel):
 
     Args:
         playtime (str): How many hours the player has played for.
-        miningLevel (str): The players mining level.
-        money (str): How much money the player has.
-        rebirths (str): How many rebirths the player has had.
+        miningLevel (int): The players mining level.
+        money (int): How much money the player has.
+        rebirths (int): How many rebirths the player has had.
     """
 
-    playtime: Optional[str] = "No Time"
+    playtime: str = "No Time"
     mininglevel: Optional[int] = 0
     money: Optional[int] = 0
     rebirths: Optional[int] = 0
@@ -165,12 +165,12 @@ class Atlas(BaseModel):
 
     Args:
         playtime (str): How many hours the player has played for.
-        miningLevel (str): The players mining level.
-        money (str): How much money the player has.
-        rebirths (str): How many rebirths the player has had.
+        miningLevel (int): The players mining level.
+        money (int): How much money the player has.
+        rebirths (int): How many rebirths the player has had.
     """
 
-    playtime: Optional[str] = "No Time"
+    playtime: str = "No Time"
     mininglevel: Optional[int] = 0
     money: Optional[int] = 0
     rebirths: Optional[int] = 0
@@ -187,11 +187,11 @@ class Creative(BaseModel):
 
     Args:
         playtime (str): How many hours the player has played for.
-        blocksplaced (str): How many blocks the player has placed.
-        blocksbroken (str): How many blocks the player has broken.
+        blocksplaced (int): How many blocks the player has placed.
+        blocksbroken (int): How many blocks the player has broken.
     """
 
-    playtime: Optional[str] = "No Time"
+    playtime: str = "No Time"
     blocksplaced: Optional[int] = 0
     blocksbroken: Optional[int] = 0
 
@@ -207,12 +207,12 @@ class Kitpvp(BaseModel):
 
     Args:
         playtime (str): How many hours the player has played for.
-        level (str): The players level.
-        money (str): How much money the player has.
-        kills (str): How many kills the player has.
+        level (int): The players level.
+        money (int): How much money the player has.
+        kills (int): How many kills the player has.
     """
 
-    playtime: Optional[str] = "No Time"
+    playtime: str = "No Time"
     level: Optional[int] = 0
     money: Optional[int] = 0
     kills: Optional[int] = 0
@@ -228,12 +228,12 @@ class Manacube(BaseModel):
     """Manacube model.
 
     Args:
-        exists (str): If the player exists
-        level (str): The players level.
+        exists (bool): If the player exists
+        level (int): The players level.
         rank (str): The players rank.
-        cubits (str): The players amount of cubits.
-        firstSeen (str): When the player first joined.
-        lastSeen (str): When the player was last on the server.
+        cubits (float): The players amount of cubits.
+        firstSeen (datetime): When the player first joined.
+        lastSeen (datetime): When the player was last on the server.
         lastSeenAgo (str): Amount of time since the player was last seen.
         Parkour (Parkour): Parkour stats.
         Aztec (Aztec): Aztec stats.
