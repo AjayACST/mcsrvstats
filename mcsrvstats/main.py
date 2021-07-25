@@ -115,6 +115,9 @@ class Client:
         Args:
             username (str): username of player.
 
+        Raises:
+            PlayerNotFound: error if player not found.
+
         Returns:
             Manacube: object containing players manacube data.
         """
@@ -161,6 +164,9 @@ class Client:
 
         Args:
             username (str): username of player
+
+        Raises:
+            PlayerNotFound: error if player not found.
 
         Returns:
             WyncraftClasses: object containing the players classes
@@ -225,6 +231,9 @@ class Client:
 
         Args:
             username (str): username of player
+
+        Raises:
+            PlayerNotFound: error if player not found.
 
         Returns:
             Universocraft: object containing the players stats.
@@ -300,12 +309,18 @@ class Client:
         Args:
             username (str): username of player
 
+        Raises:
+            PlayerNotFound: error if player not found.
+
         Returns:
             GommeHD: object containing player stats.
         """
         url = f"https://www.gommehd.net/player/index?playerName={username}"
         html = await self._get_html(url)
         soup = BeautifulSoup(html, "lxml")
+
+        if not soup.find("span", {"class": "username"}):
+            raise PlayerNotFound(username=username)
 
         for game in soup.find_all("div", {"class": "stat-table"}):
             stats = {}
@@ -363,6 +378,9 @@ class Client:
         Args:
             username (str): username of player
 
+        Raises:
+            ApiError: error if player not found.
+
         Returns:
             VeltPVP: object containing player stats.
         """
@@ -370,6 +388,8 @@ class Client:
         html = await self._get_html(url)
         soup = BeautifulSoup(html, "lxml")
         rank = soup.find("div", {"id": "profile"}).find("h2").get_text().strip()
+
+        
 
         if not soup.find("div", {"class": "bottom"}):
             last_seen = "N/A"

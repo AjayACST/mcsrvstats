@@ -1,5 +1,5 @@
 """Test for wyncraft classes."""
-from mcsrvstats import Client
+from mcsrvstats import Client, exceptions
 
 import pytest
 from aioresponses import aioresponses
@@ -44,3 +44,24 @@ async def test_wyncraft_classes(mcsrvstats_client: Client) -> None:
         assert data.classes[0].class_deaths == 789
         assert data.classes[0].class_discoveries == 895
         assert data.classes[0].class_events_won == 0
+
+@pytest.mark.asyncio
+async def test_wyncraft_classes_player_not_found(mcsrvstats_client: Client) -> None:
+    """Test to check the wyncraft classes function returns the correct data when the player is not found."""
+
+    with aioresponses() as m:
+        m.get(
+            "https://api.wynncraft.com/v2/player/IceWarox/stats",
+            status=200,
+            payload={
+                "kind": "wynncraft/player/IceWarox/stats",
+                "code": 400,
+                "timestamp": 1619819876728,
+                "version": "2.1.0",
+            },
+        )
+
+        client = mcsrvstats_client
+
+        with pytest.raises(exceptions.exceptions.PlayerNotFound):
+            await client.wynncraft_classes("IceWarox")

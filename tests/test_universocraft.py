@@ -1,5 +1,5 @@
 """Test for Universocraft."""
-from mcsrvstats import Client
+from mcsrvstats import Client, exceptions
 
 import pytest
 from aioresponses import aioresponses
@@ -121,3 +121,20 @@ async def test_universocraft(mcsrvstats_client: Client) -> None:
         assert data.CaptureWool.archedmurders == 0
         assert data.CaptureWool.maxarchdistance == 0
         assert data.CaptureWool.woolplaced == 0
+
+@pytest.mark.asyncio
+async def test_universocraft_player_not_found(mcsrvstats_client: Client) -> None:
+    """Test to check the universocraft function returns the correct data. when the player is not found."""
+
+    f = open("tests/html/test_universocraft_player_not_found.html")
+    html = f.read()
+    with aioresponses() as m:
+        m.get(
+            "https://stats.universocraft.com/stats.php?player=uBored",
+            status=200,
+            body=html
+        )
+        client = mcsrvstats_client
+
+        with pytest.raises(exceptions.exceptions.PlayerNotFound):
+            await client.universocraft("uBored")
