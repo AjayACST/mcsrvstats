@@ -2,6 +2,7 @@
 import pytest
 from aioresponses import aioresponses
 from mcsrvstats import Client
+from mcsrvstats import exceptions
 
 
 @pytest.mark.asyncio
@@ -44,3 +45,17 @@ async def test_veltpvp(mcsrvstats_client: Client) -> None:
         assert data.Soup.HighestKillstreak == 0
         assert data.Soup.EventsWon == 0
         assert data.Soup.EventsLost == 0
+
+@pytest.mark.asyncio
+async def test_veltpvp_player_not_found(mcsrvstats_client: Client) -> None:
+    """Test to check the veltpvp function returns the correct data when the player is not found."""
+
+    with aioresponses() as m:
+        m.get(
+            "https://www.veltpvp.com/u/JOAKIM",
+            status=404,
+        )
+        client = mcsrvstats_client
+        
+        with pytest.raises(exceptions.exceptions.ApiError):
+            await client.veltpvp("JOAKIM")
