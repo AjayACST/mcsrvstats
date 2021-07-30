@@ -1,9 +1,10 @@
 """Test for Manaucbe."""
 from datetime import datetime
-from  mcsrvstats import Client, exceptions
 
 import pytest
 from aioresponses import aioresponses
+from mcsrvstats import Client
+from mcsrvstats import exceptions
 
 
 @pytest.mark.asyncio
@@ -89,8 +90,12 @@ async def test_manacube(mcsrvstats_client: Client) -> None:
         assert data.level == 14
         assert data.rank == "default"
         assert data.cubits == 61.87
-        assert data.firstseen == datetime.strptime("2019-07-07 00:22:11", "%Y-%m-%d %H:%M:%S")
-        assert data.lastseen == datetime.strptime("2021-01-20 01:07:32", "%Y-%m-%d %H:%M:%S")
+        assert data.firstseen == datetime.strptime(
+            "2019-07-07 00:22:11", "%Y-%m-%d %H:%M:%S"
+        )
+        assert data.lastseen == datetime.strptime(
+            "2021-01-20 01:07:32", "%Y-%m-%d %H:%M:%S"
+        )
         assert data.lastseenago == "1 second ago"
 
         assert data.parkour.playtime == "15 hours"
@@ -141,6 +146,7 @@ async def test_manacube(mcsrvstats_client: Client) -> None:
         assert data.kitpvp.level == 0
         assert data.kitpvp.money == 10
         assert data.kitpvp.kills == 0
+
 
 @pytest.mark.asyncio
 async def test_manacube_not_found(mcsrvstats_client: Client) -> None:

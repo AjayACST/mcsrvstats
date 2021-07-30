@@ -1,8 +1,9 @@
 """Test for Universocraft."""
-from mcsrvstats import Client, exceptions
-
 import pytest
 from aioresponses import aioresponses
+from mcsrvstats import Client
+from mcsrvstats import exceptions
+
 
 @pytest.mark.asyncio
 async def test_universocraft(mcsrvstats_client: Client) -> None:
@@ -14,7 +15,7 @@ async def test_universocraft(mcsrvstats_client: Client) -> None:
         m.get(
             "https://stats.universocraft.com/stats.php?player=uBored",
             status=200,
-            body=html
+            body=html,
         )
 
         client = mcsrvstats_client
@@ -43,7 +44,7 @@ async def test_universocraft(mcsrvstats_client: Client) -> None:
         assert data.LuckyWars.murders == 50201
         assert data.LuckyWars.deaths == 5543
         assert data.LuckyWars.blocksplaced == 68201
-        assert data.LuckyWars.destroyedblocks ==43670
+        assert data.LuckyWars.destroyedblocks == 43670
         assert data.LuckyWars.projectileslaunch == 9333
         assert data.LuckyWars.impactedprojectiles == 4517
 
@@ -52,18 +53,18 @@ async def test_universocraft(mcsrvstats_client: Client) -> None:
         assert data.EggWars.brokeneggs == 303
         assert data.EggWars.deaths == 522
         assert data.EggWars.blocksplaced == 27216
-        assert data.EggWars.destroyedblocks ==1701
+        assert data.EggWars.destroyedblocks == 1701
         assert data.EggWars.projectileslaunch == 443
         assert data.EggWars.impactedprojectiles == 257
 
         assert data.BedWars.victories == 151
-        assert data.BedWars.murders ==1896
+        assert data.BedWars.murders == 1896
         assert data.BedWars.finalmurders == 595
         assert data.BedWars.destroyedbeds == 268
         assert data.BedWars.deaths == 873
         assert data.BedWars.finaldeaths == 100
         assert data.BedWars.gamesplayed == 264
-        
+
         assert data.TeamSkyWars.victories == 3354
         assert data.TeamSkyWars.murders == 31247
         assert data.TeamSkyWars.deaths == 2327
@@ -75,7 +76,7 @@ async def test_universocraft(mcsrvstats_client: Client) -> None:
         assert data.SpeedBuilders.victories == 15
         assert data.SpeedBuilders.lost == 27
         assert data.SpeedBuilders.perfectconstructions == 457
-        
+
         assert data.BuildBattle.victories == 1
         assert data.BuildBattle.gamesplayed == 31
         assert data.BuildBattle.score == 79
@@ -110,17 +111,18 @@ async def test_universocraft(mcsrvstats_client: Client) -> None:
         assert data.UHC.gamesplayed == 37
         assert data.UHC.murders == 94
         assert data.UHC.deaths == 22
-        
+
         assert data.MurderMystery.victories == 56
         assert data.MurderMystery.lost == 43
         assert data.MurderMystery.murders == 82
         assert data.MurderMystery.deaths == 43
-        
+
         assert data.CaptureWool.score == 0
         assert data.CaptureWool.murders == 0
         assert data.CaptureWool.archedmurders == 0
         assert data.CaptureWool.maxarchdistance == 0
         assert data.CaptureWool.woolplaced == 0
+
 
 @pytest.mark.asyncio
 async def test_universocraft_player_not_found(mcsrvstats_client: Client) -> None:
@@ -132,7 +134,7 @@ async def test_universocraft_player_not_found(mcsrvstats_client: Client) -> None
         m.get(
             "https://stats.universocraft.com/stats.php?player=uBored",
             status=200,
-            body=html
+            body=html,
         )
         client = mcsrvstats_client
 

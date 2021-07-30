@@ -1,10 +1,12 @@
 """Veltpvp related objects."""
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
+from pydantic import Field
+
 
 class HCF(BaseModel):
     """Model for HCF stats for veltpvp.
 
-    Args: 
+    Args:
         Kills (int): The number of kills the player has.
         Deaths (int): The number of deaths the player has.
         KDR (float): The KDR of the player.
@@ -17,6 +19,7 @@ class HCF(BaseModel):
     KDR: float = Field(alias="KDR")
     Lives: int = Field(alias="Lives")
     Playtime: str = Field(alias="Playtime")
+
 
 class Practice(BaseModel):
     """Model for Practice stats for veltpvp.
@@ -37,6 +40,7 @@ class Practice(BaseModel):
     Fights: int
     GlobalELO: int = Field(alias="Global ELO")
 
+
 class Soup(BaseModel):
     """Model for Soup stats for veltpvp.
 
@@ -53,6 +57,7 @@ class Soup(BaseModel):
     HighestKillstreak: int = Field(alias="Highest Killstreak")
     EventsWon: int = Field(alias="Events Won")
     EventsLost: int = Field(alias="Events Lost")
+
 
 class Veltpvp(BaseModel):
     """VeltPVP stats model.

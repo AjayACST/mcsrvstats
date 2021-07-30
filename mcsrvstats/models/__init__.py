@@ -1,9 +1,9 @@
 """Models for mcsrvstats data objects."""
+from .gommehd import *
 from .manacube import *
 from .universocraft import *
-from .wyncraft_classes import *
-from .gommehd import *
 from .veltpvp import *
+from .wyncraft_classes import *
 
 __all__ = [
     "Manacube",
@@ -52,5 +52,5 @@ __all__ = [
     "HCF",
     "Practice",
     "Soup",
-    "Veltpvp"
+    "Veltpvp",
 ]

@@ -1,5 +1,6 @@
 """Universocraft related objects."""
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
+from pydantic import Field
 
 
 class DestoryNexus(BaseModel):
@@ -51,6 +52,7 @@ class SkyWars(BaseModel):
     projectileslaunch: int = Field(alias="PROJECTILES LANZADOS")
     impactedprojectiles: int = Field(alias="PROJECTILES IMPACTADOS")
 
+
 class LuckyWars(BaseModel):
     """Model for LuckyWars.
 
@@ -71,6 +73,7 @@ class LuckyWars(BaseModel):
     destroyedblocks: int = Field(alias="BLOQUES DESTRUIDOS")
     projectileslaunch: int = Field(alias="PROJECTILES LANZADOS")
     impactedprojectiles: int = Field(alias="PROJECTILES IMPACTADOS")
+
 
 class TeamSkyWars(BaseModel):
     """Model for TeamSkyWars.
@@ -271,6 +274,7 @@ class CaptureWool(BaseModel):
     maxarchdistance: int = Field(alias="DISTANCIA MÁXIMA DE MUERTE CON ARCO")
     woolplaced: int = Field(alias="LANAS COLOCADAS")
 
+
 class ArenaPVP(BaseModel):
     """Model for ArenaPVP.
 
@@ -284,14 +288,16 @@ class ArenaPVP(BaseModel):
     murders: int = Field(alias="ASESINATOS")
     lost: int = Field(alias="PERDIDAS")
 
-class HungerGames(BaseModel):
-    """ Model for Hunger Games.
 
-    Args: 
+class HungerGames(BaseModel):
+    """Model for Hunger Games.
+
+    Args:
         victories (int): Number of victories the player has.
         murders (int): Number of murders the player has.
         deaths (int): Number of death the player has.
     """
+
     victories: int = Field(alias="VICTORIAS")
     murders: int = Field(alias="ASESINATOS")
     deaths: int = Field(alias="MUERTES")

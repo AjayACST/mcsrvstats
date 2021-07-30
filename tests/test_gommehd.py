@@ -1,9 +1,9 @@
 """Test for GommeHD."""
-
-from mcsrvstats import Client, exceptions
-
 import pytest
 from aioresponses import aioresponses
+from mcsrvstats import Client
+from mcsrvstats import exceptions
+
 
 @pytest.mark.asyncio
 async def test_gommehd(mcsrvstats_client: Client) -> None:
@@ -15,7 +15,7 @@ async def test_gommehd(mcsrvstats_client: Client) -> None:
         m.get(
             "https://www.gommehd.net/player/index?playerName=jsn78",
             status=200,
-            body=html
+            body=html,
         )
 
         client = mcsrvstats_client
@@ -25,7 +25,7 @@ async def test_gommehd(mcsrvstats_client: Client) -> None:
         assert data.TTT.kills == 470
         assert data.TTT.karma == 6580
         assert data.TTT.deaths == 253
-        
+
         assert data.BedWars.wins == 650
         assert data.BedWars.kills == 2183
         assert data.BedWars.games == 1118
@@ -33,14 +33,14 @@ async def test_gommehd(mcsrvstats_client: Client) -> None:
         assert data.BedWars.deaths == 471
 
         assert data.SkyWars.wins == 351
-        assert data.SkyWars.kills ==1446
+        assert data.SkyWars.kills == 1446
         assert data.SkyWars.deaths == 510
-        
+
         assert data.SurvivalGames.wins == 3
         assert data.SurvivalGames.kills == 34
         assert data.SurvivalGames.deaths == 32
         assert data.SurvivalGames.points == 1280
-        
+
         assert data.EnderGames.wins == 0
         assert data.EnderGames.kills == 4
         assert data.EnderGames.deaths == 7
@@ -71,6 +71,7 @@ async def test_gommehd(mcsrvstats_client: Client) -> None:
         assert data.Hardcore.kills == 629
         assert data.Hardcore.deaths == 677
 
+
 @pytest.mark.asyncio
 async def test_gommehd_player_not_found(mcsrvstats_client: Client) -> None:
     """Test to check the gommehd function returns the correct data when the player is not found."""
@@ -82,7 +83,7 @@ async def test_gommehd_player_not_found(mcsrvstats_client: Client) -> None:
         m.get(
             "https://www.gommehd.net/player/index?playerName=jsn78",
             status=200,
-            body=html
+            body=html,
         )
 
         client = mcsrvstats_client

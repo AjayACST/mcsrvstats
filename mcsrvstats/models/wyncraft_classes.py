@@ -1,7 +1,8 @@
 """Wyncraft Classes related objects."""
 from typing import List
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
+from pydantic import Field
 
 
 class Classes(BaseModel):

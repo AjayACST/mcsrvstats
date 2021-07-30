@@ -5,8 +5,9 @@ from pathlib import Path
 from textwrap import dedent
 
 import nox
-import nox_poetry.patch
-from nox.sessions import Session
+import nox_poetry
+from nox_poetry import Session
+from nox_poetry import session
 
 
 package = "mcsrvstats"
@@ -71,7 +72,7 @@ def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
         hook.write_text("\n".join(lines))
 
 
-@nox.session(name="pre-commit", python="3.9")
+@session(name="pre-commit", python="3.9")
 def precommit(session: Session) -> None:
     """Lint using pre-commit.
 
@@ -99,7 +100,7 @@ def precommit(session: Session) -> None:
         activate_virtualenv_in_precommit_hooks(session)
 
 
-@nox.session(python="3.9")
+@session(python="3.9")
 def safety(session: Session) -> None:
     """Scan dependencies for insecure packages."""
     requirements = nox_poetry.export_requirements(session)
@@ -107,7 +108,7 @@ def safety(session: Session) -> None:
     session.run("safety", "check", f"--file={requirements}", "--bare")
 
 
-@nox.session(python=python_versions)
+@session(python=python_versions)
 def mypy(session: Session) -> None:
     """Type-check using mypy."""
     args = session.posargs or ["mcsrvstats", "tests", "docs/conf.py"]
@@ -118,7 +119,7 @@ def mypy(session: Session) -> None:
         session.run("mypy", f"--python-executable={sys.executable}", "noxfile.py")
 
 
-@nox.session(python=python_versions)
+@session(python=python_versions)
 def tests(session: Session) -> None:
     """Run the test suite."""
     session.install(".")
@@ -132,7 +133,7 @@ def tests(session: Session) -> None:
             session.notify("coverage")
 
 
-@nox.session
+@session
 def coverage(session: Session) -> None:
     """Produce the coverage report."""
     # Do not use session.posargs unless this is the only session.
@@ -147,7 +148,7 @@ def coverage(session: Session) -> None:
     session.run("coverage", *args)
 
 
-@nox.session(name="docs-build", python="3.9")
+@session(name="docs-build", python="3.9")
 def docs_build(session: Session) -> None:
     """Build the documentation."""
     args = session.posargs or ["docs", "docs/_build"]
@@ -163,7 +164,7 @@ def docs_build(session: Session) -> None:
     session.run("sphinx-build", *args)
 
 
-@nox.session(python="3.9")
+@session(python="3.9")
 def docs(session: Session) -> None:
     """Build and serve the documentation with live reloading on file changes."""
     args = session.posargs or ["--open-browser", "docs", "docs/_build"]

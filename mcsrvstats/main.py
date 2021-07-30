@@ -7,57 +7,56 @@ from typing import Optional
 import aiohttp
 from bs4 import BeautifulSoup
 
-from .exceptions.exceptions import ApiError, PlayerNotFound
-from .models import Manacube
-from .models import Parkour
-from .models import Aztec
-from .models import Oasis
-from .models import Islands
-from .models import Survival
-from .models import Factions
+from .exceptions.exceptions import ApiError
+from .exceptions.exceptions import PlayerNotFound
 from .models import Aether
-from .models import Atlas
-from .models import Creative
-from .models import Kitpvp
-from .models import WyncraftClasses
-from .models import Classes
-from .models import DestoryNexus
-from .models import SkyWars
-from .models import LuckyWars
-from .models import SkyWars
-from .models import EggWars
-from .models import TeamSkyWars
-from .models import BedWars
-from .models import SpeedBuilders
-from .models import BuildBattle
-from .models import EscapeBeast
-from .models import PartyGames
-from .models import SkyPit
-from .models import UHC
-from .models import MurderMystery
-from .models import UHC
-from .models import MurderMystery
-from .models import CaptureWool
 from .models import ArenaPVP
-from .models import HungerGames
-from .models import Universocraft
-from .models import TTT
+from .models import Atlas
+from .models import Aztec
+from .models import BedWars
 from .models import BedWarsGomme
-from .models import SkyWarsGomme
-from .models import SurvivalGames
-from .models import EnderGames
-from .models import QuickSurvivalGames
-from .models import Cores
-from .models import GunGame
-from .models import SpeedUHC
-from .models import MasterBuilders
+from .models import BuildBattle
+from .models import CaptureWool
+from .models import Classes
 from .models import Cookies
-from .models import Hardcore
+from .models import Cores
+from .models import Creative
+from .models import DestoryNexus
+from .models import EggWars
+from .models import EnderGames
+from .models import EscapeBeast
+from .models import Factions
 from .models import GommeHD
+from .models import GunGame
+from .models import Hardcore
 from .models import HCF
+from .models import HungerGames
+from .models import Islands
+from .models import Kitpvp
+from .models import LuckyWars
+from .models import Manacube
+from .models import MasterBuilders
+from .models import MurderMystery
+from .models import Oasis
+from .models import Parkour
+from .models import PartyGames
 from .models import Practice
+from .models import QuickSurvivalGames
+from .models import SkyPit
+from .models import SkyWars
+from .models import SkyWarsGomme
 from .models import Soup
+from .models import SpeedBuilders
+from .models import SpeedUHC
+from .models import Survival
+from .models import SurvivalGames
+from .models import TeamSkyWars
+from .models import TTT
+from .models import UHC
+from .models import Universocraft
 from .models import Veltpvp
+from .models import WyncraftClasses
+
 
 class Client:
     """Client class."""
@@ -128,16 +127,16 @@ class Client:
         if not json_data["exists"]:
             raise PlayerNotFound(username=username)
 
-        parkour_manacube=Parkour.parse_obj(json_data["parkour"])
-        aztec_manacube=Aztec.parse_obj(json_data["aztec"])
-        oasis_manacube=Oasis.parse_obj(json_data["oasis"])
-        islands_manacube=Islands.parse_obj(json_data["islands"])
-        survival_manacube=Survival.parse_obj(json_data["survival"])
-        factions_manacube=Factions.parse_obj(json_data["factions"])
-        aether_manacube=Aether.parse_obj(json_data["aether"])
-        atlas_manacube= Atlas.parse_obj(json_data["atlas"])
-        creative_manacube=Creative.parse_obj(json_data["creative"])
-        kitpvp_manacube= Kitpvp.parse_obj(json_data["kitpvp"])
+        parkour_manacube = Parkour.parse_obj(json_data["parkour"])
+        aztec_manacube = Aztec.parse_obj(json_data["aztec"])
+        oasis_manacube = Oasis.parse_obj(json_data["oasis"])
+        islands_manacube = Islands.parse_obj(json_data["islands"])
+        survival_manacube = Survival.parse_obj(json_data["survival"])
+        factions_manacube = Factions.parse_obj(json_data["factions"])
+        aether_manacube = Aether.parse_obj(json_data["aether"])
+        atlas_manacube = Atlas.parse_obj(json_data["atlas"])
+        creative_manacube = Creative.parse_obj(json_data["creative"])
+        kitpvp_manacube = Kitpvp.parse_obj(json_data["kitpvp"])
 
         return Manacube(
             exists=json_data["exists"],
@@ -252,37 +251,37 @@ class Client:
                 stat_name = stat.find("p", {"class": "game-stat-title"}).get_text()
                 stats[stat_name] = stat_val
             if game_name == "Destruye el Nexus":
-                destory_nexus=DestoryNexus.parse_obj(stats)
+                destory_nexus = DestoryNexus.parse_obj(stats)
             elif game_name == "SkyWars":
-                sky_wars=SkyWars.parse_obj(stats)
+                sky_wars = SkyWars.parse_obj(stats)
             elif game_name == "LuckyWars":
-                lucky_wars=LuckyWars.parse_obj(stats)
+                lucky_wars = LuckyWars.parse_obj(stats)
             elif game_name == "EggWars":
-                egg_wars=EggWars.parse_obj(stats)
+                egg_wars = EggWars.parse_obj(stats)
             elif game_name == "BedWars":
-                bed_wars=BedWars.parse_obj(stats)
+                bed_wars = BedWars.parse_obj(stats)
             elif game_name == "TeamSkyWars":
-                team_sky_wars=TeamSkyWars.parse_obj(stats)
+                team_sky_wars = TeamSkyWars.parse_obj(stats)
             elif game_name == "SpeedBuilders":
-                speed_builders=SpeedBuilders.parse_obj(stats)
+                speed_builders = SpeedBuilders.parse_obj(stats)
             elif game_name == "BuildBattle":
-                build_battle=BuildBattle.parse_obj(stats)
+                build_battle = BuildBattle.parse_obj(stats)
             elif game_name == "Escapa de la Bestia":
-                escape_beast=EscapeBeast.parse_obj(stats)
+                escape_beast = EscapeBeast.parse_obj(stats)
             elif game_name == "Party Games":
-                party_games=PartyGames.parse_obj(stats)
+                party_games = PartyGames.parse_obj(stats)
             elif game_name == "Juegos del Hambre":
-                hunger_games=HungerGames.parse_obj(stats)
+                hunger_games = HungerGames.parse_obj(stats)
             elif game_name == "SkyPit":
-                sky_pit=SkyPit.parse_obj(stats)
+                sky_pit = SkyPit.parse_obj(stats)
             elif game_name == "ArenaPvP":
-                arena_pvp=ArenaPVP.parse_obj(stats)
+                arena_pvp = ArenaPVP.parse_obj(stats)
             elif game_name == "UHC":
-                uhc=UHC.parse_obj(stats)
+                uhc = UHC.parse_obj(stats)
             elif game_name == "MurderMystery":
-                murder_mystery=MurderMystery.parse_obj(stats)
+                murder_mystery = MurderMystery.parse_obj(stats)
             elif game_name == "Captura la Lana":
-                capture_wool=CaptureWool.parse_obj(stats)
+                capture_wool = CaptureWool.parse_obj(stats)
 
         return Universocraft(
             DestoryNexus=destory_nexus,
@@ -300,7 +299,7 @@ class Client:
             ArenaPVP=arena_pvp,
             UHC=uhc,
             MurderMystery=murder_mystery,
-            CaptureWool=capture_wool
+            CaptureWool=capture_wool,
         )
 
     async def gommehd(self, username: str) -> GommeHD:
@@ -331,7 +330,7 @@ class Client:
                     stat.get_text().replace("\n", "").strip().replace(stat_val, "")
                 )
                 stats[stat_name] = stat_val
-            
+
             if game_name == "TTT":
                 ttt = TTT.parse_obj(stats)
             elif game_name == "BedWars":
@@ -389,8 +388,6 @@ class Client:
         soup = BeautifulSoup(html, "lxml")
         rank = soup.find("div", {"id": "profile"}).find("h2").get_text().strip()
 
-        
-
         if not soup.find("div", {"class": "bottom"}):
             last_seen = "N/A"
         else:
@@ -434,7 +431,10 @@ class Client:
                 .strip()
             )
             stat_val = (
-                stat.find("div", {"class": "server-stat-number"}).get_text().strip().replace("\xa0", " ")
+                stat.find("div", {"class": "server-stat-number"})
+                .get_text()
+                .strip()
+                .replace("\xa0", " ")
             )
             stats[stat_name] = stat_val
         hcf = HCF.parse_obj(stats)
@@ -468,5 +468,5 @@ class Client:
             monthlyViews=monthly_views,
             HCF=hcf,
             Practice=practice,
-            Soup=soup
+            Soup=soup,
         )

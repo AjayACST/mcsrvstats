@@ -1,8 +1,8 @@
 """Test for wyncraft classes."""
-from mcsrvstats import Client, exceptions
-
 import pytest
 from aioresponses import aioresponses
+from mcsrvstats import Client
+from mcsrvstats import exceptions
 
 
 @pytest.mark.asyncio
@@ -44,6 +44,7 @@ async def test_wyncraft_classes(mcsrvstats_client: Client) -> None:
         assert data.classes[0].class_deaths == 789
         assert data.classes[0].class_discoveries == 895
         assert data.classes[0].class_events_won == 0
+
 
 @pytest.mark.asyncio
 async def test_wyncraft_classes_player_not_found(mcsrvstats_client: Client) -> None:

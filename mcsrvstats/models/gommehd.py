@@ -1,5 +1,7 @@
 """Gomehd related objects."""
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
+from pydantic import Field
+
 
 class TTT(BaseModel):
     """TTT model for gommehd.
@@ -15,6 +17,7 @@ class TTT(BaseModel):
     kills: int = Field(alias="Kills")
     karma: int = Field(alias="Karma")
     deaths: int = Field(alias="Deaths")
+
 
 class BedWarsGomme(BaseModel):
     """BedWars model for gommehd.
@@ -33,6 +36,7 @@ class BedWarsGomme(BaseModel):
     bedsDestroyed: int = Field(alias="Beds destroyed")
     deaths: int = Field(alias="Deaths")
 
+
 class SkyWarsGomme(BaseModel):
     """SkyWars model for gommehd.
 
@@ -45,6 +49,7 @@ class SkyWarsGomme(BaseModel):
     wins: int = Field(alias="Wins")
     kills: int = Field(alias="Kills")
     deaths: int = Field(alias="Deaths")
+
 
 class SurvivalGames(BaseModel):
     """Survival Games model for gommehd.
@@ -61,6 +66,7 @@ class SurvivalGames(BaseModel):
     deaths: int = Field(alias="Deaths")
     points: int = Field(alias="Points")
 
+
 class EnderGames(BaseModel):
     """EnderGames model for gommehd.
 
@@ -73,6 +79,7 @@ class EnderGames(BaseModel):
     wins: int = Field(alias="Wins")
     kills: int = Field(alias="Kills")
     deaths: int = Field(alias="Deaths")
+
 
 class QuickSurvivalGames(BaseModel):
     """Survival Games model for gommehd.
@@ -89,6 +96,7 @@ class QuickSurvivalGames(BaseModel):
     deaths: int = Field(alias="Deaths")
     points: int = Field(alias="Points")
 
+
 class Cores(BaseModel):
     """Cores model for gommehd.
 
@@ -102,6 +110,7 @@ class Cores(BaseModel):
     kills: int = Field(alias="Kills")
     deaths: int = Field(alias="Deaths")
 
+
 class GunGame(BaseModel):
     """Cores model for gommehd.
 
@@ -110,6 +119,7 @@ class GunGame(BaseModel):
     """
 
     kills: int = Field(alias="Kills")
+
 
 class SpeedUHC(BaseModel):
     """SpeedUHC Games model for gommehd.
@@ -126,6 +136,7 @@ class SpeedUHC(BaseModel):
     deaths: int = Field(alias="Deaths")
     points: int = Field(alias="Points")
 
+
 class MasterBuilders(BaseModel):
     """MasterBuilders Games model for gommehd.
 
@@ -139,6 +150,7 @@ class MasterBuilders(BaseModel):
     games: int = Field(alias="Games")
     points: int = Field(alias="Points")
 
+
 class Cookies(BaseModel):
     """Cookies Games model for gommehd.
 
@@ -150,6 +162,7 @@ class Cookies(BaseModel):
     wins: int = Field(alias="Wins")
     cookies: int = Field(alias="Cookies")
 
+
 class Hardcore(BaseModel):
     """Hardcore Games model for gommehd.
 
@@ -160,6 +173,7 @@ class Hardcore(BaseModel):
 
     kills: int = Field(alias="Kills")
     deaths: int = Field(alias="Deaths")
+
 
 class GommeHD(BaseModel):
     """Gommehd model.
@@ -178,6 +192,7 @@ class GommeHD(BaseModel):
         Cookies (Cookies): Cookies stats.
         Hardcore (Hardcore): Hardcore stats.
     """
+
     TTT: TTT
     BedWars: BedWarsGomme
     SkyWars: SkyWarsGomme

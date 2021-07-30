@@ -1,8 +1,8 @@
 """Test for VeltPVP."""
-from mcsrvstats import Client
-
 import pytest
 from aioresponses import aioresponses
+from mcsrvstats import Client
+
 
 @pytest.mark.asyncio
 async def test_veltpvp(mcsrvstats_client: Client) -> None:
@@ -25,7 +25,7 @@ async def test_veltpvp(mcsrvstats_client: Client) -> None:
         assert data.firstJoined == "24/08/2017"
         assert data.timePlayed == "6 months played"
         assert data.monthlyViews == 11575
-        
+
         assert data.HCF.Kills == 10
         assert data.HCF.Deaths == 1
         assert data.HCF.KDR == 10.0
