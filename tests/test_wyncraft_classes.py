@@ -64,5 +64,5 @@ async def test_wyncraft_classes_player_not_found(mcsrvstats_client: Client) -> N
 
         client = mcsrvstats_client
 
-        with pytest.raises(exceptions.exceptions.PlayerNotFound):
+        with pytest.raises(exceptions.exceptions.PlayerNotFoundError):
             await client.wynncraft_classes("IceWarox")

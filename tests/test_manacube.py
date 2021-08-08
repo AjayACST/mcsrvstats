@@ -163,5 +163,5 @@ async def test_manacube_not_found(mcsrvstats_client: Client) -> None:
 
         client = mcsrvstats_client
 
-        with pytest.raises(exceptions.exceptions.PlayerNotFound):
+        with pytest.raises(exceptions.exceptions.PlayerNotFoundError):
             await client.manacube("_iTempo")
