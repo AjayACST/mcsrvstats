@@ -24,7 +24,7 @@ class ApiError(Exception):
         return self.message
 
 
-class PlayerNotFound(Exception):
+class PlayerNotFoundError(Exception):
     """ Raised when a player is not found."""
 
     def __init__(self, username: str) -> None:
