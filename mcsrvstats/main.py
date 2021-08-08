@@ -381,7 +381,7 @@ class Client:
             ApiError: error if player not found.
 
         Returns:
-            VeltPVP: object containing player stats.
+            Veltpvp: object containing player stats.
         """
         url = f"https://www.veltpvp.com/u/{username}"
         html = await self._get_html(url)
@@ -408,15 +408,6 @@ class Client:
         first_joined = info[3].strip()
         time_played = info[5].replace("\xa0", " ").strip()
         monthly_views = info[7].strip()
-        data = {
-            "rank": rank,
-            "last_seen": last_seen,
-            "current_status": current_status,
-            "first_joined": first_joined,
-            "time_played": time_played,
-            "monthly_views": monthly_views,
-            "game_stats": [],
-        }
 
         # first stat is special
         first_game = soup.find("a", {"class": "server"})
