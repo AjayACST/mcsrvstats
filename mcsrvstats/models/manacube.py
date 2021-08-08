@@ -23,8 +23,8 @@ class Parkour(BaseModel):
     courses: Optional[int] = 0
 
     @validator("*", pre=True)  # pragma: no cover
-    def name_must_contain_space(
-        cls: Any, v: Any, field: Any
+    def name_must_contain_space(  # noqa: C901, D102
+        cls: Any, v: Any, field: Any  # noqa: B902, N805
     ) -> Any:  # pragma: no cover
         if v == "N/A":
             return field.default
@@ -47,8 +47,8 @@ class Aztec(BaseModel):
     money: Optional[int] = 0
 
     @validator("*", pre=True)  # pragma: no cover
-    def name_must_contain_space(
-        cls: Any, v: Any, field: Any
+    def name_must_contain_space(  # noqa: C901, D102
+        cls: Any, v: Any, field: Any  # noqa: B902, N805
     ) -> Any:  # pragma: no cover
         if v == "N/A":
             return field.default
@@ -71,8 +71,8 @@ class Oasis(BaseModel):
     money: Optional[int] = 0
 
     @validator("*", pre=True)  # pragma: no cover
-    def name_must_contain_space(
-        cls: Any, v: Any, field: Any
+    def name_must_contain_space(  # noqa: C901, D102
+        cls: Any, v: Any, field: Any  # noqa: B902, N805
     ) -> Any:  # pragma: no cover
         if v == "N/A":
             return field.default
@@ -95,8 +95,8 @@ class Islands(BaseModel):
     money: Optional[int] = 0
 
     @validator("*", pre=True)  # pragma: no cover
-    def name_must_contain_space(
-        cls: Any, v: Any, field: Any
+    def name_must_contain_space(  # noqa: C901, D102
+        cls: Any, v: Any, field: Any  # noqa: B902, N805
     ) -> Any:  # pragma: no cover
         if v == "N/A":
             return field.default
@@ -119,8 +119,8 @@ class Survival(BaseModel):
     quests: Optional[int] = 0
 
     @validator("*", pre=True)  # pragma: no cover
-    def name_must_contain_space(
-        cls: Any, v: Any, field: Any
+    def name_must_contain_space(  # noqa: C901, D102
+        cls: Any, v: Any, field: Any  # noqa: B902, N805
     ) -> Any:  # pragma: no cover
         if v == "N/A":
             return field.default
@@ -143,8 +143,8 @@ class Factions(BaseModel):
     money: Optional[int] = 0
 
     @validator("*", pre=True)  # pragma: no cover
-    def name_must_contain_space(
-        cls: Any, v: Any, field: Any
+    def name_must_contain_space(  # noqa: C901, D102
+        cls: Any, v: Any, field: Any  # noqa: B902, N805
     ) -> Any:  # pragma: no cover
         if v == "N/A":
             return field.default
@@ -167,8 +167,8 @@ class Aether(BaseModel):
     rebirths: Optional[int] = 0
 
     @validator("*", pre=True)  # pragma: no cover
-    def name_must_contain_space(
-        cls: Any, v: Any, field: Any
+    def name_must_contain_space(  # noqa: C901, D102
+        cls: Any, v: Any, field: Any  # noqa: B902, N805
     ) -> Any:  # pragma: no cover
         if v == "N/A":
             return field.default
@@ -191,8 +191,8 @@ class Atlas(BaseModel):
     rebirths: Optional[int] = 0
 
     @validator("*", pre=True)  # pragma: no cover
-    def name_must_contain_space(
-        cls: Any, v: Any, field: Any
+    def name_must_contain_space(  # noqa: C901, D102
+        cls: Any, v: Any, field: Any  # noqa: B902, N805
     ) -> Any:  # pragma: no cover
         if v == "N/A":
             return field.default
@@ -213,8 +213,8 @@ class Creative(BaseModel):
     blocksbroken: Optional[int] = 0
 
     @validator("*", pre=True)  # pragma: no cover
-    def name_must_contain_space(
-        cls: Any, v: Any, field: Any
+    def name_must_contain_space(  # noqa: C901, D102
+        cls: Any, v: Any, field: Any  # noqa: B902, N805
     ) -> Any:  # pragma: no cover
         if v == "N/A":
             return field.default
@@ -237,8 +237,8 @@ class Kitpvp(BaseModel):
     kills: Optional[int] = 0
 
     @validator("*", pre=True)  # pragma: no cover
-    def name_must_contain_space(
-        cls: Any, v: Any, field: Any
+    def name_must_contain_space(  # noqa: C901, D102
+        cls: Any, v: Any, field: Any  # noqa: B902, N805
     ) -> Any:  # pragma: no cover
         if v == "N/A":
             return field.default

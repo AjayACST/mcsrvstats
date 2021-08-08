@@ -40,7 +40,7 @@ from .universocraft import CaptureWool
 from .universocraft import ArenaPVP
 from .universocraft import HungerGames
 from .universocraft import Universocraft
-from .veltpvp import  HCF
+from .veltpvp import HCF
 from .veltpvp import Practice
 from .veltpvp import Soup
 from .veltpvp import Veltpvp

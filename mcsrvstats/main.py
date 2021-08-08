@@ -377,9 +377,6 @@ class Client:
         Args:
             username (str): username of player
 
-        Raises:
-            ApiError: error if player not found.
-
         Returns:
             Veltpvp: object containing player stats.
         """

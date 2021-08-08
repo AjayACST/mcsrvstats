@@ -2,7 +2,4 @@
 from .exceptions import ApiError
 from .exceptions import PlayerNotFoundError
 
-__all__ = [
-    "ApiError",
-    "PlayerNotFoundError"
-]
+__all__ = ["ApiError", "PlayerNotFoundError"]
