@@ -5,13 +5,12 @@ from pathlib import Path
 from textwrap import dedent
 
 import nox
-import nox_poetry
 from nox_poetry import Session
 from nox_poetry import session
 
 
 package = "mcsrvstats"
-python_versions = ["3.9", "3.8", "3.7", "3.6"]
+python_versions = ["3.9", "3.8", "3.7"]
 nox.options.sessions = (
     "pre-commit",
     "safety",
@@ -31,8 +30,6 @@ def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
     session's virtual environment. This allows pre-commit to locate hooks in
     that environment when invoked from git.
     """
-    if session.bin is None:
-        return
 
     virtualenv = session.env.get("VIRTUAL_ENV")
     if virtualenv is None:
@@ -74,12 +71,8 @@ def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
 
 @session(name="pre-commit", python="3.9")
 def precommit(session: Session) -> None:
-    """Lint using pre-commit.
-
-    Args:
-        session: The Session object.
-    """
-    args = session.posargs or ["run", "--all-files"]
+    """Lint using pre-commit."""
+    args = session.posargs or ["run", "--all-files", "--show-diff-on-failure"]
     session.install(
         "black",
         "darglint",
@@ -103,17 +96,27 @@ def precommit(session: Session) -> None:
 @session(python="3.9")
 def safety(session: Session) -> None:
     """Scan dependencies for insecure packages."""
-    requirements = nox_poetry.export_requirements(session)
+    requirements = session.poetry.export_requirements()
     session.install("safety")
-    session.run("safety", "check", f"--file={requirements}", "--bare")
+    # Ignore some issues in some dev dependencies
+    session.run(
+        "safety",
+        "check",
+        "--ignore=39525",
+        "--ignore=39611",
+        "--ignore=40014",
+        "--ignore=40291",
+        f"--file={requirements}",
+        "--bare",
+    )
 
 
 @session(python=python_versions)
 def mypy(session: Session) -> None:
     """Type-check using mypy."""
-    args = session.posargs or ["mcsrvstats", "tests", "docs/conf.py"]
+    args = session.posargs or [package, "tests", "docs/conf.py"]
     session.install(".")
-    session.install("mypy", "pytest")
+    session.install("mypy", "pytest", "types-Deprecated")
     session.run("mypy", *args)
     if not session.posargs:
         session.run("mypy", f"--python-executable={sys.executable}", "noxfile.py")
@@ -137,7 +140,8 @@ def tests(session: Session) -> None:
 def coverage(session: Session) -> None:
     """Produce the coverage report."""
     # Do not use session.posargs unless this is the only session.
-    has_args = session.posargs and len(session._runner.manifest) == 1
+    nsessions = len(session._runner.manifest)  # type: ignore[attr-defined]
+    has_args = session.posargs and nsessions == 1
     args = session.posargs if has_args else ["report"]
 
     session.install("coverage[toml]")
@@ -154,7 +158,11 @@ def docs_build(session: Session) -> None:
     args = session.posargs or ["docs", "docs/_build"]
     session.install(".")
     session.install(
-        "sphinx", "sphinx-rtd-theme", "recommonmark", "sphinx_autodoc_typehints"
+        "sphinx",
+        "sphinx-rtd-theme",
+        "recommonmark",
+        "sphinx_autodoc_typehints",
+        "autodoc_pydantic",
     )
 
     build_dir = Path("docs", "_build")
@@ -175,6 +183,7 @@ def docs(session: Session) -> None:
         "sphinx-rtd-theme",
         "recommonmark",
         "sphinx_autodoc_typehints",
+        "autodoc_pydantic",
     )
 
     build_dir = Path("docs", "_build")

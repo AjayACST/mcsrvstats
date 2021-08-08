@@ -46,6 +46,7 @@ async def test_veltpvp(mcsrvstats_client: Client) -> None:
         assert data.Soup.EventsWon == 0
         assert data.Soup.EventsLost == 0
 
+
 @pytest.mark.asyncio
 async def test_veltpvp_player_not_found(mcsrvstats_client: Client) -> None:
     """Test to check the veltpvp function returns the correct data when the player is not found."""
@@ -56,6 +57,6 @@ async def test_veltpvp_player_not_found(mcsrvstats_client: Client) -> None:
             status=404,
         )
         client = mcsrvstats_client
-        
+
         with pytest.raises(exceptions.exceptions.ApiError):
             await client.veltpvp("JOAKIM")
