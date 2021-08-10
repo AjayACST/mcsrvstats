@@ -41,11 +41,14 @@ extensions = [
     "sphinx_autodoc_typehints",
 ]
 
+autodoc_mock_imports = ["pydantic", "aiohttp"]
+
 intersphinx_mapping = {
     "python": ("http://docs.python.org/3", None),
     "aiohttp": ("https://aiohttp.readthedocs.io/en/latest/", None),
 }
 
+autodoc_default_options = {"exclude-members": "Config"}
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
 

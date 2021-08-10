@@ -138,5 +138,5 @@ async def test_universocraft_player_not_found(mcsrvstats_client: Client) -> None
         )
         client = mcsrvstats_client
 
-        with pytest.raises(exceptions.exceptions.PlayerNotFound):
+        with pytest.raises(exceptions.exceptions.PlayerNotFoundError):
             await client.universocraft("uBored")

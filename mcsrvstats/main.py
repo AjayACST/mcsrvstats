@@ -7,8 +7,8 @@ from typing import Optional
 import aiohttp
 from bs4 import BeautifulSoup
 
-from .exceptions.exceptions import ApiError
-from .exceptions.exceptions import PlayerNotFound
+from .exceptions import ApiError
+from .exceptions import PlayerNotFoundError
 from .models import Aether
 from .models import ArenaPVP
 from .models import Atlas
@@ -115,7 +115,7 @@ class Client:
             username (str): username of player.
 
         Raises:
-            PlayerNotFound: error if player not found.
+            PlayerNotFoundError: error if player not found.
 
         Returns:
             Manacube: object containing players manacube data.
@@ -125,7 +125,7 @@ class Client:
         json_data = json.loads(html_data)
 
         if not json_data["exists"]:
-            raise PlayerNotFound(username=username)
+            raise PlayerNotFoundError(username=username)
 
         parkour_manacube = Parkour.parse_obj(json_data["parkour"])
         aztec_manacube = Aztec.parse_obj(json_data["aztec"])
@@ -165,7 +165,7 @@ class Client:
             username (str): username of player
 
         Raises:
-            PlayerNotFound: error if player not found.
+            PlayerNotFoundError: error if player not found.
 
         Returns:
             WyncraftClasses: object containing the players classes
@@ -175,7 +175,7 @@ class Client:
         data = []
 
         if json_data["code"] == 400:
-            raise PlayerNotFound(username=username)
+            raise PlayerNotFoundError(username=username)
 
         for _class in json_data["data"][0]["classes"]:
             data.append(Classes.parse_obj(_class))
@@ -232,7 +232,7 @@ class Client:
             username (str): username of player
 
         Raises:
-            PlayerNotFound: error if player not found.
+            PlayerNotFoundError: error if player not found.
 
         Returns:
             Universocraft: object containing the players stats.
@@ -242,7 +242,7 @@ class Client:
         soup = BeautifulSoup(html, "lxml")
 
         if soup.find("div", {"class": "main-content-error"}):
-            raise PlayerNotFound(username=username)
+            raise PlayerNotFoundError(username=username)
         for game in soup.find_all("div", {"class": "game"}):
             stats = {}
             game_name = game.find("h2").get_text().replace("\n", "").strip()
@@ -309,7 +309,7 @@ class Client:
             username (str): username of player
 
         Raises:
-            PlayerNotFound: error if player not found.
+            PlayerNotFoundError: error if player not found.
 
         Returns:
             GommeHD: object containing player stats.
@@ -319,7 +319,7 @@ class Client:
         soup = BeautifulSoup(html, "lxml")
 
         if not soup.find("span", {"class": "username"}):
-            raise PlayerNotFound(username=username)
+            raise PlayerNotFoundError(username=username)
 
         for game in soup.find_all("div", {"class": "stat-table"}):
             stats = {}
@@ -376,9 +376,6 @@ class Client:
 
         Args:
             username (str): username of player
-
-        Raises:
-            ApiError: error if player not found.
 
         Returns:
             Veltpvp: object containing player stats.

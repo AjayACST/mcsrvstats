@@ -5,7 +5,7 @@ Reference
 Client
 -------------------
 
-.. autoclass:: mcsrvstats.Hypixel
+.. autoclass:: mcsrvstats.Client
    :members:
 
 Exceptions
