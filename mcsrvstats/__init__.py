@@ -1,6 +1,5 @@
 """Minecraft Server Stats Wrapper.
 
-~~~~~~~~~~~~~~~~~~~
 A wrapper for a collection of popular minecraft server stats.
 :copyright: (c) 2021 Obsidion-Dev
 :license: MIT, see LICENSE for more details.

@@ -30,7 +30,6 @@ def activate_virtualenv_in_precommit_hooks(session: Session) -> None:
     session's virtual environment. This allows pre-commit to locate hooks in
     that environment when invoked from git.
     """
-
     virtualenv = session.env.get("VIRTUAL_ENV")
     if virtualenv is None:
         return

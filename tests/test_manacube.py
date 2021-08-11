@@ -1,10 +1,10 @@
 """Test for Manaucbe."""
 from datetime import datetime
+from mcsrvstats import Client
+from mcsrvstats import exceptions
 
 import pytest
 from aioresponses import aioresponses
-from mcsrvstats import Client
-from mcsrvstats import exceptions
 
 
 @pytest.mark.asyncio
@@ -86,7 +86,7 @@ async def test_manacube(mcsrvstats_client: Client) -> None:
         client = mcsrvstats_client
         data = await client.manacube("_iTempo")
 
-        assert data.exists == True
+        assert data.exists
         assert data.level == 14
         assert data.rank == "default"
         assert data.cubits == 61.87
@@ -150,8 +150,7 @@ async def test_manacube(mcsrvstats_client: Client) -> None:
 
 @pytest.mark.asyncio
 async def test_manacube_not_found(mcsrvstats_client: Client) -> None:
-    """Test to check the manacube function returns the correct data when the player is not found."""
-
+    """Checks manacube returns correct data when player is not found."""
     with aioresponses() as m:
         m.get(
             "https://manacube.com/stats_data/fetch.php?username=_iTempo",

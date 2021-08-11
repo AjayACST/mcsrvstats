@@ -26,14 +26,14 @@ class BedWarsGomme(BaseModel):
         wins (int): How many wins the player has.
         kills (int): How many kills the player has.
         games (int): How many games the player has played.
-        bedsDestroyed (int): How many beds the player has destroyed.
+        BedsDestroyed (int): How many beds the player has destroyed.
         deaths (int): How many deaths the player has.
     """
 
     wins: int = Field(alias="Wins")
     kills: int = Field(alias="Kills")
     games: int = Field(alias="Games")
-    bedsDestroyed: int = Field(alias="Beds destroyed")
+    BedsDestroyed: int = Field(alias="Beds destroyed")
     deaths: int = Field(alias="Deaths")
 
 

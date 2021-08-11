@@ -63,23 +63,23 @@ class Veltpvp(BaseModel):
     """VeltPVP stats model.
 
     Args:
-        rank (str): The rank the player has.
-        lastSeen (str): How long ago the player was last seen.
-        currentStatus (str): The player's current status.
-        firstJoined (str): When the player first joined the server.
-        timePlayed (str): Total amount of time played on the server.
-        monthlyViews (int): The number of monthly views the player has.
+        Rank (str): The rank the player has.
+        LastSeen (str): How long ago the player was last seen.
+        CurrentStatus (str): The player's current status.
+        FirstJoined (str): When the player first joined the server.
+        TimePlayed (str): Total amount of time played on the server.
+        MonthlyViews (int): The number of monthly views the player has.
         HCF (HCF): HCF stats for the player.
         Practice (Practice): Practice stats for the player.
         Soup (Soup): Soup stats for the player.
     """
 
-    rank: str
-    lastSeen: str
-    currentStatus: str
-    firstJoined: str
-    timePlayed: str
-    monthlyViews: int
+    Rank: str
+    LastSeen: str
+    CurrentStatus: str
+    FirstJoined: str
+    TimePlayed: str
+    MonthlyViews: int
     HCF: HCF
     Practice: Practice
     Soup: Soup

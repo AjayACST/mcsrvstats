@@ -1,14 +1,14 @@
 """Test for VeltPVP."""
-import pytest
-from aioresponses import aioresponses
 from mcsrvstats import Client
 from mcsrvstats import exceptions
+
+import pytest
+from aioresponses import aioresponses
 
 
 @pytest.mark.asyncio
 async def test_veltpvp(mcsrvstats_client: Client) -> None:
     """Test to check the veltpvp function returns the correct data."""
-
     f = open("tests/html/test_veltpvp.html")
     html = f.read()
     with aioresponses() as m:
@@ -20,12 +20,12 @@ async def test_veltpvp(mcsrvstats_client: Client) -> None:
         client = mcsrvstats_client
         data = await client.veltpvp("JOAKIM")
 
-        assert data.rank == "Owner"
-        assert data.lastSeen == "N/A"
-        assert data.currentStatus == "N/A"
-        assert data.firstJoined == "24/08/2017"
-        assert data.timePlayed == "6 months played"
-        assert data.monthlyViews == 11575
+        assert data.Rank == "Owner"
+        assert data.LastSeen == "N/A"
+        assert data.CurrentStatus == "N/A"
+        assert data.FirstJoined == "24/08/2017"
+        assert data.TimePlayed == "6 months played"
+        assert data.MonthlyViews == 11575
 
         assert data.HCF.Kills == 10
         assert data.HCF.Deaths == 1
@@ -49,8 +49,7 @@ async def test_veltpvp(mcsrvstats_client: Client) -> None:
 
 @pytest.mark.asyncio
 async def test_veltpvp_player_not_found(mcsrvstats_client: Client) -> None:
-    """Test to check the veltpvp function returns the correct data when the player is not found."""
-
+    """Checks veltpvp returns correct data when player is not found."""
     with aioresponses() as m:
         m.get(
             "https://www.veltpvp.com/u/JOAKIM",

@@ -1,14 +1,14 @@
 """Test for GommeHD."""
-import pytest
-from aioresponses import aioresponses
 from mcsrvstats import Client
 from mcsrvstats import exceptions
+
+import pytest
+from aioresponses import aioresponses
 
 
 @pytest.mark.asyncio
 async def test_gommehd(mcsrvstats_client: Client) -> None:
     """Test to check the gommehd function returns the correct data."""
-
     f = open("tests/html/test_gommehd.html", "r")
     html = f.read()
     with aioresponses() as m:
@@ -29,7 +29,7 @@ async def test_gommehd(mcsrvstats_client: Client) -> None:
         assert data.BedWars.wins == 650
         assert data.BedWars.kills == 2183
         assert data.BedWars.games == 1118
-        assert data.BedWars.bedsDestroyed == 1540
+        assert data.BedWars.BedsDestroyed == 1540
         assert data.BedWars.deaths == 471
 
         assert data.SkyWars.wins == 351
@@ -74,8 +74,7 @@ async def test_gommehd(mcsrvstats_client: Client) -> None:
 
 @pytest.mark.asyncio
 async def test_gommehd_player_not_found(mcsrvstats_client: Client) -> None:
-    """Test to check the gommehd function returns the correct data when the player is not found."""
-
+    """Checks gommehd returns correct data when the player is not found."""
     f = open("tests/html/test_gommehd_player_not_found.html", "r")
     html = f.read()
 

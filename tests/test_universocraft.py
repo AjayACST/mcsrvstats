@@ -1,14 +1,14 @@
 """Test for Universocraft."""
-import pytest
-from aioresponses import aioresponses
 from mcsrvstats import Client
 from mcsrvstats import exceptions
+
+import pytest
+from aioresponses import aioresponses
 
 
 @pytest.mark.asyncio
 async def test_universocraft(mcsrvstats_client: Client) -> None:
     """Test to check the universocraft function returns the correct data."""
-
     f = open("tests/html/test_universocraft.html", "r")
     html = f.read()
     with aioresponses() as m:
@@ -126,8 +126,7 @@ async def test_universocraft(mcsrvstats_client: Client) -> None:
 
 @pytest.mark.asyncio
 async def test_universocraft_player_not_found(mcsrvstats_client: Client) -> None:
-    """Test to check the universocraft function returns the correct data. when the player is not found."""
-
+    """Checks universocraft returns correct data when player is not found."""
     f = open("tests/html/test_universocraft_player_not_found.html")
     html = f.read()
     with aioresponses() as m:

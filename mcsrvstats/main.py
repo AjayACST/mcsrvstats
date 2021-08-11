@@ -240,6 +240,7 @@ class Client:
         url = f"https://stats.universocraft.com/stats.php?player={username}"
         html = await self._get_html(url)
         soup = BeautifulSoup(html, "lxml")
+        data = []
 
         if soup.find("div", {"class": "main-content-error"}):
             raise PlayerNotFoundError(username=username)
@@ -250,56 +251,25 @@ class Client:
                 stat_val = stat.find("p", {"class": "game-stat-count"}).get_text()
                 stat_name = stat.find("p", {"class": "game-stat-title"}).get_text()
                 stats[stat_name] = stat_val
-            if game_name == "Destruye el Nexus":
-                destory_nexus = DestoryNexus.parse_obj(stats)
-            elif game_name == "SkyWars":
-                sky_wars = SkyWars.parse_obj(stats)
-            elif game_name == "LuckyWars":
-                lucky_wars = LuckyWars.parse_obj(stats)
-            elif game_name == "EggWars":
-                egg_wars = EggWars.parse_obj(stats)
-            elif game_name == "BedWars":
-                bed_wars = BedWars.parse_obj(stats)
-            elif game_name == "TeamSkyWars":
-                team_sky_wars = TeamSkyWars.parse_obj(stats)
-            elif game_name == "SpeedBuilders":
-                speed_builders = SpeedBuilders.parse_obj(stats)
-            elif game_name == "BuildBattle":
-                build_battle = BuildBattle.parse_obj(stats)
-            elif game_name == "Escapa de la Bestia":
-                escape_beast = EscapeBeast.parse_obj(stats)
-            elif game_name == "Party Games":
-                party_games = PartyGames.parse_obj(stats)
-            elif game_name == "Juegos del Hambre":
-                hunger_games = HungerGames.parse_obj(stats)
-            elif game_name == "SkyPit":
-                sky_pit = SkyPit.parse_obj(stats)
-            elif game_name == "ArenaPvP":
-                arena_pvp = ArenaPVP.parse_obj(stats)
-            elif game_name == "UHC":
-                uhc = UHC.parse_obj(stats)
-            elif game_name == "MurderMystery":
-                murder_mystery = MurderMystery.parse_obj(stats)
-            elif game_name == "Captura la Lana":
-                capture_wool = CaptureWool.parse_obj(stats)
+            data.append({game_name: stats})
 
         return Universocraft(
-            DestoryNexus=destory_nexus,
-            SkyWars=sky_wars,
-            LuckyWars=lucky_wars,
-            EggWars=egg_wars,
-            BedWars=bed_wars,
-            TeamSkyWars=team_sky_wars,
-            SpeedBuilders=speed_builders,
-            BuildBattle=build_battle,
-            EscapeBeast=escape_beast,
-            PartyGames=party_games,
-            HungerGames=hunger_games,
-            SkyPit=sky_pit,
-            ArenaPVP=arena_pvp,
-            UHC=uhc,
-            MurderMystery=murder_mystery,
-            CaptureWool=capture_wool,
+            DestoryNexus=DestoryNexus.parse_obj(data[0]["Destruye el Nexus"]),
+            SkyWars=SkyWars.parse_obj(data[1]["SkyWars"]),
+            LuckyWars=LuckyWars.parse_obj(data[2]["LuckyWars"]),
+            EggWars=EggWars.parse_obj(data[3]["EggWars"]),
+            BedWars=BedWars.parse_obj(data[4]["BedWars"]),
+            TeamSkyWars=TeamSkyWars.parse_obj(data[5]["TeamSkyWars"]),
+            SpeedBuilders=SpeedBuilders.parse_obj(data[6]["SpeedBuilders"]),
+            BuildBattle=BuildBattle.parse_obj(data[7]["BuildBattle"]),
+            EscapeBeast=EscapeBeast.parse_obj(data[8]["Escapa de la Bestia"]),
+            PartyGames=PartyGames.parse_obj(data[9]["Party Games"]),
+            HungerGames=HungerGames.parse_obj(data[10]["Juegos del Hambre"]),
+            SkyPit=SkyPit.parse_obj(data[11]["SkyPit"]),
+            ArenaPVP=ArenaPVP.parse_obj(data[12]["ArenaPvP"]),
+            UHC=UHC.parse_obj(data[13]["UHC"]),
+            MurderMystery=MurderMystery.parse_obj(data[14]["MurderMystery"]),
+            CaptureWool=CaptureWool.parse_obj(data[15]["Captura la Lana"]),
         )
 
     async def gommehd(self, username: str) -> GommeHD:
@@ -317,6 +287,7 @@ class Client:
         url = f"https://www.gommehd.net/player/index?playerName={username}"
         html = await self._get_html(url)
         soup = BeautifulSoup(html, "lxml")
+        data = []
 
         if not soup.find("span", {"class": "username"}):
             raise PlayerNotFoundError(username=username)
@@ -330,45 +301,23 @@ class Client:
                     stat.get_text().replace("\n", "").strip().replace(stat_val, "")
                 )
                 stats[stat_name] = stat_val
-
-            if game_name == "TTT":
-                ttt = TTT.parse_obj(stats)
-            elif game_name == "BedWars":
-                bed_wars = BedWarsGomme.parse_obj(stats)
-            elif game_name == "SkyWars":
-                sky_wars = SkyWarsGomme.parse_obj(stats)
-            elif game_name == "SurvivalGames":
-                survival_games = SurvivalGames.parse_obj(stats)
-            elif game_name == "EnderGames":
-                ender_games = EnderGames.parse_obj(stats)
-            elif game_name == "QuickSurvivalGames":
-                quick_survival_games = QuickSurvivalGames.parse_obj(stats)
-            elif game_name == "Cores":
-                cores = Cores.parse_obj(stats)
-            elif game_name == "GunGame":
-                gun_game = GunGame.parse_obj(stats)
-            elif game_name == "SpeedUHC":
-                speed_uhc = SpeedUHC.parse_obj(stats)
-            elif game_name == "MasterBuilders":
-                master_builders = MasterBuilders.parse_obj(stats)
-            elif game_name == "Cookies":
-                cookies = Cookies.parse_obj(stats)
-            elif game_name == "Hardcore":
-                hardcore = Hardcore.parse_obj(stats)
+            data.append({game_name: stats})
 
         return GommeHD(
-            TTT=ttt,
-            BedWars=bed_wars,
-            SkyWars=sky_wars,
-            SurvivalGames=survival_games,
-            EnderGames=ender_games,
-            QuickSurvivalGames=quick_survival_games,
-            Cores=cores,
-            GunGame=gun_game,
-            SpeedUHC=speed_uhc,
-            MasterBuilders=master_builders,
-            Cookies=cookies,
-            Hardcore=hardcore,
+            TTT=TTT.parse_obj(data[0]["TTT"]),
+            BedWars=BedWarsGomme.parse_obj(data[1]["BedWars"]),
+            SkyWars=SkyWarsGomme.parse_obj(data[2]["SkyWars"]),
+            SurvivalGames=SurvivalGames.parse_obj(data[3]["SurvivalGames"]),
+            EnderGames=EnderGames.parse_obj(data[4]["EnderGames"]),
+            QuickSurvivalGames=QuickSurvivalGames.parse_obj(
+                data[5]["QuickSurvivalGames"]
+            ),
+            Cores=Cores.parse_obj(data[6]["Cores"]),
+            GunGame=GunGame.parse_obj(data[7]["GunGame"]),
+            SpeedUHC=SpeedUHC.parse_obj(data[8]["SpeedUHC"]),
+            MasterBuilders=MasterBuilders.parse_obj(data[9]["MasterBuilders"]),
+            Cookies=Cookies.parse_obj(data[10]["Cookies"]),
+            Hardcore=Hardcore.parse_obj(data[11]["Hardcore"]),
         )
 
     async def veltpvp(self, username: str) -> Veltpvp:
@@ -448,12 +397,12 @@ class Client:
                 soup = Soup.parse_obj(stats)
 
         return Veltpvp(
-            rank=rank,
-            lastSeen=last_seen,
-            currentStatus=current_status,
-            firstJoined=first_joined,
-            timePlayed=time_played,
-            monthlyViews=monthly_views,
+            Rank=rank,
+            LastSeen=last_seen,
+            CurrentStatus=current_status,
+            FirstJoined=first_joined,
+            TimePlayed=time_played,
+            MonthlyViews=monthly_views,
             HCF=hcf,
             Practice=practice,
             Soup=soup,
