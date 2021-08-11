@@ -4,6 +4,7 @@ from aioresponses import aioresponses
 from mcsrvstats import Client
 from mcsrvstats import exceptions
 
+
 @pytest.mark.asyncio
 async def test_wyncraft_classes(mcsrvstats_client: Client) -> None:
     """Test to check the wyncraft classes function returns hte correct data."""
