@@ -1,9 +1,8 @@
 """Test for Universocraft."""
-from mcsrvstats import Client
-from mcsrvstats import exceptions
-
 import pytest
 from aioresponses import aioresponses
+from mcsrvstats import Client
+from mcsrvstats import exceptions
 
 
 @pytest.mark.asyncio

@@ -1,10 +1,8 @@
 """Test for wyncraft classes."""
-from mcsrvstats import Client
-from mcsrvstats import exceptions
-
 import pytest
 from aioresponses import aioresponses
-
+from mcsrvstats import Client
+from mcsrvstats import exceptions
 
 @pytest.mark.asyncio
 async def test_wyncraft_classes(mcsrvstats_client: Client) -> None:

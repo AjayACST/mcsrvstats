@@ -1,10 +1,10 @@
 """Test for Manaucbe."""
 from datetime import datetime
-from mcsrvstats import Client
-from mcsrvstats import exceptions
 
 import pytest
 from aioresponses import aioresponses
+from mcsrvstats import Client
+from mcsrvstats import exceptions
 
 
 @pytest.mark.asyncio

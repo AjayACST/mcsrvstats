@@ -1,10 +1,8 @@
 """Test for VeltPVP."""
-from mcsrvstats import Client
-from mcsrvstats import exceptions
-
 import pytest
 from aioresponses import aioresponses
-
+from mcsrvstats import Client
+from mcsrvstats import exceptions
 
 @pytest.mark.asyncio
 async def test_veltpvp(mcsrvstats_client: Client) -> None:
