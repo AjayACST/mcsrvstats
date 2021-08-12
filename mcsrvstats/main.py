@@ -376,7 +376,9 @@ class Client:
             stats[stat_name] = stat_val
         hcf = HCF.parse_obj(stats)
 
-        for game in soup.find_all("div", {"class": "server"}):
+        for game in soup.find_all(
+            "div", {"class": "server"}
+        ):  # pragma: no cover (due to bug in coverage.py)
             if game.find("span"):
                 break
             game_name = game.find("div", {"class": "server-header"}).get_text().strip()
