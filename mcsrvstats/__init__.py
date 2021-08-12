@@ -13,9 +13,9 @@ __copyright__ = "Copyright 2021 Obsidion-Dev"
 
 
 try:
-    from importlib.metadata import version, PackageNotFoundError  # type: ignore
+    from importlib.metadata import PackageNotFoundError  # type: ignore
 except ImportError:  # pragma: no cover
-    from importlib_metadata import version, PackageNotFoundError  # type: ignore
+    from importlib_metadata import PackageNotFoundError  # type: ignore
 
 
 try:

@@ -51,11 +51,7 @@ async def test_veltpvp_status(mcsrvstats_client: Client) -> None:
     f = open("tests/html/test_veltpvp_status.html")
     html = f.read()
     with aioresponses() as m:
-        m.get(
-            "https://www.veltpvp.com/u/xtreepvps",
-            status=200,
-            body=html
-        )
+        m.get("https://www.veltpvp.com/u/xtreepvps", status=200, body=html)
         client = mcsrvstats_client
         data = await client.veltpvp("xtreepvps")
 
@@ -84,6 +80,7 @@ async def test_veltpvp_status(mcsrvstats_client: Client) -> None:
         assert data.Soup.HighestKillstreak == 0
         assert data.Soup.EventsWon == 0
         assert data.Soup.EventsLost == 0
+
 
 @pytest.mark.asyncio
 async def test_veltpvp_player_not_found(mcsrvstats_client: Client) -> None:
