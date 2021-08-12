@@ -1,14 +1,16 @@
 """Main tests."""
 import pytest
+import aiohttp
 from aioresponses import aioresponses
 from mcsrvstats import __version__
 from mcsrvstats import Client
 from mcsrvstats import exceptions
+import mcsrvstats
 
 
 def test_version() -> None:
     """Mock version."""
-    assert __version__ == "0.2.0"
+    assert __version__ == "1.0.0"
 
 
 @pytest.mark.asyncio
@@ -44,3 +46,11 @@ async def test_client_json_error(mcsrvstats_client: Client) -> None:
         client = mcsrvstats_client
         with pytest.raises(exceptions.exceptions.ApiError):
             await client._get_json("https://api.wynncraft.com/v2/player/IceWarox/stats")
+
+
+@pytest.mark.asyncio
+async def test_client_aiotthp() -> None:
+    """Test mcsrvstats client with aiohttp passed to it."""
+    aiosession = aiohttp.ClientSession()
+    client = mcsrvstats.Client(session=aiosession)
+    assert client.session == aiosession
