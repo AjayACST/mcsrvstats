@@ -19,8 +19,8 @@ except ImportError:  # pragma: no cover
 
 
 try:
-    __version__ = version(__name__)
-except PackageNotFoundError:  # pragma: no cover
     __version__ = "1.0.0"
+except PackageNotFoundError:  # pragma: no cover
+    __version__ = "Unkown"
 
 __all__ = ["Client"]

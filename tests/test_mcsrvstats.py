@@ -1,11 +1,11 @@
 """Main tests."""
-import pytest
 import aiohttp
+import pytest
+import mcsrvstats
 from aioresponses import aioresponses
 from mcsrvstats import __version__
 from mcsrvstats import Client
 from mcsrvstats import exceptions
-import mcsrvstats
 
 
 def test_version() -> None:

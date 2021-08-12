@@ -45,6 +45,45 @@ async def test_veltpvp(mcsrvstats_client: Client) -> None:
         assert data.Soup.EventsWon == 0
         assert data.Soup.EventsLost == 0
 
+@pytest.mark.asyncio
+async def test_veltpvp_status(mcsrvstats_client: Client) -> None:
+    """Checks veltpvp returns correct data if status and last played is set."""
+    f = open("tests/html/test_veltpvp_status.html")
+    html = f.read()
+    with aioresponses() as m:
+        m.get(
+            "https://www.veltpvp.com/u/xtreepvps",
+            status=200,
+            body=html
+        )
+        client = mcsrvstats_client
+        data = await client.veltpvp("xtreepvps")
+
+        assert data.Rank == "Default"
+        assert data.LastSeen == "1 day ago"
+        assert data.CurrentStatus == "Currently Offline"
+        assert data.FirstJoined == "30/05/2021"
+        assert data.TimePlayed == "22 hours played"
+        assert data.MonthlyViews == 12
+
+        assert data.HCF.Kills == 0
+        assert data.HCF.Deaths == 0
+        assert data.HCF.KDR == 0.0
+        assert data.HCF.Lives == 0
+        assert data.HCF.Playtime == "N/A"
+
+        assert data.Practice.Kills == 0
+        assert data.Practice.Deaths == 0
+        assert data.Practice.Wins == 0
+        assert data.Practice.Losses == 0
+        assert data.Practice.Fights == 0
+        assert data.Practice.GlobalELO == 1000
+
+        assert data.Soup.Kills == 0
+        assert data.Soup.Deaths == 0
+        assert data.Soup.HighestKillstreak == 0
+        assert data.Soup.EventsWon == 0
+        assert data.Soup.EventsLost == 0
 
 @pytest.mark.asyncio
 async def test_veltpvp_player_not_found(mcsrvstats_client: Client) -> None:
