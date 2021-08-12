@@ -1,7 +1,7 @@
 """Main tests."""
 import aiohttp
-import pytest
 import mcsrvstats
+import pytest
 from aioresponses import aioresponses
 from mcsrvstats import __version__
 from mcsrvstats import Client

@@ -45,6 +45,7 @@ async def test_veltpvp(mcsrvstats_client: Client) -> None:
         assert data.Soup.EventsWon == 0
         assert data.Soup.EventsLost == 0
 
+
 @pytest.mark.asyncio
 async def test_veltpvp_status(mcsrvstats_client: Client) -> None:
     """Checks veltpvp returns correct data if status and last played is set."""
