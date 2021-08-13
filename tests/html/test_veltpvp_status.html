@@ -1,0 +1,368 @@
+
+<!doctype html>
+<html>
+<head>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/resources/favicon/favicon-196x196.png" sizes="196x196"/>
+    <link rel="icon" type="image/png" href="/resources/favicon/favicon-96x96.png" sizes="96x96"/>
+    <link rel="icon" type="image/png" href="/resources/favicon/favicon-32x32.png" sizes="32x32"/>
+    <link rel="icon" type="image/png" href="/resources/favicon/favicon-16x16.png" sizes="16x16"/>
+    <link rel="icon" type="image/png" href="/resources/favicon/favicon-128.png" sizes="128x128"/>
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet">
+    <script crossorigin="anonymous" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/resources/app.css">
+    <script src="/resources/typeahead.min.js"></script>
+    <script src="/resources/bloodhound.js"></script>
+    <script src="/resources/app.js"></script>
+    <title>xtreepvps | VeltPvP Network</title>
+
+<script src="/resources/users/users.js"></script>
+<link type="text/css" rel="stylesheet" href="/resources/users/users.css">
+
+<link type="text/css" rel="stylesheet" href="/resources/users/general/general.css">
+<script src="/resources/users/general/general.js"></script>
+
+
+</head>
+<body>
+    <div id="wrapper">
+        <footer>
+            <div class="container">
+                <a href="https://twitter.com/hylistgames"><img src="/resources/images/footer-logo.png"></a>
+                <ul>
+                    <li><a href="/famous">Famous</a></li>
+                    <!-- <li><a href="#">Rules</a></li> -->
+                </ul>
+            </div>
+        </footer>
+        <header>
+            <div class="navbar navbar-inverse">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/" class="navbar-brand">
+                        <img class="img-responsive" src="/resources/images/nav-logo.png">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="nav navbar-nav">
+
+                        <li><a href="/forums/">Forums</a></li>
+
+                        <li><a href="/support/">Support</a></li>
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+<!--
+
+
+
+                    <div id="languages" class="dropdown">
+                        <div class="btn dropdown-toggle" id="language-switch" data-toggle="dropdown">
+
+                                <span style="opacity: 0.5;"><img
+                                        src="https://www.countryflags.io/us/flat/16.png"></span></span>
+
+                        </div>
+                        <ul class="dropdown-menu" style="color: black;">
+
+
+                                <li>
+
+                                </li>
+
+                                <li>
+
+                                </li>
+
+                        </ul>
+                    </div> -->
+                    <li><a target="_blank" href="https://store.veltpvp.com">Store</a></li>
+                    <div id="search-form" class="navbar-form navbar-left " role="search">
+                        <div class="form-group" style="position: relative;">
+                            <i class="fa fa-search"></i>
+                            <input id="search" name="username" type="text" class="form-control typeahead"
+                            placeholder="search..." autocomplete="off" autocorrect="off"
+                            autocapitalize="off" spellcheck="false">
+                        </div>
+                    </div>
+
+        <li><a id="login" href="/login">Login</a></li>
+
+    </ul>
+</div>
+</div>
+</div>
+<div id="header">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+
+<div class="text-center">
+    <svg style="filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.078039) );" height="70" width="61"
+         xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <clipPath id="hex-small">
+                <path d="M24.248711305964278 3.4999999999999996Q30.31088913245535 0 36.373066958946424 3.5L54.55960043841963 14Q60.6217782649107 17.5 60.6217782649107 24.5L60.6217782649107 45.5Q60.6217782649107 52.5 54.55960043841963 56L36.373066958946424 66.5Q30.31088913245535 70 24.24871130596428 66.5L6.06217782649107 56Q0 52.5 0 45.5L0 24.5Q0 17.5 6.062177826491071 14Z"/>
+            </clipPath>
+
+        </defs>
+        <foreignObject id="profile-header-image-border" clip-path="url(#hex-small)"
+                       height="100%" width="100%"></foreignObject>
+        <foreignObject id="profile-header-image" clip-path="url(#hex-small)"
+                       height="100%" width="100%">
+
+
+                <img id="profile-header-image-src" src="https://crafatar.com/renders/head/41f86efd6fc9477bb986eff76167fd25?scale=6&amp;overlay">
+
+
+        </foreignObject>
+    </svg>
+    <h1>xtreepvps</h1>
+    <h2 style="color: #666699">Default</h2>
+</div>
+
+        </div>
+    </div>
+</div>
+</div>
+</header>
+<div id="container-body">
+<div class="container">
+    <div class="row">
+        <div class="container">
+            <div id="content" class="row row-extend">
+
+<div class="col-md-3">
+    <div id="sidebar">
+        <div class="element segmented">
+
+
+                <div class="top">Currently Offline</div>
+
+            <div class="content middle" id="profile">
+
+                <svg style="filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.078039) );" height="135" width="130"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="hex">
+                            <path d="M43.301270189221924 9.999999999999998Q60.6217782649107 0 77.94228634059948 10L103.92304845413264 25Q121.2435565298214 35 121.2435565298214 55L121.2435565298214 85Q121.2435565298214 105 103.92304845413263 115L77.94228634059948 130Q60.6217782649107 140 43.30127018922193 130L17.32050807568877 115Q0 105 0 85L0 55Q0 35 17.320508075688775 25Z"/>
+                        </clipPath>
+
+                    </defs>
+                    <foreignObject class="image-border" clip-path="url(#hex)"
+                                   height="100%" width="100%">
+                    </foreignObject>
+                    <foreignObject class="image-holder" clip-path="url(#hex)"
+                                   height="100%" width="100%">
+
+                            <img src="https://visage.surgeplay.com/full/512/41f86efd6fc9477bb986eff76167fd25.png" width="118.5"
+                                 height="192">
+
+                    </foreignObject>
+                </svg>
+
+                <h1 id="name">xtreepvps</h1>
+                <h2 style="color: #666699">Default</h2>
+            </div>
+
+                <div class="bottom">
+                    Last seen
+                        1 day ago
+                </div>
+
+        </div>
+        <div class="element">
+            <div class="content">
+                First joined on
+                    <strong>30/05/2021</strong>
+
+                    <br>
+
+                        <strong>22 hours</strong> played
+
+                <br><strong>12</strong>
+                    views
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+</div>
+<div class="col-md-9">
+    <div id="tabs">
+        <ul>
+            <li class="active"><a
+                    href="/u/xtreepvps">General</a>
+            </li>
+            <li><a
+                    href="/u/xtreepvps/hcf">Statistics</a></li>
+            <li><a style="cursor: not-allowed;"
+                                                                          href="#">Forums</a>
+            </li>
+<!--                  -->
+        </ul>
+    </div>
+    <div id="tab">
+
+
+
+<div id="servers">
+
+        <a href="/u/xtreepvps/hcf" class="server">
+            <div class="server-header h1">HCF<i class="fas fa-external-link-alt"></i></div>
+            <div class="server-body">
+                <div class="server-stats">
+                    <div class="server-stat">
+                        <div class="server-stat-description">Kills</div>
+                        <div class="server-stat-number">0</div>
+                    </div>
+                    <div class="server-stat">
+                        <div class="server-stat-description">Deaths</div>
+                        <div class="server-stat-number">0</div>
+                    </div>
+                    <div class="server-stat">
+                        <div class="server-stat-description">KDR</div>
+
+                            <div class="server-stat-number">0.0</div>
+
+                    </div>
+                    <div class="server-stat">
+                        <div class="server-stat-description">Lives</div>
+                        <div class="server-stat-number">0</div>
+                    </div>
+                    <div class="server-stat">
+                        <div class="server-stat-description">Playtime</div>
+
+                            <div class="server-stat-number">N/A</div>
+
+                    </div>
+                </div>
+            </div>
+        </a>
+
+
+        <div class="server">
+            <div class="server-header h2">Practice</div>
+            <div class="server-body">
+                <div class="server-stats">
+                    <div class="server-stat">
+                        <div class="server-stat-description">Kills</div>
+                        <div class="server-stat-number">0</div>
+                    </div>
+                    <div class="server-stat">
+                        <div class="server-stat-description">Deaths</div>
+                        <div class="server-stat-number">0</div>
+                    </div>
+                    <div class="server-stat">
+                        <div class="server-stat-description">Wins</div>
+                        <div class="server-stat-number">0</div>
+                    </div>
+                    <div class="server-stat">
+                        <div class="server-stat-description">Losses</div>
+                        <div class="server-stat-number">0</div>
+                    </div>
+                    <div class="server-stat">
+                        <div class="server-stat-description">Fights</div>
+                        <div class="server-stat-number">0</div>
+                    </div>
+                    <div class="server-stat">
+                        <div class="server-stat-description">Global ELO</div>
+                        <div class="server-stat-number">1000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="server">
+        <div class="server-header h4">Soup</div>
+        <div class="server-body">
+            <div class="server-stats">
+                <div class="server-stat">
+                    <div class="server-stat-description">Kills</div>
+                    <div class="server-stat-number">0</div>
+                </div>
+                <div class="server-stat">
+                    <div class="server-stat-description">Deaths</div>
+                    <div class="server-stat-number">0</div>
+                </div>
+                <div class="server-stat">
+                    <div class="server-stat-description">Highest Killstreak</div>
+                    <div class="server-stat-number">0</div>
+                </div>
+                <div class="server-stat">
+                    <div class="server-stat-description">Events Won</div>
+                    <div class="server-stat-number">0</div>
+                </div>
+                <div class="server-stat">
+                    <div class="server-stat-description">Events Lost</div>
+                    <div class="server-stat-number">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="server unknown" aria-label="skywars">
+        <div class="server-body">
+            <div>
+                <img src="/resources/users/general/images/unknown.png">
+                <span>New gamemodes are coming soon!</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="comment-box">
+
+        <form>
+            <img src="https://crafatar.com/renders/head/8667ba71-b85a-4004-af54-457a9734eed7.png?default=MHF_Steve&scale=3">
+            <input name="text" id="text" placeholder="log in to say hi..." disabled>
+        </form>
+
+
+
+            <div id="comments" class="empty">
+
+                <div>xtreepvps doesn't have any comments yet! Why
+                    don't you <a href='/login'>log in</a> and say hello?</div>
+            </div>
+
+
+</div>
+
+    </div>
+</div>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    })
+</script>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</body>
+</html>

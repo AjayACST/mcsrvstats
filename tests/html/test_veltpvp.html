@@ -1,0 +1,2247 @@
+
+<!doctype html>
+<html>
+<head>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/resources/favicon/favicon-196x196.png" sizes="196x196"/>
+    <link rel="icon" type="image/png" href="/resources/favicon/favicon-96x96.png" sizes="96x96"/>
+    <link rel="icon" type="image/png" href="/resources/favicon/favicon-32x32.png" sizes="32x32"/>
+    <link rel="icon" type="image/png" href="/resources/favicon/favicon-16x16.png" sizes="16x16"/>
+    <link rel="icon" type="image/png" href="/resources/favicon/favicon-128.png" sizes="128x128"/>
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet">
+    <script crossorigin="anonymous" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/resources/app.css">
+    <script src="/resources/typeahead.min.js"></script>
+    <script src="/resources/bloodhound.js"></script>
+    <script src="/resources/app.js"></script>
+    <title>Joakim | VeltPvP Network</title>
+
+<script src="/resources/users/users.js"></script>
+<link type="text/css" rel="stylesheet" href="/resources/users/users.css">
+
+<link type="text/css" rel="stylesheet" href="/resources/users/general/general.css">
+<script src="/resources/users/general/general.js"></script>
+
+
+</head>
+<body>
+    <div id="wrapper">
+        <footer>
+            <div class="container">
+                <a href="https://twitter.com/hylistgames"><img src="/resources/images/footer-logo.png"></a>
+                <ul>
+                    <li><a href="/famous">Famous</a></li>
+                    <!-- <li><a href="#">Rules</a></li> -->
+                </ul>
+            </div>
+        </footer>
+        <header>
+            <div class="navbar navbar-inverse">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/" class="navbar-brand">
+                        <img class="img-responsive" src="/resources/images/nav-logo.png">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="nav navbar-nav">
+
+                        <li><a href="/forums/">Forums</a></li>
+
+                        <li><a href="/support/">Support</a></li>
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+<!--
+
+
+
+                    <div id="languages" class="dropdown">
+                        <div class="btn dropdown-toggle" id="language-switch" data-toggle="dropdown">
+
+                                <span style="opacity: 0.5;"><img
+                                        src="https://www.countryflags.io/us/flat/16.png"></span></span>
+
+                        </div>
+                        <ul class="dropdown-menu" style="color: black;">
+
+
+                                <li>
+
+                                </li>
+
+                                <li>
+
+                                </li>
+
+                        </ul>
+                    </div> -->
+                    <li><a target="_blank" href="https://store.veltpvp.com">Store</a></li>
+                    <div id="search-form" class="navbar-form navbar-left " role="search">
+                        <div class="form-group" style="position: relative;">
+                            <i class="fa fa-search"></i>
+                            <input id="search" name="username" type="text" class="form-control typeahead"
+                            placeholder="search..." autocomplete="off" autocorrect="off"
+                            autocapitalize="off" spellcheck="false">
+                        </div>
+                    </div>
+
+        <li><a id="login" href="/login">Login</a></li>
+
+    </ul>
+</div>
+</div>
+</div>
+<div id="header">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+
+<div class="text-center">
+    <svg style="filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.078039) );" height="70" width="61"
+         xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <clipPath id="hex-small">
+                <path d="M24.248711305964278 3.4999999999999996Q30.31088913245535 0 36.373066958946424 3.5L54.55960043841963 14Q60.6217782649107 17.5 60.6217782649107 24.5L60.6217782649107 45.5Q60.6217782649107 52.5 54.55960043841963 56L36.373066958946424 66.5Q30.31088913245535 70 24.24871130596428 66.5L6.06217782649107 56Q0 52.5 0 45.5L0 24.5Q0 17.5 6.062177826491071 14Z"/>
+            </clipPath>
+
+        </defs>
+        <foreignObject id="profile-header-image-border" clip-path="url(#hex-small)"
+                       height="100%" width="100%"></foreignObject>
+        <foreignObject id="profile-header-image" clip-path="url(#hex-small)"
+                       height="100%" width="100%">
+
+
+                <img id="profile-header-image-src" src="https://crafatar.com/renders/head/3de4fa82afb34003a0f2405c57e298ce?scale=6&amp;overlay">
+
+
+        </foreignObject>
+    </svg>
+    <h1>Joakim</h1>
+    <h2 style="color: #AA0000">Owner</h2>
+</div>
+
+        </div>
+    </div>
+</div>
+</div>
+</header>
+<div id="container-body">
+<div class="container">
+    <div class="row">
+        <div class="container">
+            <div id="content" class="row row-extend">
+
+<div class="col-md-3">
+    <div id="sidebar">
+        <div class="element segmented">
+
+
+            <div class="content" id="profile">
+
+                <svg style="filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.078039) );" height="135" width="130"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="hex">
+                            <path d="M43.301270189221924 9.999999999999998Q60.6217782649107 0 77.94228634059948 10L103.92304845413264 25Q121.2435565298214 35 121.2435565298214 55L121.2435565298214 85Q121.2435565298214 105 103.92304845413263 115L77.94228634059948 130Q60.6217782649107 140 43.30127018922193 130L17.32050807568877 115Q0 105 0 85L0 55Q0 35 17.320508075688775 25Z"/>
+                        </clipPath>
+
+                    </defs>
+                    <foreignObject class="image-border" clip-path="url(#hex)"
+                                   height="100%" width="100%">
+                    </foreignObject>
+                    <foreignObject class="image-holder" clip-path="url(#hex)"
+                                   height="100%" width="100%">
+
+                            <img src="https://visage.surgeplay.com/full/512/3de4fa82afb34003a0f2405c57e298ce.png" width="118.5"
+                                 height="192">
+
+                    </foreignObject>
+                </svg>
+
+                <h1 id="name">Joakim</h1>
+                <h2 style="color: #AA0000">Owner</h2>
+            </div>
+
+        </div>
+        <div class="element">
+            <div class="content">
+                First joined on
+                    <strong>24/08/2017</strong>
+
+                    <br>
+
+                        <strong>6 months</strong> played
+
+                <br><strong>11575</strong>
+                    views
+            </div>
+        </div>
+
+
+                <div class="element">
+                    <div>
+                        <div class="content" id="social">
+
+
+
+
+
+                                            <a href="https://www.twitter.com/ignJoakim" target="_blank"
+                                               style="color: #1da1f2;"><i class="fa fa-twitter"></i></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            <a href="https://www.telegram.me/Joakim" target="_blank"
+                                               style="color: #0088cc;"><i class="fa fa-telegram"></i></a>
+
+
+
+
+
+
+
+
+
+
+                                            <a href="https://www.github.com/ImJoakim" target="_blank"
+                                               style="color: #333;"><i class="fa fa-github"></i></a>
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            <div class="element">
+                <div class="content-title">238 Friends</div>
+                <div class="content with-title">
+                    <div id="friends"
+                            >
+
+
+
+                                    <a href="/u/borachio"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/f5a3df3d-61b7-4161-be8d-8765c1a3f603?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/WhatForPvP"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/a2897330-bf7f-436c-b1bb-f9476ef0b3a5?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/JimSlip"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/9f7e1273-61dc-4fb1-9563-513185ce98ff?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/BuffaloQuasar"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/17c5d9cb-e8a8-4455-ab7d-c97e693e53c9?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/ExternalHacks"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/3e65afc4-73da-4296-95c9-b8c9ffe15606?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/DaKiub"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/f6d1130f-aa3d-4667-81ca-c23c00733e10?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/Poordev"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/6b23a816-77e2-45a9-9040-b2d0a73a2cc1?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/Ovules"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/43084dbb-7c73-479b-b521-399a9bc31a36?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/Rowkus"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/98433f5a-b57a-4f6b-95b7-3d204e2f39a8?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/globalgoals"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/2cae48cb-2129-4dc0-bde9-b03b47a890d2?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/zaxec"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/6dbcc700-478e-4e8c-94ef-bcf2149b3f11?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/Esserpent"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/b3b5f270-816e-4aaa-b0de-bdd3fb113a37?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/Rafxy"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/ea733a5e-229f-44b3-8819-17d41b919277?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/Preceding"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/5099c405-9bfb-40f0-b1e5-b3ca00f9a36a?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/0u44"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/9e84ac05-e08f-4aac-ad97-575c868500c7?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/Retrousse"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/f845da38-d7b7-420d-ac6c-4bffcbf28b89?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/Illegalz"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/ce222fcd-7070-4427-972d-fc8275bc979f?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/Delebekk"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/c18e3539-1acc-4387-863c-6f72e0127694?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/Zikel"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/1184fa84-6c0f-4e5d-a2e5-21a0d780bba3?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/Wijt"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/b5dce1df-1cdd-42d3-bfa6-72a1aec103fd?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/cnrs"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/6c99cda7-4cd7-4f78-89bc-72dce145248d?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/y6a"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/10627700-bfa9-496b-bb7c-b414851cbfeb?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/mindcensor"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/b1bee2ad-7689-48aa-abf0-dc576788115d?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/Keleighh"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/5f058eb9-eb46-400b-9583-260d69bc4a81?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/BabyCombo"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/4edce2d6-4354-4390-9e63-4ba16320ec69?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/Leakable"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/751deb20-4bb2-47f5-a972-cd161f07755e?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/B1atant"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/e70f4ebb-a8fd-40b5-a35c-c3664ec73d49?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/Durkio"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/a2753edf-a948-47da-bdbd-7204e7f2623b?overlay&size=42">
+                                    </a>
+
+
+
+
+
+                                    <a href="/u/Yiwi"
+                                       class="friend">
+                                        <img src="https://crafatar.com/avatars/2b0656ed-e8e4-4bc9-8210-d5f17ca639cf?overlay&size=42">
+                                    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div class="friend placeholder">
+                                <svg
+                                        height="40"
+                                        width="35"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <clipPath id="hex-medium">
+                                            <path d="M12.990381056766577 2.4999999999999996Q17.32050807568877 0 21.650635094610962 2.5L30.31088913245535 7.5Q34.64101615137754 10 34.64101615137754 15L34.64101615137754 25Q34.64101615137754 30 30.310889132455348 32.5L21.650635094610966 37.5Q17.32050807568877 40 12.990381056766578 37.5L4.330127018922193 32.5Q0 30 0 25L0 15Q0 10 4.330127018922194 7.5Z"/>
+                                        </clipPath>
+
+                                    </defs>
+                                    <foreignObject clip-path="url(#hex-medium)"
+                                                   height="100%" width="100%">
+                                        <div>+209</div>
+                                    </foreignObject>
+                                </svg>
+                            </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+    </div>
+
+</div>
+<div class="col-md-9">
+    <div id="tabs">
+        <ul>
+            <li class="active"><a
+                    href="/u/Joakim">General</a>
+            </li>
+            <li><a
+                    href="/u/Joakim/hcf">Statistics</a></li>
+            <li><a style="cursor: not-allowed;"
+                                                                          href="#">Forums</a>
+            </li>
+<!--                  -->
+        </ul>
+    </div>
+    <div id="tab">
+
+
+
+<div id="servers">
+
+        <a href="/u/Joakim/hcf" class="server">
+            <div class="server-header h1">HCF<i class="fas fa-external-link-alt"></i></div>
+            <div class="server-body">
+                <div class="server-stats">
+                    <div class="server-stat">
+                        <div class="server-stat-description">Kills</div>
+                        <div class="server-stat-number">10</div>
+                    </div>
+                    <div class="server-stat">
+                        <div class="server-stat-description">Deaths</div>
+                        <div class="server-stat-number">1</div>
+                    </div>
+                    <div class="server-stat">
+                        <div class="server-stat-description">KDR</div>
+
+
+                                <div class="server-stat-number">10.0</div>
+
+
+                    </div>
+                    <div class="server-stat">
+                        <div class="server-stat-description">Lives</div>
+                        <div class="server-stat-number">0</div>
+                    </div>
+                    <div class="server-stat">
+                        <div class="server-stat-description">Playtime</div>
+
+                            <div class="server-stat-number">5 hours</div>
+
+                    </div>
+                </div>
+            </div>
+        </a>
+
+
+        <div class="server">
+            <div class="server-header h2">Practice</div>
+            <div class="server-body">
+                <div class="server-stats">
+                    <div class="server-stat">
+                        <div class="server-stat-description">Kills</div>
+                        <div class="server-stat-number">50</div>
+                    </div>
+                    <div class="server-stat">
+                        <div class="server-stat-description">Deaths</div>
+                        <div class="server-stat-number">3</div>
+                    </div>
+                    <div class="server-stat">
+                        <div class="server-stat-description">Wins</div>
+                        <div class="server-stat-number">0</div>
+                    </div>
+                    <div class="server-stat">
+                        <div class="server-stat-description">Losses</div>
+                        <div class="server-stat-number">0</div>
+                    </div>
+                    <div class="server-stat">
+                        <div class="server-stat-description">Fights</div>
+                        <div class="server-stat-number">0</div>
+                    </div>
+                    <div class="server-stat">
+                        <div class="server-stat-description">Global ELO</div>
+                        <div class="server-stat-number">1000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="server">
+        <div class="server-header h4">Soup</div>
+        <div class="server-body">
+            <div class="server-stats">
+                <div class="server-stat">
+                    <div class="server-stat-description">Kills</div>
+                    <div class="server-stat-number">0</div>
+                </div>
+                <div class="server-stat">
+                    <div class="server-stat-description">Deaths</div>
+                    <div class="server-stat-number">0</div>
+                </div>
+                <div class="server-stat">
+                    <div class="server-stat-description">Highest Killstreak</div>
+                    <div class="server-stat-number">0</div>
+                </div>
+                <div class="server-stat">
+                    <div class="server-stat-description">Events Won</div>
+                    <div class="server-stat-number">0</div>
+                </div>
+                <div class="server-stat">
+                    <div class="server-stat-description">Events Lost</div>
+                    <div class="server-stat-number">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="server unknown" aria-label="skywars">
+        <div class="server-body">
+            <div>
+                <img src="/resources/users/general/images/unknown.png">
+                <span>New gamemodes are coming soon!</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="comment-box">
+
+        <form>
+            <img src="https://crafatar.com/renders/head/8667ba71-b85a-4004-af54-457a9734eed7.png?default=MHF_Steve&scale=3">
+            <input name="text" id="text" placeholder="log in to say hi..." disabled>
+        </form>
+
+
+        <div id="comments">
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="2477">
+                            <a href="/u/LuvsHim"><img
+                                    src="https://crafatar.com/renders/head/6ae8e72ce6634837933cc1a48abd9949.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">i didnt do anything wrong yet i was banned :/</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/LuvsHim"><strong>LuvsHim</strong></a>
+                                        &nbsp;4 weeks ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="2477">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="2436">
+                            <a href="/u/Dawid_jasper23"><img
+                                    src="https://crafatar.com/renders/head/a2008ccfb8b34291b006b8f30bee6a01.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">hi can u unban me plz?</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/Dawid_jasper23"><strong>Dawid_jasper23</strong></a>
+                                        &nbsp;1 month ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="2436">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="2416">
+                            <a href="/u/brittler"><img
+                                    src="https://crafatar.com/renders/head/a687cf1e16b048c7b665c0fd7b2b420f.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">hey</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/brittler"><strong>brittler</strong></a>
+                                        &nbsp;2 months ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="2416">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="2363">
+                            <a href="/u/ignZixxx"><img
+                                    src="https://crafatar.com/renders/head/eb410c842c814dada5db6cccd6f839e1.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">Joakim for president</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/ignZixxx"><strong>ignZixxx</strong></a>
+                                        &nbsp;3 months ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="2363">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="2278">
+                            <a href="/u/KitOP"><img
+                                    src="https://crafatar.com/renders/head/fbc01f9099f1498c9588d679fa216144.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">hey, mr boss man.</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/KitOP"><strong>KitOP</strong></a>
+                                        &nbsp;4 months ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="2278">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="2258">
+                            <a href="/u/Arrnor"><img
+                                    src="https://crafatar.com/renders/head/781961cdfad64a8f89cf11e12fd753ad.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">Nice :D</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/Arrnor"><strong>Arrnor</strong></a>
+                                        &nbsp;4 months ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="2258">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="2225">
+                            <a href="/u/3550"><img
+                                    src="https://crafatar.com/renders/head/60296d81a230453ea842a00f49e24ddf.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">Super star!</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/3550"><strong>3550</strong></a>
+                                        &nbsp;5 months ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="2225">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="1979">
+                            <a href="/u/Divisibly"><img
+                                    src="https://crafatar.com/renders/head/e2463bfa83ca446ca4f8e70207475ed7.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">this servers ass</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/Divisibly"><strong>Divisibly</strong></a>
+                                        &nbsp;7 months ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="1979">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="1973">
+                            <a href="/u/BadAsf_"><img
+                                    src="https://crafatar.com/renders/head/dfbd1c0365874418bc30c87e7c1708d3.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">HEY CAN I GET ALL MY SHIT BACK IN HCF BECAUSE I WAS REGENED AND 1 DTR ONLY REGEN</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/BadAsf_"><strong>BadAsf_</strong></a>
+                                        &nbsp;7 months ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="1973">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="1746">
+                            <a href="/u/iRuled"><img
+                                    src="https://crafatar.com/renders/head/9e8349168af149cb83d17bc4ef152e6e.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">@joakim check out my support ban appeal please before sotw thanks</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/iRuled"><strong>iRuled</strong></a>
+                                        &nbsp;9 months ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="1746">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="1711">
+                            <a href="/u/Hazzay"><img
+                                    src="https://crafatar.com/renders/head/d429cd9bf65940ec888dc1e5e925ddfd.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">we love Joakim.</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/Hazzay"><strong>Hazzay</strong></a>
+                                        &nbsp;9 months ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="1711">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="1691">
+                            <a href="/u/Zikel"><img
+                                    src="https://crafatar.com/renders/head/1184fa846c0f4e5da2e521a0d780bba3.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">I would like to sincerely appolgise for my wrong doing of hacking.how do i appe?</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/Zikel"><strong>Zikel</strong></a>
+                                        &nbsp;9 months ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="1691">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="1690">
+                            <a href="/u/1zaxy"><img
+                                    src="https://crafatar.com/renders/head/95b46077385c40bb8a0e5257e9cfa899.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">ive been banned how do i get unbanned i didnt even do anything wrong???</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/1zaxy"><strong>1zaxy</strong></a>
+                                        &nbsp;9 months ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="1690">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="1625">
+                            <a href="/u/Awzry"><img
+                                    src="https://crafatar.com/renders/head/91dd47b2e5e44e2b8fcd5e4259748c58.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">Congrats on Owner Joakim you&#39;ve always helped me out!</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/Awzry"><strong>Awzry</strong></a>
+                                        &nbsp;10 months ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="1625">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="1551">
+                            <a href="/u/TheMau05"><img
+                                    src="https://crafatar.com/renders/head/aa8b360da86e45b98a89016551e1161b.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">Hi :V</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/TheMau05"><strong>TheMau05</strong></a>
+                                        &nbsp;10 months ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="1551">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="1538">
+                            <a href="/u/Durkio"><img
+                                    src="https://crafatar.com/renders/head/a2753edfa94847dabdbd7204e7f2623b.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">The main man</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/Durkio"><strong>Durkio</strong></a>
+                                        &nbsp;11 months ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="1538">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="1516">
+                            <a href="/u/Aerobyte"><img
+                                    src="https://crafatar.com/renders/head/9526d417213b41fda4003b759b6badbb.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">donde de guacemole los pelados :v jajaja</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/Aerobyte"><strong>Aerobyte</strong></a>
+                                        &nbsp;11 months ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="1516">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="1260">
+                            <a href="/u/Needlesss"><img
+                                    src="https://crafatar.com/renders/head/bfd3b1da83d24989ad66dc58fc33b4e7.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">The man himself!</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/Needlesss"><strong>Needlesss</strong></a>
+                                        &nbsp;1 year ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="1260">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="1190">
+                            <a href="/u/Deleteee"><img
+                                    src="https://crafatar.com/renders/head/b2c66b641df24f49a9991cb0b6c693c3.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">Thanks for accepting my friend request man!</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/Deleteee"><strong>Deleteee</strong></a>
+                                        &nbsp;1 year ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="1190">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="959">
+                            <a href="/u/Noah1174"><img
+                                    src="https://crafatar.com/renders/head/c387b26a812b4d8694c09b3ae2139791.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">Gratz on Manager</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/Noah1174"><strong>Noah1174</strong></a>
+                                        &nbsp;1 year ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="959">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="914">
+                            <a href="/u/Splars"><img
+                                    src="https://crafatar.com/renders/head/e6b0579cc52945d882ae111054e1b866.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">legg meg tilbake xd</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/Splars"><strong>Splars</strong></a>
+                                        &nbsp;1 year ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="914">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="895">
+                            <a href="/u/Beay"><img
+                                    src="https://crafatar.com/renders/head/c3dba268ae0245e88ad73718de67f746.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">Yo, could you take a look at my appeal</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/Beay"><strong>Beay</strong></a>
+                                        &nbsp;1 year ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="895">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="800">
+                            <a href="/u/FakeRocket"><img
+                                    src="https://crafatar.com/renders/head/719ec6e6dc0041ac808debbd01898269.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">Check my appeal please</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/FakeRocket"><strong>FakeRocket</strong></a>
+                                        &nbsp;1 year ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="800">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="648">
+                            <a href="/u/_YuTaRo_"><img
+                                    src="https://crafatar.com/renders/head/459d24ecc21d49ad8040ebc731cdc1c7.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">Hello! ) check my appeal please &lt;3</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/_YuTaRo_"><strong>_YuTaRo_</strong></a>
+                                        &nbsp;1 year ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="648">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="576">
+                            <a href="/u/IMakeYouMadBro"><img
+                                    src="https://crafatar.com/renders/head/3bfa03499f224f2c88c71152d0e3045c.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">Joakim can u check my ban apeal plz i want to play eotw</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/IMakeYouMadBro"><strong>IMakeYouMadBro</strong></a>
+                                        &nbsp;1 year ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="576">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="533">
+                            <a href="/u/Eckh"><img
+                                    src="https://crafatar.com/renders/head/b05c83341e194f33b72e516c645d4da4.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">Why was my ban appeal denyed</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/Eckh"><strong>Eckh</strong></a>
+                                        &nbsp;1 year ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="533">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="432">
+                            <a href="/u/Yanny"><img
+                                    src="https://crafatar.com/renders/head/6b8d8d68fdd0456692746759f8890a82.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">Clapped</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/Yanny"><strong>Yanny</strong></a>
+                                        &nbsp;1 year ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="432">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="346">
+                            <a href="/u/Liaised"><img
+                                    src="https://crafatar.com/renders/head/b38f7c7e145f4bdfb4b14642839bde95.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">Super Star!</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/Liaised"><strong>Liaised</strong></a>
+                                        &nbsp;1 year ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="346">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="300">
+                            <a href="/u/WhatForPvP"><img
+                                    src="https://crafatar.com/renders/head/a2897330bf7f436cb1bbf9476ef0b3a5.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">Oof. Howdy my friend 😉</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/WhatForPvP"><strong>WhatForPvP</strong></a>
+                                        &nbsp;1 year ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="300">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="198">
+                            <a href="/u/HalfDollar"><img
+                                    src="https://crafatar.com/renders/head/e96806ddebc8468abecdc828cf00304e.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">Hey</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/HalfDollar"><strong>HalfDollar</strong></a>
+                                        &nbsp;2 years ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="198">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="195">
+                            <a href="/u/pocked"><img
+                                    src="https://crafatar.com/renders/head/d5aa468bc7884d9aa6997119ef8a1603.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">hii</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/pocked"><strong>pocked</strong></a>
+                                        &nbsp;2 years ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="195">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="22">
+                            <a href="/u/D0an"><img
+                                    src="https://crafatar.com/renders/head/7a4c29850e3d4683a373a33333d257e8.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">My man&#39;s at it again YESSS</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/D0an"><strong>D0an</strong></a>
+                                        &nbsp;2 years ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="22">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="comment-block">
+                        <div class="comment" id="6">
+                            <a href="/u/Zehryn"><img
+                                    src="https://crafatar.com/renders/head/53558d4fac5d4a82bb42a313012cc3c8.png?scale=3&overlay"></a>
+                            <div class="comment-body">
+                                <div class="comment-toolbar">
+
+
+                                </div>
+                                <div class="comment-text">U staying with lunar or are u just gonna staff for 1 server</div>
+                                <div class="comment-info">
+
+                                        <a href="/u/Zehryn"><strong>Zehryn</strong></a>
+                                        &nbsp;2 years ago
+
+                                </div>
+                            </div>
+
+                                <div class="comment-reply-form">
+                                    <form method="post" action="?comment=true">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="lQm3GLMirDJnkaNPvwERhVEgTEfaLssamjixz3hAsIIRl5iu0VICsL9kAahNDQU1">
+                                        <input type="hidden" name="parent" value="6">
+                                        <img src="https://crafatar.com/renders/head/.png?scale=3&overlay">
+                                        <input type="text" required maxlength="128" name="text" id="text"
+                                               autocomplete="off" placeholder="type a reply...">
+                                    </form>
+                                </div>
+
+                        </div>
+
+                    </div>
+
+
+        </div>
+
+
+</div>
+
+    </div>
+</div>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    })
+</script>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="de-DE">
+  <head>
+    <script type="31abdb4c9ac3073dcba98289-text/javascript">
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-MTTZ5TF');
+    </script>
+
+    <script
+      data-ad-client="ca-pub-6249772009578879"
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+      type="31abdb4c9ac3073dcba98289-text/javascript"
+    ></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-param" content="_csrf" />
+    <meta
+      name="csrf-token"
+      content="cjF2UUVYalpLQBsHDDIwEjRdPDJ9CFMuNnpDCygALG4tXCRpPzcJdw=="
+    />
+    <title>Statistiken</title>
+    <link href="/assets/2b7e72d9/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/arvo.css" rel="stylesheet" />
+    <link href="/css/ubuntu.css" rel="stylesheet" />
+    <link href="/fontawesome/css/all.min.css" rel="stylesheet" />
+    <link href="/fontawesome/css/v4-shims.min.css" rel="stylesheet" />
+    <link href="/css/gommehd-theme.css" rel="stylesheet" />
+    <link href="/css/custom-styles.css" rel="stylesheet" />
+    <script
+      src="/assets/f5818857/jquery.js"
+      type="31abdb4c9ac3073dcba98289-text/javascript"
+    ></script>
+  </head>
+  <body class="page-stats">
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-MTTZ5TF"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+
+    <header>
+      <nav
+        class="navbar navbar-inverse navbar-static-top"
+        id="site-nav"
+        role="navigation"
+      >
+        <div class="container">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#navbar-collapse-1"
+            >
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-vbar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+              <img
+                src="/images/brandmark@3x.png"
+                width="60"
+                height="54"
+                alt="Brand"
+              />
+              <span>GommeHD.Net</span>
+            </a>
+          </div>
+          <div class="navbar-collapse collapse" id="navbar-collapse-1">
+            <div class="navbar-right hidden-xs" style="margin-left: 10px">
+              <a
+                target="_blank"
+                class="btn btn-default navbar-btn"
+                href="https://shop.gommehd.net/"
+              >
+                <i class="fa fa-shopping-cart"></i> Shop
+              </a>
+            </div>
+            <ul id="w0" class="navbar-nav navbar-right nav">
+              <li><a href="/game">Spiele</a></li>
+              <li class="active"><a href="/statistic">Statistiken</a></li>
+              <li><a href="/clans">Clans</a></li>
+              <li><a href="/forum">Forum</a></li>
+              <li>
+                <a href="https://gommehdnet.zendesk.com" target="_blank"
+                  >Support</a
+                >
+              </li>
+              <li class="visible-xs-block">
+                <a href="https://shop.gommehd.net/" target="_blank">Shop</a>
+              </li>
+              <li class="visible-xs-block">
+                <a href="/forum/search">Suche</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="userbar">
+        <div class="container">
+          <div class="userbar-drawer">
+            <ul class="list-unstyled list-inline">
+              <li>
+                <a class="btn btn-primary" href="/signup" role="button"
+                  >Registrieren</a
+                >
+              </li>
+
+              <li>
+                <a
+                  href="/login"
+                  type="button"
+                  class="btn btn-default"
+                  data-toggle="modal"
+                  data-remote="false"
+                >
+                  Log In
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div id="onlineCounter">
+            <div class="preloader">
+              <i>.</i>
+              <i>.</i>
+              <i>.</i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div id="content">
+      <div class="container">
+        <div class="pageTitle stats_title row">
+          <div class="col-md-6">
+            <h1><i class="fa fa-pie-chart"></i> Statistiken</h1>
+          </div>
+          <div class="col-md-4 col-md-offset-2">
+            <form class="statistic_search" method="get" action="/player/index">
+              <div class="input-group col-md-12">
+                <input
+                  type="text"
+                  name="playerName"
+                  class="form-control input-lg"
+                  placeholder="Spieler suchen"
+                />
+                <span class="input-group-btn">
+                  <button class="btn btn-info btn-lg" type="submit">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="well statistic_items_container">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="chart-holder" style="width: 190px">
+                <canvas id="chart-area" width="500" height="500"></canvas>
+                <h5 class="text-center">Top Länder</h5>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats_block">
+                <div
+                  class="background_container"
+                  style="background-image: url('/images/globalstats.png')"
+                ></div>
+                <h5>10 529 M</h5>
+                <h4>Global gespawntes Eisen</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats_block">
+                <div
+                  class="background_container"
+                  style="background-image: url('/images/globalstats.png')"
+                ></div>
+                <h5>95 M</h5>
+                <h4>Globale Endergames Teleports</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats_block">
+                <div
+                  class="background_container"
+                  style="background-image: url('/images/globalstats.png')"
+                ></div>
+                <h5>727 K</h5>
+                <h4>Global betretene YT-Boxen</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats_block">
+                <div
+                  class="background_container"
+                  style="background-image: url('/images/globalstats.png')"
+                ></div>
+                <h5>418 K</h5>
+                <h4>Gefundene Ostereier 2018</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats_block">
+                <div
+                  class="background_container"
+                  style="background-image: url('/images/globalstats.png')"
+                ></div>
+                <h5>1.59 M</h5>
+                <h4>bedwars.diamond</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats_block">
+                <div
+                  class="background_container"
+                  style="background-image: url('/images/globalstats.png')"
+                ></div>
+                <h5>5.99 M</h5>
+                <h4>Globale einzigartige User</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats_block">
+                <div
+                  class="background_container"
+                  style="background-image: url('/images/globalstats.png')"
+                ></div>
+                <h5>4 106 M</h5>
+                <h4>Global gespawntes Gold</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats_block">
+                <div
+                  class="background_container"
+                  style="background-image: url('/images/globalstats.png')"
+                ></div>
+                <h5>245 630 M</h5>
+                <h4>Global gespawntes Bronze</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats_block">
+                <div
+                  class="background_container"
+                  style="background-image: url('/images/globalstats.png')"
+                ></div>
+                <h5>4 587 M</h5>
+                <h4>Global in SG gelootete Items</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats_block">
+                <div
+                  class="background_container"
+                  style="background-image: url('/images/globalstats.png')"
+                ></div>
+                <h5>1 710 M</h5>
+                <h4>Global in SG geöffnete Kisten</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats_block">
+                <div
+                  class="background_container"
+                  style="background-image: url('/images/globalstats.png')"
+                ></div>
+                <h5>11 M</h5>
+                <h4>Global erstellte Reports</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats_block">
+                <div
+                  class="background_container"
+                  style="background-image: url('/images/globalstats.png')"
+                ></div>
+                <h5>2 442 M</h5>
+                <h4>Global in SW geöffnete Kisten</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats_block">
+                <div
+                  class="background_container"
+                  style="background-image: url('/images/globalstats.png')"
+                ></div>
+                <h5>37 397 M</h5>
+                <h4>Global platzierte Blöcke</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats_block">
+                <div
+                  class="background_container"
+                  style="background-image: url('/images/globalstats.png')"
+                ></div>
+                <h5>1 962 577 M</h5>
+                <h4>Global gelaufene Blöcke</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats_block">
+                <div
+                  class="background_container"
+                  style="background-image: url('/images/globalstats.png')"
+                ></div>
+                <h5>234 M</h5>
+                <h4>Global gespielte Runden</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats_block">
+                <div
+                  class="background_container"
+                  style="background-image: url('/images/globalstats.png')"
+                ></div>
+                <h5>658 M</h5>
+                <h4>Globale Netzwerk Logins</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats_block">
+                <div
+                  class="background_container"
+                  style="background-image: url('/images/globalstats.png')"
+                ></div>
+                <h5>3 689 M</h5>
+                <h4>Globale Kills</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stats_block">
+                <div
+                  class="background_container"
+                  style="background-image: url('/images/globalstats.png')"
+                ></div>
+                <h5>18 164 M</h5>
+                <h4>Global in SW gelootete Items</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script type="31abdb4c9ac3073dcba98289-text/javascript">
+        var doughnutData = [{"value":80.3,"color":"#F7464A","highlight":"#FF5A5E","label":"Deutschland"},{"value":7.29,"color":"#46BFBD","highlight":"#5AD3D1","label":"Österreich"},{"value":0.84,"color":"#FDB45C","highlight":"#FFC870","label":"Russland"},{"value":2.79,"color":"#949FB1","highlight":"#A8B3C5","label":"Schweiz"},{"value":0.84,"color":"#4D5360","highlight":"#616774","label":"CZ"},{"value":1.54,"color":"#F7464A","highlight":"#FF5A5E","label":"FR"},{"value":0.72,"color":"#46BFBD","highlight":"#5AD3D1","label":"PL"},{"value":5.68,"color":"#FDB45C","highlight":"#FFC870","label":"Andere"}];
+      </script>
+    </div>
+    <footer>
+      <div class="footer-social">
+        <div class="container">
+          <ul class="list-social list-unstyled list-inline">
+            <li class="twitter">
+              <a target="_blank" href="https://twitter.com/GommeHDnet">
+                <i class="fa fa-twitter"></i>
+                <span> Folgen auf Twitter</span>
+              </a>
+            </li>
+            <li class="youtube">
+              <a target="_blank" href="https://www.youtube.com/GommeHDnet">
+                <i class="fa fa-youtube-play"></i>
+                <span> Abonnieren auf YouTube</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-columns">
+        <div class="container">
+          <div class="row">
+            <div
+              class="footer-column col-sm-7 col-sm-offset-1 col-md-offset-0 col-md-4"
+              id="footer-latest"
+            >
+              <h4 class="footer-header">
+                <i class="fa fa-bullhorn"> </i> Ankündigungen
+              </h4>
+              <ul class="feed list-unstyled" id="feed-latest-posts">
+                <li>
+                  <img
+                    src="/forum/data/avatars/s/311/311981.jpg?1455928753"
+                    alt="User avatar"
+                    height="48"
+                    width="48"
+                    class="avatar"
+                  />
+                  <div class="feed-bubble">
+                    <a
+                      href="/forum/members/gommehdnet.311981/"
+                      class="text-red username"
+                      >GommeHDnet</a
+                    >
+                    <p class="text-muted text-timestamp">(vor 9 Tagen)</p>
+                    <p>
+                      <a
+                        href="/forum/threads/moderations-bewerbungsphase-juli-2021-wir-suchen-dich.942457/"
+                        >Moderations-Bewerbungsphase Juli 2021 | WIR SUCHEN
+                        DICH!</a
+                      >
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <img
+                    src="/forum/data/avatars/s/34/34744.jpg?1620174887"
+                    alt="User avatar"
+                    height="48"
+                    width="48"
+                    class="avatar"
+                  />
+                  <div class="feed-bubble">
+                    <a
+                      href="/forum/members/iowaniklas.34744/"
+                      class="text-red username"
+                      >iowaniklas</a
+                    >
+                    <p class="text-muted text-timestamp">(vor 15 Tagen)</p>
+                    <p>
+                      <a href="/forum/threads/bedwars-2-0-release.942354/"
+                        >BEDWARS 2.0 RELEASE</a
+                      >
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <img
+                    src="/forum/data/avatars/s/86/86374.jpg?1608127795"
+                    alt="User avatar"
+                    height="48"
+                    width="48"
+                    class="avatar"
+                  />
+                  <div class="feed-bubble">
+                    <a
+                      href="/forum/members/leoooon.86374/"
+                      class="text-red username"
+                      >Leoooon</a
+                    >
+                    <p class="text-muted text-timestamp">(vor 1 Monat)</p>
+                    <p>
+                      <a
+                        href="/forum/threads/masterbuilders-1-16-update-juni-2021.942185/"
+                        >MasterBuilders 1.16 Update | Juni 2021</a
+                      >
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="footer-column col-sm-4 text-center"
+              id="footer-twitter-feed"
+            >
+              <h4 class="footer-header">
+                <i class="fa fa-twitter"></i> Twitter Feed
+              </h4>
+              <a
+                class="twitter-timeline"
+                data-dnt="true"
+                href="https://twitter.com/GommeHDnet"
+                data-widget-id="521814218580844544"
+                >Tweets by @GommeHDnet</a
+              >
+              <script type="31abdb4c9ac3073dcba98289-text/javascript">
+                !function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = p + "://platform.twitter.com/widgets.js";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, "script", "twitter-wjs");
+              </script>
+            </div>
+            <div
+              class="footer-column col-sm-7 col-sm-offset-1 col-md-offset-0 col-md-4"
+              id="footer-latest"
+            >
+              <h4 class="footer-header">
+                <i class="fa fa-clock-o"></i> Neuste Posts
+              </h4>
+              <ul class="feed list-unstyled" id="feed-latest-posts">
+                <li>
+                  <img
+                    src="/forum/styles/default/xenforo/avatars/avatar_s.png"
+                    alt="User avatar"
+                    height="48"
+                    width="48"
+                    class="avatar"
+                  />
+                  <div class="feed-bubble">
+                    <a
+                      href="/forum/members/samu_deluxe.656516/"
+                      class="text-red username"
+                      >samu_deluxe</a
+                    >
+                    <p class="text-muted text-timestamp">(vor 10 Stunden)</p>
+                    <p>
+                      <a href="/forum/threads/alte-maps-zurueck.942562/"
+                        >Alte Maps zur&uuml;ck</a
+                      >
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <img
+                    src="/forum/data/avatars/s/442/442641.jpg?1508433983"
+                    alt="User avatar"
+                    height="48"
+                    width="48"
+                    class="avatar"
+                  />
+                  <div class="feed-bubble">
+                    <a
+                      href="/forum/members/schimmelwand.442641/"
+                      class="text-red username"
+                      >Schimmelwand</a
+                    >
+                    <p class="text-muted text-timestamp">(vor 12 Stunden)</p>
+                    <p>
+                      <a
+                        href="/forum/threads/reporten-wegen-unangemessenen-bauwerk.942561/"
+                        >Reporten wegen unangemessenen Bauwerk</a
+                      >
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <img
+                    src="/forum/data/avatars/s/900/900229.jpg?1626980265"
+                    alt="User avatar"
+                    height="48"
+                    width="48"
+                    class="avatar"
+                  />
+                  <div class="feed-bubble">
+                    <a
+                      href="/forum/members/knxfigermichel.900229/"
+                      class="text-red username"
+                      >KnxfigerMichel</a
+                    >
+                    <p class="text-muted text-timestamp">(vor 17 Stunden)</p>
+                    <p>
+                      <a href="/forum/threads/pbuild-anticheat.942558/"
+                        >Pbuild Anticheat</a
+                      >
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <div class="container">
+          <div class="ornament"></div>
+          <a
+            href="https://crowdin.com/?utm_source=badge&utm_medium=referral&utm_campaign=badge-add-on"
+            rel="nofollow"
+            ><img
+              style="width: 140; height: 40px; margin-bottom: 15px"
+              src="https://badges.crowdin.net/badge/dark/crowdin-on-light.png"
+              srcset="
+                https://badges.crowdin.net/badge/dark/crowdin-on-light.png 1x
+              "
+              alt="Crowdin | Agile localization for tech companies"
+          /></a>
+          <div>&copy; 2021 GommeHD.net</div>
+          <div>
+            <a
+              href="https://gommehd.net/terms/impressum"
+              target="_blank"
+              style="color: #878787"
+              >Impressum & Datenschutzerklärung</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div
+      class="modal fade modal-login"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="mySmallModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content modal-content-inverse">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only"> Close</span>
+            </button>
+            <h4 class="modal-title">Log In</h4>
+          </div>
+          <div class="modal-body" id="login-form"></div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade modal-recover-email"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+    >
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content modal-content-inverse">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span
+              ><span class="sr-only"> Close</span>
+            </button>
+            <h4 class="modal-title">Passwort zurücksetzen</h4>
+          </div>
+          <div class="modal-body" id="restore-password"></div>
+        </div>
+      </div>
+    </div>
+    <div class="notificationsContainer"></div>
+    <script type="31abdb4c9ac3073dcba98289-text/javascript">
+
+      var TopNotifications = {};
+      TopNotifications.hideCookieNotification = function (el, key) {
+          var notificationsContainer = $('.notificationsContainer');
+          $.post('/xen-forum/hide-notification', {key: key}, function (data) {
+              $(el).closest('.notificationPanel').hide();
+              $('body').css('margin-top', notificationsContainer.height());
+          });
+      };
+    </script>
+    <script
+      src="js/chart.min.js"
+      type="31abdb4c9ac3073dcba98289-text/javascript"
+    ></script>
+    <script
+      src="/assets/86002e31/yii.js"
+      type="31abdb4c9ac3073dcba98289-text/javascript"
+    ></script>
+    <script
+      src="/assets/2b7e72d9/js/bootstrap.js"
+      type="31abdb4c9ac3073dcba98289-text/javascript"
+    ></script>
+    <script
+      src="/js/react.min.js"
+      type="31abdb4c9ac3073dcba98289-text/javascript"
+    ></script>
+    <script
+      src="/js/r-login-form.js"
+      type="31abdb4c9ac3073dcba98289-text/javascript"
+    ></script>
+    <script
+      src="/js/r-restore-pwd.js"
+      type="31abdb4c9ac3073dcba98289-text/javascript"
+    ></script>
+    <script
+      src="/js/js.cookie.js"
+      type="31abdb4c9ac3073dcba98289-text/javascript"
+    ></script>
+    <script
+      src="/js/custom-scripts.js"
+      type="31abdb4c9ac3073dcba98289-text/javascript"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"
+      type="31abdb4c9ac3073dcba98289-text/javascript"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"
+      type="31abdb4c9ac3073dcba98289-text/javascript"
+    ></script>
+    <script
+      src="https://ajax.cloudflare.com/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"
+      data-cf-settings="31abdb4c9ac3073dcba98289-|49"
+      defer=""
+    ></script>
+  </body>
+</html>

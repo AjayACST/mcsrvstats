@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>UniversoCraft / Estadísticas</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:400,500,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/cache/style.min.css" />
+    <link rel="stylesheet" href="/assets/cache/index.min.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://downloads.universocraft.com/favicon.ico"
+      sizes="32x32"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <div id="header">
+        <div class="header">
+          <div class="container">
+            <a class="header-link" href="/">
+              <div class="header-logo">
+                <img src="/assets/img/logo.png" alt="" />
+              </div>
+              <div class="header-title">
+                <h2>Estadísticas</h2>
+              </div>
+            </a>
+            <div class="header-menu">
+              <ul class="header-menu-list">
+                <li><a href="/tops">TOPS</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="main">
+        <div class="container">
+          <div class="main-content">
+            <div class="main-content-title">
+              <h1>Búsqueda</h1>
+            </div>
+            <div class="main-content-error">
+              <p>¡No se ha encontrado ningún usuario con ese nombre!</p>
+            </div>
+            <div class="main-content-form">
+              <form action="stats.php" method="GET">
+                <input type="text" name="player" />
+                <button>Buscar</button>
+              </form>
+            </div>
+            <div class="main-content-description">
+              <p>
+                Este sistema mostrará tus estadísticas nuevas cada 10 minutos,
+                además, funciona para saber si un nombre se encuentra disponible
+                en el servidor.
+              </p>
+            </div>
+          </div>
+          <div class="main-content-legal">
+            <p>UniversoCraft © 2019</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
