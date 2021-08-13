@@ -5,7 +5,6 @@ from mcsrvstats import Client
 from mcsrvstats import exceptions
 
 
-
 @pytest.mark.asyncio
 async def test_universocraft(mcsrvstats_client: Client) -> None:
     """Test to check the universocraft function returns the correct data."""
