@@ -233,6 +233,7 @@ class Client:
 
         Raises:
             PlayerNotFoundError: error if player not found.
+            ApiError: If one of the games is under maintenance.
 
         Returns:
             Universocraft: object containing the players stats.
@@ -247,6 +248,8 @@ class Client:
         for game in soup.find_all("div", {"class": "game"}):
             stats = {}
             game_name = game.find("h2").get_text().replace("\n", "").strip()
+            if "mantenimiento" in game.find("p").get_text().replace("\n", "").strip():
+                raise ApiError("Api response not succesful")
             for stat in game.find_all("div", {"class": "game-stat"}):
                 stat_val = stat.find("p", {"class": "game-stat-count"}).get_text()
                 stat_name = stat.find("p", {"class": "game-stat-title"}).get_text()
