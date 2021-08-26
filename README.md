@@ -30,7 +30,7 @@
   <a href="https://github.com/Obsidion-dev/mcsrvstats/actions?workflow=Tests">
   <img src="https://github.com/Obsidion-dev/mcsrvstats/workflows/Tests/badge.svg" alt="Test status" />
   </a>
-  <a href="https://discord.gg/rnAtymZnzH">
+  <a href="https://discord.gg/zFf2ueEKgA">
     <img alt="Discord" src="https://img.shields.io/discord/695008516590534758">
   </a href="#contributors-">
    <img src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg" alt="Code of conduct" />
@@ -45,7 +45,7 @@
   <span> · </span>
   Support: <a href="https://github.com/Obsidion-dev/mcsrvstats/discussions">Discussions</a>
   <span> & </span>
-  <a href="https://discord.gg/fWxtKFVmaW">Discord</a>
+  <a href="https://discord.gg/zFf2ueEKgA">Discord</a>
 </h3>
 
 ## ✨ Features
@@ -104,7 +104,7 @@ Mcsrvstats is open-source. The library is licensed [GPL v3](https://www.gnu.org/
 
 If you have a question or would like to talk with other Asyncpixel users, please hop over to [Github discussions](https://github.com/Obsidion-dev/mcsrvstats/discussions) or join our Discord server:
 
-[Discord chatroom](https://discord.gg/rnAtymZnzH)
+[Discord chatroom](https://discord.gg/zFf2ueEKgA)
 
 ![Discord Shield](https://discordapp.com/api/guilds/695008516590534758/widget.png?style=shield)
 
