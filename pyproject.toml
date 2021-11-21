@@ -18,7 +18,7 @@ repository = "https://github.com/Obsidion-dev/mcsrvstats"
 version = "1.0.0"
 
 [tool.poetry.dependencies]
-aiohttp = "^3.6.2"
+aiohttp = "^3.8.1"
 bs4 = "^0.0.1"
 importlib_metadata = {version = "^4.8.1", python = "<3.8"}
 pydantic = "^1.7.3"
