@@ -30,7 +30,7 @@ Pygments = "^2.10.0"
 aioresponses = "^0.7.1"
 black = "^21.11b1"
 coverage = {extras = ["toml"], version = "^6.1"}
-darglint = "^1.5.8"
+darglint = "^1.8.1"
 flake8 = "^3.8.4"
 flake8-annotations = "^2.7.0"
 flake8-bandit = "^2.1.2"
