@@ -54,7 +54,7 @@ sphinx = "^4.3.0"
 sphinx-autobuild = "^2021.3.14"
 sphinx-autodoc-typehints = "^1.11.1"
 sphinx-rtd-theme = "^1.0.0"
-typeguard = "^2.13.0"
+typeguard = "^2.13.2"
 
 [tool.black]
 exclude = '''
