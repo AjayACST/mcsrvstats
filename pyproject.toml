@@ -52,7 +52,7 @@ reorder-python-imports = "^2.7.1"
 safety = "^1.9.0"
 sphinx = "^4.4.0"
 sphinx-autobuild = "^2021.3.14"
-sphinx-autodoc-typehints = "^1.16.0"
+sphinx-autodoc-typehints = "^1.17.0"
 sphinx-rtd-theme = "^1.0.0"
 typeguard = "^2.13.3"
 
