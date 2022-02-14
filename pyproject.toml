@@ -28,7 +28,7 @@ lxml = "^4.7.1"
 [tool.poetry.dev-dependencies]
 Pygments = "^2.11.2"
 aioresponses = "^0.7.3"
-black = "^21.12b0"
+black = "^22.1"
 coverage = {extras = ["toml"], version = "^6.3"}
 darglint = "^1.8.1"
 flake8 = "^3.8.4"
